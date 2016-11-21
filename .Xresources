@@ -1,0 +1,171 @@
+!!
+!! ~/.Xdefaults
+!!
+
+!!!!!!!!!!!!!!!!!!
+!! rxvt-unicode !!
+!!!!!!!!!!!!!!!!!!
+
+!URxvt.*font:                    -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso8859-1
+!URxvt.*boldFont:                -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso8859-1
+!URxvt*font			xft:Inconsolata:size=12:antialias=true:hinting=true
+!URxvt*boldFont			xft:Inconsolata:size=12:antialias=true:hinting=true
+!URxvt.*italicFont:
+!URxvt.*boldItalicFont:
+Xft.dpi:			96
+Xft.antialias:			true
+Xft.rgba:			rgb
+Xft.hinting:			true
+Xft.hintstyle:			hintfull
+!Xft.lcdfilter:			default
+
+!URxvt.font:			9x15
+!URxvt.boldFont:                9x15
+URxvt.font:                     -Misc-Fixed-Medium-R-Normal--15-140-75-75-C-90-ISO10646-1
+URxvt.boldFont:                 -Misc-Fixed-Medium-R-Normal--15-140-75-75-C-90-ISO10646-1
+
+
+
+URxvt.*intensityStyles:        true
+URxvt.*skipBuiltinGlyphs:    true
+URxvt.*linespace:            0
+URxvt.letterSpace:		-1
+
+!URxvt.*title:
+!URxvt.*iconName:
+URxvt.*geometry:                100x30
+URxvt.*borderLess:            false
+URxvt.*externalBorder:        0
+URxvt.*internalBorder:        2
+!URxvt.*borderColor:
+URxvt.*scrollBar:            false
+!URxvt.*scrollstyle:
+!URxvt.*scrollBar_right:
+!URxvt.*scrollBar_floating:
+!URxvt.*scrollBar_align:
+!URxvt.*scrollColor:
+!URxvt.*troughColor:
+
+URxvt.*depth:                32
+
+*background: #002b36
+*foreground: #839496
+!!*fading: 40
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+
+!! black dark/light
+*color0: #073642
+*color8: #002b36
+
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+
+!! green dark/light
+*color2: #859900
+*color10: #586e75
+
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
+
+!URxvt.*colorRV:
+!URxvt.*colorBD:
+!URxvt.*colorIT:
+!URxvt.*colorUL:
+!URxvt.*underlineColor:
+!URxvt.*highlightColor:
+URxvt.*cursorColor:            #ffffff
+URxvt.*cursorColor2:            #000000
+URxvt.*cursorBlink:            false
+URxvt.*reverseVideo:            false
+!URxvt.*fading:
+!URxvt.*fadeColor:
+!URxvt.*pointerColor:
+!URxvt.*pointerColor2:
+URxvt.*pointerBlank:            false
+!URxvt.*pointerBlankDelay:
+!URxvt.*backgroundPixmap:
+!URxvt.*path:
+URxvt.*inheritPixmap:        false
+!URxvt.*tintColor:
+!URxvt.*shading:
+!URxvt.*blendType:
+!URxvt.*blurRadius:
+
+URxvt.*insecure:                false
+URxvt.*termName:                rxvt-unicode
+URxvt.*loginShell:            true
+URxvt.*hold:                    false
+URxvt.*saveLines:            100000
+URxvt.*jumpScroll:            true
+URxvt.*skipScroll:            true
+URxvt.*scrollTtyOutput:        false
+URxvt.*scrollWithBuffer:        true
+URxvt.*scrollTtyKeypress:    true
+URxvt.*mouseWheelScrollPage:    false
+URxvt.secondaryScreen:        1
+URxvt.secondaryScroll:        0
+URxvt.secondaryWheel:         1
+!URxvt.*selectstyle:
+URxvt.*tripleclickwords:        true
+URxvt.*pastableTabs:            false
+URxvt.*mapAlert:                false
+URxvt.*urgentOnBell:            false
+URxvt.*visualBell:            false
+URxvt.*utmpInhibit:            false
+!URxvt.*print-pipe:
+!URxvt.*modifier:
+!URxvt.*preeditType:
+!URxvt.*inputMethod:
+!URxvt.*imLocale:
+!URxvt.*imFont:
+!URxvt.*meta8:
+!URxvt.*answerbackString:
+!URxvt.*backspacekey:
+!URxvt.*deletekey:
+!URxvt.*keysym.<keys>:
+
+!! Perl Extensions !!
+!! Available extensions: default, automove-background, block-graphics-to-ascii,
+!! digital-clock, example-refresh-hooks, kuake, macosx-clipboard, matcher,
+!! option-popup, readline, remote-clipboard, searchable-scrollback, selection,
+!! selection-autotransform, selection-pastebin, selection-popup, tabbed,
+!! URxvt.-popup, xim-onthespot
+!URxvt.*perl-ext-common:
+!URxvt.*perl-ext:
+!URxvt.*perl-eval:
+!URxvt.*perl-lib:
+!URxvt.*selection.pattern-<number>:
+!URxvt.*selection-autotransform.<number>:
+!URxvt.*searchable-scrollback:
+!URxvt.*urlLauncher:
+!URxvt.*transient-for:
+!URxvt.*override-redirect:
+!URxvt.*iso14755_52:
+!URxvt.*tabbed.tabbar-bg:
+!URxvt.*tabbed.tabbar-fg:
+!URxvt.*tabbed.tab-bg:
+!URxvt.*tabbed.tab-fg:
+!URxvt.*matcher.button:
+!URxvt.*matcher.pattern.<number>:
+!URxvt.*matcher.launcher.<number>:
