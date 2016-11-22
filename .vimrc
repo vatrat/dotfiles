@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sjl/gundo.vim'
 Plug 'klen/python-mode'
+Plug 'terryma/vim-smooth-scroll'
 call plug#end()
 
 "Hackery
@@ -91,11 +92,34 @@ set pastetoggle=,:
 nmap <silent> ,nh :new<cr>
 nmap <silent> ,nv :vne<cr>
 
+" Git Commands Setup (Fugitive Plugin)
+nnoremap ,ga :Git add %:p<CR><CR>
+nnoremap ,gs :Gstatus<CR>
+nnoremap ,gc :Gcommit -v -q<CR>
+nnoremap ,gt :Gcommit -v -q %:p<CR>
+nnoremap ,gd :Gdiff<CR>
+nnoremap ,ge :Gedit<CR>
+nnoremap ,gr :Gread<CR>
+nnoremap ,gw :Gwrite<CR><CR>
+nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
+nnoremap ,gp :Ggrep<Space>
+nnoremap ,gm :Gmove<Space>
+nnoremap ,gb :Git branch<Space>
+nnoremap ,go :Git checkout<Space>
+nnoremap ,gps :Dispatch! git push<CR>
+nnoremap ,gpl :Dispatch! git pull<CR>
+
 "Disable Arrow Keys
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" Smooth Scrolling Setup
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 "Airline Font Setup
 if !exists('g:airline_symbols')
