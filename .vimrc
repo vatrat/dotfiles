@@ -107,12 +107,12 @@ nnoremap ,ge :Gedit<CR>
 nnoremap ,gr :Gread<CR>
 nnoremap ,gw :Gwrite<CR><CR>
 nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
-nnoremap ,gp :Ggrep<Space>
+nnoremap ,gP :Ggrep<Space>
 nnoremap ,gm :Gmove<Space>
 nnoremap ,gB :Git branch<Space>
 nnoremap ,gb :Gblame<cr>
 nnoremap ,go :Git checkout<Space>
-nnoremap ,gP :Dispatch! git push<CR>
+nnoremap ,gp :Dispatch! git push<CR>
 nnoremap ,gL :Dispatch! git pull<CR>
 
 "Disable Arrow Keys
