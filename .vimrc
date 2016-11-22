@@ -77,12 +77,16 @@ nmap ,R <C-W>R
 nmap ,x <C-W>x
 nmap ,o <C-W>o
 
+" Movement Between Buffers
+nmap ,fn :bnext<cr>
+nmap ,fp :bprev<cr>
+
 "Command Shortcuts
 nmap <silent> ,cv :vs ~/.vimrc<cr>
 nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>
 nmap <silent> ,q :source ~/.vimrc<cr>
 nmap <silent> ,s :w<cr>
-nmap <silent> ,S :w !sudo tee % >/dev/null
+nmap  ,S :w !sudo tee % >/dev/null
 nmap <silent> ,i :PlugInstall<cr>
 nmap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
 nmap <silent> ,x :q<cr>
@@ -105,7 +109,8 @@ nnoremap ,gw :Gwrite<CR><CR>
 nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
 nnoremap ,gp :Ggrep<Space>
 nnoremap ,gm :Gmove<Space>
-nnoremap ,gb :Git branch<Space>
+nnoremap ,gB :Git branch<Space>
+nnoremap ,gb :Gblame<cr>
 nnoremap ,go :Git checkout<Space>
 nnoremap ,gP :Dispatch! git push<CR>
 nnoremap ,gL :Dispatch! git pull<CR>
