@@ -36,6 +36,7 @@ set history=1000
 set undolevels=1000
 set pastetoggle=,p
 set updatetime=250
+set shiftwidth=4
 
 "Color Setup
 let g:solarized_termcolors=256
