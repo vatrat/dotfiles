@@ -17,6 +17,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'sjl/gundo.vim'
 Plug 'klen/python-mode'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'tpope/vim-dispatch'
 call plug#end()
 
 "Hackery
@@ -106,8 +107,8 @@ nnoremap ,gp :Ggrep<Space>
 nnoremap ,gm :Gmove<Space>
 nnoremap ,gb :Git branch<Space>
 nnoremap ,go :Git checkout<Space>
-nnoremap ,gps :Dispatch! git push<CR>
-nnoremap ,gpl :Dispatch! git pull<CR>
+nnoremap ,gPP :Dispatch! git push<CR>
+nnoremap ,gPl :Dispatch! git pull<CR>
 
 "Disable Arrow Keys
 map <up> <nop>
