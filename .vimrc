@@ -87,7 +87,7 @@ nmap <silent> ,cv :vs ~/.vimrc<cr>
 nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>
 nmap <silent> ,q :source ~/.vimrc<cr>
 nmap <silent> ,s :w<cr>
-nmap  ,S :w !sudo tee % >/dev/null
+nmap  ,S :w !sudo tee % 
 nmap <silent> ,i :PlugInstall<cr>
 nmap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
 nmap <silent> ,x :q<cr>
