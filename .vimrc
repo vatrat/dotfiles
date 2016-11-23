@@ -39,6 +39,7 @@ set undolevels=1000
 set pastetoggle=,p
 set updatetime=250
 set shiftwidth=4
+set incsearch
 
 "Color Setup
 let g:solarized_termcolors=256
@@ -81,7 +82,7 @@ nmap ,o <C-W>o
 nmap ,fn :bnext<cr>
 nmap ,fp :bprev<cr>
 
-"Command Shortcuts
+" Command Shortcuts
 nmap <silent> ,cv :vs ~/.vimrc<cr>
 nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>
 nmap <silent> ,q :source ~/.vimrc<cr>
@@ -111,6 +112,7 @@ nnoremap ,gP :Ggrep<Space>
 nnoremap ,gm :Gmove<Space>
 nnoremap ,gB :Git branch<Space>
 nnoremap ,gb :Gblame<cr>
+nnoremap ,gi :Gbrowse<cr>
 nnoremap ,go :Git checkout<Space>
 nnoremap ,gp :Dispatch! git push<CR>
 nnoremap ,gL :Dispatch! git pull<CR>
