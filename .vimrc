@@ -114,8 +114,8 @@ nnoremap ,gB :Git branch<Space>
 nnoremap ,gb :Gblame<cr>
 nnoremap ,gi :Gbrowse<cr>
 nnoremap ,go :Git checkout<Space>
-nnoremap ,gp :Dispatch! git push<CR>
-nnoremap ,gL :Dispatch! git pull<CR>
+nnoremap ,gp :Gpush<CR>
+nnoremap ,gL :Gpull<CR>
 
 "Disable Arrow Keys
 map <up> <nop>
