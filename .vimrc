@@ -1,4 +1,4 @@
-"Plugin Setup
+" Plugin Setup
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -20,12 +20,12 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-dispatch'
 call plug#end()
 
-"Hackery
+" Hackery
 set nocompatible
 set laststatus=2
 set t_CO=256
 
-"Option Setup
+" Option Setup
 set number
 set relativenumber
 set showcmd
@@ -41,14 +41,14 @@ set updatetime=250
 set shiftwidth=4
 set incsearch
 
-"Color Setup
+" Color Setup
 let g:solarized_termcolors=256
 syntax enable
 set background=dark
 hi Normal ctermbg=none
 hi Linenr ctermbg=none
 
-"Movement Between Windows
+" Movement Between Windows
 nmap ,h <C-W>h
 nmap ,l <C-W>l
 nmap ,j <C-W>j
@@ -58,7 +58,7 @@ nmap ,L <C-W>L
 nmap ,J <C-W>J
 nmap ,K <C-W>K
 
-"Window Size Changes
+" Window Size Changes
 nmap ,= <C-W>=
 nmap ,- <C-W>-
 nmap ,+ <C-W>+
@@ -66,7 +66,7 @@ nmap ,_ <C-W>_
 nmap ,, <C-W>>
 nmap ,. <C-W><
 
-"Other Window Movements
+" Other Window Movements
 nmap ,w <C-W>w
 nmap ,W <C-W>W
 nmap ,t <C-W>t
@@ -117,7 +117,7 @@ nnoremap ,go :Git checkout<Space>
 nnoremap ,gp :Gpush<CR>
 nnoremap ,gL :Gpull<CR>
 
-"Disable Arrow Keys
+" Disable Arrow Keys
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
@@ -129,7 +129,7 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-"Airline Font Setup
+" Airline Font Setup
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
