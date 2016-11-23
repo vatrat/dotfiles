@@ -102,13 +102,14 @@ nmap <silent> ,nv :vne<cr>
 nnoremap ,ga :Git add %:p<CR><CR>
 nnoremap ,gs :Gstatus<CR>
 nnoremap ,gc :Gcommit -v -q<CR>
+nnoremap ,gC :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR>
 nnoremap ,gt :Gcommit -v -q %:p<CR>
 nnoremap ,gd :Gdiff<CR>
 nnoremap ,ge :Gedit<CR>
 nnoremap ,gr :Gread<CR>
 nnoremap ,gw :Gwrite<CR><CR>
 nnoremap ,gL :silent! Glog<CR>:bot copen<CR>
-nnoremap ,gP :Ggrep<Space>
+nnoremap ,gg :Ggrep<Space>
 nnoremap ,gm :Gmove<Space>
 nnoremap ,gB :Git branch<Space>
 nnoremap ,gb :Gblame<cr>
