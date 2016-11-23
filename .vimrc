@@ -116,6 +116,7 @@ nnoremap ,gb :Gblame<cr>
 nnoremap ,gi :Gbrowse<cr>
 nnoremap ,go :Git checkout<Space>
 nnoremap ,gp :Gpush<CR>
+nnoremap ,gP :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR> <bar> :Gpush<cr>
 nnoremap ,gl :Gpull<CR>
 
 " Disable Arrow Keys
