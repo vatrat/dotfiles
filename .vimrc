@@ -107,7 +107,7 @@ nnoremap ,gd :Gdiff<CR>
 nnoremap ,ge :Gedit<CR>
 nnoremap ,gr :Gread<CR>
 nnoremap ,gw :Gwrite<CR><CR>
-nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
+nnoremap ,gL :silent! Glog<CR>:bot copen<CR>
 nnoremap ,gP :Ggrep<Space>
 nnoremap ,gm :Gmove<Space>
 nnoremap ,gB :Git branch<Space>
@@ -115,7 +115,7 @@ nnoremap ,gb :Gblame<cr>
 nnoremap ,gi :Gbrowse<cr>
 nnoremap ,go :Git checkout<Space>
 nnoremap ,gp :Gpush<CR>
-nnoremap ,gL :Gpull<CR>
+nnoremap ,gl :Gpull<CR>
 
 " Disable Arrow Keys
 map <up> <nop>
