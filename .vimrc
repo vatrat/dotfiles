@@ -1,4 +1,4 @@
-" Vim Plugin Setup
+" Vim-plug Plugin Setup
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -50,22 +50,26 @@ hi Normal ctermbg=none
 hi Linenr ctermbg=none
 
 " Movement Between Vim Windows
-nmap ,h <C-W>h
-nmap ,l <C-W>l
-nmap ,j <C-W>j
-nmap ,k <C-W>k
-nmap ,H <C-W>H
-nmap ,L <C-W>L
-nmap ,J <C-W>J
-nmap ,K <C-W>K
+nmap ,h <C-W>h| " Move focus left
+nmap ,l <C-W>l| " Move focus right
+nmap ,j <C-W>j| " Move focus down
+nmap ,k <C-W>k| " Move focus up
+nmap ,H <C-W>H| " Move window left
+nmap ,L <C-W>L| " Move window right
+nmap ,J <C-W>J| " Move window down
+nmap ,K <C-W>K| " Move window up
 
 " Vim Window Size Changes
-nmap ,= <C-W>=
-nmap ,- <C-W>-
-nmap ,+ <C-W>+
-nmap ,_ <C-W>_
-nmap ,, <C-W>>
-nmap ,. <C-W><
+" All Windows
+nmap ,= <C-W>=| " Make all windows equal-ish/symmetrical in size
+" Current Window
+nmap ,- <C-W>-| " Shrink vertically; horizontally; takes optional count
+nmap ,+ <C-W>+| " Expand vertically; takes optional count
+nmap ,_ <C-W>_| " Expand vertically as much as possible
+nmap ,> <C-W><| " Shrink horizontally; takes optional count
+nmap ,< <C-W>>| " Expand horizontally; takes optional count
+nmap ,\| <C-W>\|| " Expand horizontally as much as possible
+" Note: In the above command, "\|" is equivalent to '|', so type ",|" to use.
 
 " Other Vim Window Movements
 nmap ,w <C-W>w
@@ -76,7 +80,7 @@ nmap ,p <C-W>p
 nmap ,P <C-W>P
 nmap ,r <C-W>r
 nmap ,R <C-W>R
-nmap ,x <C-W>x
+nmap ,x <C-W>x| " Exchange current window with next; takes optional count
 nmap ,o <C-W>o
 
 " Movement Between Vim Buffers
@@ -84,20 +88,28 @@ nmap ,fn :bnext<cr>
 nmap ,fp :bprev<cr>
 
 " Vim Command Shortcuts
-nmap <silent> ,cv :vs ~/.vimrc<cr>
-nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>
-nmap <silent> ,q :source ~/.vimrc<cr>
-nmap <silent> ,s :w<cr>
-nmap  ,S :w !sudo tee % 
-nmap <silent> ,i :PlugInstall<cr>
+nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open vimrc in vsplit
+nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
+nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load vimrc
+nmap <silent> ,s :w<cr>| " Normal save
+nmap  ,S :w !sudo tee % | " Force save with sudo
+nmap <silent> ,x :q<cr>| " Normal quit
+nmap <silent> ,X :q!<cr>| " Force quit
+set pastetoggle=,:| " Toggle paste mode
+nmap <silent> ,nh :new<cr>| " New file in split
+nmap <silent> ,nv :vne<cr>| " New file in vsplit
+
+" Vim-plug Command Mappings
+nmap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
+" Re-load vimrc, then run vim-plug installer
 nmap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
-nmap <silent> ,x :q<cr>
-nmap <silent> ,X :q!<cr>
-nmap <silent> ,; :TagbarToggle<cr>
-nmap <silent> ,u :GundoToggle<cr>
-set pastetoggle=,:
-nmap <silent> ,nh :new<cr>
-nmap <silent> ,nv :vne<cr>
+
+" Sidebar Toggle Mappings
+nmap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
+nmap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
+
+" Emmet-vim Mappings
+nmap <silent> ,, <C-y>,
 
 " Fugitive Git Commands Setup
 nnoremap ,ga :Git add %:p<CR><CR>
