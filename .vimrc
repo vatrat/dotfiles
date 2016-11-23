@@ -40,6 +40,7 @@ set pastetoggle=,p
 set updatetime=250
 set shiftwidth=4
 set incsearch
+set notimeout
 
 " Color Setup
 let g:solarized_termcolors=256
