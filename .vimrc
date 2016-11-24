@@ -31,16 +31,19 @@ set relativenumber
 set showcmd
 set autoindent
 set copyindent
-set tabstop=4
 set shiftround
 set smartcase
 set history=1000
 set undolevels=1000
 set pastetoggle=,p
 set updatetime=250
-set shiftwidth=4
 set incsearch
 set notimeout
+set tabstop=4
+set softtabstop=0
+set expandtab
+set shiftwidth=4
+set smarttab
 
 " Vim Color Setup
 let g:solarized_termcolors=256
