@@ -109,7 +109,14 @@ nmap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nmap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
 " Emmet-vim Mappings
-nmap <silent> ,, <C-y>,
+nmap <silent> ., <C-y>,
+nmap <silent> .d <C-y>d
+nmap <silent> .D <C-y>D
+nmap <silent> .n <C-y>n
+nmap <silent> .N <C-y>N
+nmap <silent> .m <C-y>m
+nmap <silent> .k <C-y>k
+nmap <silent> .j <C-y>j
 
 " Fugitive Git Commands Setup
 nnoremap ,ga :Git add %:p<CR><CR>
