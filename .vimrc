@@ -18,12 +18,14 @@ Plug 'klen/python-mode'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-dispatch'
 Plug 'rosenfeld/conque-term'
+Plug 'reedes/vim-wordy'
 call plug#end()
 
 " Vim Hackery
 set nocompatible
 set laststatus=2
 set t_CO=256
+set clipboard=unnamedplus
 
 " Vim Option Setup
 set number
@@ -112,7 +114,7 @@ nmap <silent> -m <C-y>m
 nmap <silent> -k <C-y>k
 nmap <silent> -j <C-y>j
 
-" Fugitive Git Commands Setup
+" Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>
 nnoremap ,gs :Gstatus<CR>
 nnoremap ,gc :Gcommit -v -q<CR>
@@ -131,6 +133,8 @@ nnoremap ,gi :Gbrowse<cr>
 nnoremap ,go :Git checkout<Space>
 nnoremap ,gp :Gpush<CR>
 nnoremap ,gl :Gpull<CR>
+
+" Wordy Command Mappings
 
 " Disable Arrows
 map <up> <nop>
@@ -182,3 +186,20 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
+
+
+" Modes
+" Word Processor Mode
+func! WordProcessorMode() 
+  setlocal formatoptions=1 
+  setlocal noexpandtab 
+  map j gj 
+  map k gk
+  setlocal spell spelllang=en_us 
+  " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
+  set complete+=s
+  set formatprg=par
+  setlocal wrap 
+  setlocal linebreak 
+endfu 
+com! WP call WordProcessorMode()
