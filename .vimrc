@@ -8,7 +8,6 @@ Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
@@ -18,6 +17,7 @@ Plug 'sjl/gundo.vim'
 Plug 'klen/python-mode'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-dispatch'
+Plug 'rosenfeld/conque-term'
 call plug#end()
 
 " Vim Hackery
@@ -45,13 +45,6 @@ set expandtab
 set shiftwidth=4
 set smarttab
 
-" Vim Color Setup
-let g:solarized_termcolors=256
-syntax enable
-set background=dark
-hi Normal ctermbg=none
-hi Linenr ctermbg=none
-
 " Movement Between Vim Windows
 nmap ,h <C-W>h| " Move focus left
 nmap ,l <C-W>l| " Move focus right
@@ -75,12 +68,6 @@ nmap ,\| <C-W>\|| " Expand horizontally as much as possible
 " Note: In the above command, "\|" is equivalent to '|', so type ",|" to use.
 
 " Other Vim Window Movements
-nmap ,w <C-W>w
-nmap ,W <C-W>W
-nmap ,t <C-W>t
-nmap ,b <C-W>b
-nmap ,p <C-W>p
-nmap ,P <C-W>P
 nmap ,r <C-W>r
 nmap ,R <C-W>R
 nmap ,x <C-W>x| " Exchange current window with next; takes optional count
@@ -95,12 +82,16 @@ nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open vimrc in vsplit
 nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
 nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load vimrc
 nmap <silent> ,s :w<cr>| " Normal save
-nmap  ,S :w !sudo tee % | " Force save with sudo
+nmap  ,S :w !sudo tee %<cr>| " Force save with sudo
 nmap <silent> ,x :q<cr>| " Normal quit
 nmap <silent> ,X :q!<cr>| " Force quit
 set pastetoggle=,:| " Toggle paste mode
 nmap <silent> ,nh :new<cr>| " New file in split
 nmap <silent> ,nv :vne<cr>| " New file in vsplit
+nmap <silent> .h. :ConqueTermSplit bash<cr>| " New file in split
+nmap <silent> .v. :ConqueTermVSplit bash<cr>| " New file in vsplit
+nmap <silent> .. :ConqueTerm bash<cr>| " Open bash in current window
+nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
 
 " Vim-plug Command Mappings
 nmap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
@@ -112,14 +103,14 @@ nmap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nmap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
 " Emmet-vim Mappings
-nmap <silent> ., <C-y>,
-nmap <silent> .d <C-y>d
-nmap <silent> .D <C-y>D
-nmap <silent> .n <C-y>n
-nmap <silent> .N <C-y>N
-nmap <silent> .m <C-y>m
-nmap <silent> .k <C-y>k
-nmap <silent> .j <C-y>j
+nmap <silent> -- <C-y>,
+nmap <silent> -d <C-y>d
+nmap <silent> -D <C-y>D
+nmap <silent> -n <C-y>n
+nmap <silent> -N <C-y>N
+nmap <silent> -m <C-y>m
+nmap <silent> -k <C-y>k
+nmap <silent> -j <C-y>j
 
 " Fugitive Git Commands Setup
 nnoremap ,ga :Git add %:p<CR><CR>
@@ -152,6 +143,13 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+" Vim Color Setup
+let g:solarized_termcolors=256
+syntax enable
+set background=dark
+hi Normal ctermbg=none
+hi Linenr ctermbg=none
 
 " Airline Symbol Setup
 if !exists('g:airline_symbols')
