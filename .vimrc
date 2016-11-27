@@ -90,11 +90,13 @@ nmap <silent> ,X :q!<cr>| " Force quit
 set pastetoggle=,:| " Toggle paste mode
 nmap <silent> ,nh :new<cr>| " New file in split
 nmap <silent> ,nv :vne<cr>| " New file in vsplit
+nmap ,e :e | " Edit file
+nmap ,e :e | " Edit file
 nmap <silent> .h. :ConqueTermSplit bash<cr>| " New file in split
 nmap <silent> .v. :ConqueTermVSplit bash<cr>| " New file in vsplit
 nmap <silent> .. :ConqueTerm bash<cr>| " Open bash in current window
 nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
-
+nmap <silent> .s :!screenkey -t 0.25 --no-whitespace --opacity 0.5 -s small -p fixed -g $(slop -n -f '%g')<cr>
 " Vim-plug Command Mappings
 nmap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
 " Re-load vimrc, then run vim-plug installer
@@ -187,6 +189,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
 
+" NERDTree Setup
+let g:NERDTreeWinPos = "right"
 
 " Modes
 " Word Processor Mode
@@ -197,9 +201,9 @@ func! WordProcessorMode()
   map k gk
   setlocal spell spelllang=en_us 
   " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
-  set complete+=s
-  set formatprg=par
+  setlocal complete+=s
+  setlocal formatprg=par
   setlocal wrap 
-  setlocal linebreak 
+  setlocal linebreak
 endfu 
 com! WP call WordProcessorMode()
