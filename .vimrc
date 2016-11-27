@@ -1,3 +1,5 @@
+" Vatrat's .vimrc
+
 " Vim-plug Plugin Setup
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
@@ -40,12 +42,18 @@ set undolevels=1000
 set pastetoggle=,p
 set updatetime=250
 set incsearch
-set notimeout
+" set notimeout
 set tabstop=4
 set softtabstop=0
 set expandtab
 set shiftwidth=4
 set smarttab
+set noerrorbells
+set visualbell
+set t_vb=
+map j gj 
+map k gk
+
 
 " Movement Between Vim Windows
 nmap ,h <C-W>h| " Move focus left
@@ -92,9 +100,9 @@ nmap <silent> ,nh :new<cr>| " New file in split
 nmap <silent> ,nv :vne<cr>| " New file in vsplit
 nmap ,e :e | " Edit file
 nmap ,e :e | " Edit file
-nmap <silent> .h. :ConqueTermSplit bash<cr>| " New file in split
-nmap <silent> .v. :ConqueTermVSplit bash<cr>| " New file in vsplit
-nmap <silent> .. :ConqueTerm bash<cr>| " Open bash in current window
+nmap <silent> .h. :ConqueTermSplit bash<cr><cr>| " New file in split
+nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
+nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
 nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
 nmap <silent> .s :!screenkey -t 0.25 --no-whitespace --opacity 0.5 -s small -p fixed -g $(slop -n -f '%g')<cr>
 " Vim-plug Command Mappings
@@ -115,6 +123,9 @@ nmap <silent> -N <C-y>N
 nmap <silent> -m <C-y>m
 nmap <silent> -k <C-y>k
 nmap <silent> -j <C-y>j
+
+" NERDTree Mappings
+nmap <silent> ,' :NERDTree<cr> 
 
 " Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>
@@ -197,9 +208,7 @@ let g:NERDTreeWinPos = "right"
 func! WordProcessorMode() 
   setlocal formatoptions=1 
   setlocal noexpandtab 
-  map j gj 
-  map k gk
-  setlocal spell spelllang=en_us 
+    setlocal spell spelllang=en_us 
   " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
   setlocal complete+=s
   setlocal formatprg=par
