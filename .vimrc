@@ -135,6 +135,7 @@ nnoremap ,gc :Gcommit -v -q<CR>
 nnoremap ,gC :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR>
 nnoremap ,gt :Gcommit -v -q %:p<CR>
 nnoremap ,gd :Gdiff<CR>
+nnoremap ,gvd :Gsdiff<CR>
 nnoremap ,ge :Gedit<CR>
 nnoremap ,gr :Gread<CR>
 nnoremap ,gw :Gwrite<CR><CR>
