@@ -28,6 +28,8 @@ set nocompatible
 set laststatus=2
 set t_CO=256
 set clipboard=unnamedplus
+" Make Fugitive's :Gsdiff behave properly
+set diffopt+=vertical
 
 " Vim Option Setup
 set number
@@ -104,7 +106,7 @@ nmap <silent> .h. :ConqueTermSplit bash<cr><cr>| " New file in split
 nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
 nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
 nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
-nmap <silent> .s :!screenkey -t 0.25 --no-whitespace --opacity 0.5 -s small -p fixed -g $(slop -n -f '%g')<cr>
+
 " Vim-plug Command Mappings
 nmap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
 " Re-load vimrc, then run vim-plug installer
