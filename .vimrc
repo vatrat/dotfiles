@@ -53,8 +53,6 @@ set smarttab
 set noerrorbells
 set visualbell
 set t_vb=
-map j gj 
-map k gk
 
 
 " Movement Between Vim Windows
@@ -88,6 +86,7 @@ nmap ,o <C-W>o
 " Movement Between Vim Buffers
 nmap ,fn :bnext<cr>
 nmap ,fp :bprev<cr>
+nmap ,fd :bdelete<cr>
 
 " Vim Command Shortcuts
 nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open vimrc in vsplit
@@ -208,13 +207,15 @@ let g:NERDTreeWinPos = "right"
 " Modes
 " Word Processor Mode
 func! WordProcessorMode() 
-  setlocal formatoptions=1 
-  setlocal noexpandtab 
-    setlocal spell spelllang=en_us 
-  " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
-  setlocal complete+=s
-  setlocal formatprg=par
-  setlocal wrap 
-  setlocal linebreak
+    setlocal formatoptions=1 
+    setlocal noexpandtab 
+        setlocal spell spelllang=en_us 
+    " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
+    setlocal complete+=s
+    setlocal formatprg=par
+    setlocal wrap 
+    setlocal linebreak
+    map j gj 
+    map k gk
 endfu 
 com! WP call WordProcessorMode()
