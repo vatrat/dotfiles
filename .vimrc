@@ -53,11 +53,9 @@ set showcmd
 set autoindent
 set copyindent
 set shiftround
+" Search Setup
 set smartcase
-set history=1000
-set pastetoggle=,p
 set incsearch
-" set notimeout
 " Tab setup (tab=4spaces)
 set tabstop=4
 set softtabstop=0
@@ -68,8 +66,9 @@ set smarttab
 set noerrorbells
 set visualbell
 set t_vb=
-" Undo setup
+" History and Undo Setup
 set undolevels=1000
+set history=1000
 
 
 "- Movement Between Vim Windows
