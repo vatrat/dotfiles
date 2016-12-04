@@ -1,6 +1,6 @@
 " Vatrat's .vimrc
 
-" Load vim-plug
+" Install vim-plug if not installed
 if empty(glob("~/.vim/autoload/plug.vim"))
     if empty(glob("~/.vim"))
         execute '!mkdir ~/.vim'
