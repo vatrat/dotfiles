@@ -4,8 +4,8 @@
 if empty(glob("~/.vim/autoload/plug.vim"))
     if empty(glob("~/.vim"))
         execute '!mkdir ~/.vim'
-    endif
-    if empty(glob("~/.vim/autoload"))
+        execute '!mkdir ~/.vim/autoload'
+    elseif empty(glob("~/.vim/autoload"))
         execute '!mkdir ~/.vim/autoload'
     endif
     execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
