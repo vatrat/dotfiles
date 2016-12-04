@@ -42,6 +42,7 @@ set t_CO=256
 set clipboard=unnamedplus
 set diffopt+=vertical| " Make Fugitive's :Gsdiff behave
 set updatetime=250| " Make gitgutter update regularly
+set ttimeoutlen=0| " Fix esc key delay 
 
 "- Vim Option Setup
 " Line number
@@ -105,22 +106,22 @@ nmap ,fp :bprev<cr>
 nmap ,fd :bdelete<cr>
 
 "- Vim Command Shortcuts
+" Config shortcuts
 nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open vimrc in vsplit
-nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
 nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load vimrc
+nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
+" Save
 nmap <silent> ,s :w<cr>| " Normal save
 nmap  ,S :w !sudo tee %<cr>| " Force save with sudo
+" Quit
 nmap <silent> ,x :q<cr>| " Normal quit
 nmap <silent> ,X :q!<cr>| " Force quit
 set pastetoggle=,:| " Toggle paste mode
+" Open File
+nmap ,e :e | " Edit specific file
 nmap <silent> ,nh :new<cr>| " New file in split
 nmap <silent> ,nv :vne<cr>| " New file in vsplit
-nmap ,e :e | " Edit file
-nmap ,e :e | " Edit file
-nmap <silent> .h. :ConqueTermSplit bash<cr><cr>| " New file in split
-nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
-nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
-nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
+
 
 "- Vim-plug Command Mappings
 nmap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
@@ -130,6 +131,12 @@ nmap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
 "- Sidebar Toggle Mappings
 nmap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nmap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
+
+" Conque Term Mappings
+nmap <silent> .h. :ConqueTermSplit bash<cr><cr>| " New file in split
+nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
+nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
+nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
 
 "- Emmet-vim Mappings
 nmap <silent> -- <C-y>,
