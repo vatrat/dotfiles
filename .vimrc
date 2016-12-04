@@ -21,6 +21,7 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-dispatch'
 Plug 'rosenfeld/conque-term'
 Plug 'reedes/vim-wordy'
+Plug 'tpope/vim-obsession'
 call plug#end()
 
 " Vim Hackery
@@ -28,8 +29,7 @@ set nocompatible
 set laststatus=2
 set t_CO=256
 set clipboard=unnamedplus
-" Make Fugitive's :Gsdiff behave properly
-set diffopt+=vertical
+set diffopt+=vertical| " Make Fugitive's :Gsdiff behave
 
 " Vim Option Setup
 set number
@@ -207,6 +207,10 @@ let g:syntastic_python_checkers = ['pylint']
 
 " NERDTree Setup
 let g:NERDTreeWinPos = "right"
+
+" Vim-Obsession Setup
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
 
 " Modes
 " Word Processor Mode
