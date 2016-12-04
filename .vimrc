@@ -1,6 +1,6 @@
-" Vatrat's .vimrc
+"- Vatrat's .vimrc
 
-" Install vim-plug if not installed
+"- Install vim-plug if not installed
 if empty(glob("~/.vim/autoload/plug.vim"))
     if empty(glob("~/.vim"))
         execute '!mkdir ~/.vim'
@@ -11,62 +11,68 @@ if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-" Vim-plug Plugin Setup
+"- Vim-plug Plugin Setup
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-commentary'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'sjl/gundo.vim'
+Plug 'bling/vim-airline'
+Plug 'hlissner/vim-multiedit'
+Plug 'kien/ctrlp.vim'
 Plug 'klen/python-mode'
-Plug 'terryma/vim-smooth-scroll'
-Plug 'tpope/vim-dispatch'
-Plug 'rosenfeld/conque-term'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
 Plug 'reedes/vim-wordy'
+Plug 'rosenfeld/conque-term'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
-" Vim Hackery
+"- Vim Hackery
 set nocompatible
 set laststatus=2
 set t_CO=256
 set clipboard=unnamedplus
 set diffopt+=vertical| " Make Fugitive's :Gsdiff behave
+set updatetime=250| " Make gitgutter update regularly
 
-" Vim Option Setup
+"- Vim Option Setup
+" Line number
 set number
 set relativenumber
+" On-screen cues
 set showcmd
+" Indentation
 set autoindent
 set copyindent
 set shiftround
 set smartcase
 set history=1000
-set undolevels=1000
 set pastetoggle=,p
-set updatetime=250
 set incsearch
 " set notimeout
+" Tab setup (tab=4spaces)
 set tabstop=4
 set softtabstop=0
 set expandtab
 set shiftwidth=4
 set smarttab
+" Turn off bells and screen flashing
 set noerrorbells
 set visualbell
 set t_vb=
+" Undo setup
+set undolevels=1000
 
 
-" Movement Between Vim Windows
+"- Movement Between Vim Windows
 nmap ,h <C-W>h| " Move focus left
 nmap ,l <C-W>l| " Move focus right
 nmap ,j <C-W>j| " Move focus down
@@ -76,7 +82,7 @@ nmap ,L <C-W>L| " Move window right
 nmap ,J <C-W>J| " Move window down
 nmap ,K <C-W>K| " Move window up
 
-" Vim Window Size Changes
+"- Vim Window Size Changes
 " All Windows
 nmap ,= <C-W>=| " Make all windows equal-ish/symmetrical in size
 " Current Window
@@ -88,18 +94,18 @@ nmap ,< <C-W>>| " Expand horizontally; takes optional count
 nmap ,\| <C-W>\|| " Expand horizontally as much as possible
 " Note: In the above command, "\|" is equivalent to '|', so type ",|" to use.
 
-" Other Vim Window Movements
+"- Other Vim Window Movements
 nmap ,r <C-W>r
 nmap ,R <C-W>R
 nmap ,x <C-W>x| " Exchange current window with next; takes optional count
 nmap ,o <C-W>o
 
-" Movement Between Vim Buffers
+"- Movement Between Vim Buffers
 nmap ,fn :bnext<cr>
 nmap ,fp :bprev<cr>
 nmap ,fd :bdelete<cr>
 
-" Vim Command Shortcuts
+"- Vim Command Shortcuts
 nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open vimrc in vsplit
 nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
 nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load vimrc
@@ -117,16 +123,16 @@ nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
 nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
 nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
 
-" Vim-plug Command Mappings
+"- Vim-plug Command Mappings
 nmap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
 " Re-load vimrc, then run vim-plug installer
 nmap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
 
-" Sidebar Toggle Mappings
+"- Sidebar Toggle Mappings
 nmap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nmap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
-" Emmet-vim Mappings
+"- Emmet-vim Mappings
 nmap <silent> -- <C-y>,
 nmap <silent> -d <C-y>d
 nmap <silent> -D <C-y>D
@@ -136,10 +142,10 @@ nmap <silent> -m <C-y>m
 nmap <silent> -k <C-y>k
 nmap <silent> -j <C-y>j
 
-" NERDTree Mappings
+"- NERDTree Mappings
 nmap <silent> ,' :NERDTree<cr> 
 
-" Fugitive Git Command Mappings
+"- Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>
 nnoremap ,gs :Gstatus<CR>
 nnoremap ,gc :Gcommit -v -q<CR>
@@ -160,32 +166,32 @@ nnoremap ,go :Git checkout<Space>
 nnoremap ,gp :Gpush<CR>
 nnoremap ,gl :Gpull<CR>
 
-" Wordy Command Mappings
+"- Wordy Command Mappings
+" (Nothing here for now)
 
-" Disable Arrows
+"- Disable Arrows
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-" smooth_scroll Setup
+"- Smooth Scroll Setup
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-" Vim Color Setup
+"- Vim Color Setup
 let g:solarized_termcolors=256
 syntax enable
 set background=dark
 hi Normal ctermbg=none
 hi Linenr ctermbg=none
 
-" Airline Symbol Setup
+"- Airline Symbol Setup
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
-
 " let g:airline_left_sep = '»'
 " let g:airline_left_sep = '▶'
 " let g:airline_right_sep = '«'
@@ -204,26 +210,28 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" Syntastic Airline Setup
+"- Syntastic Airline Setup
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
-" Syntastic Setup
+"- Syntastic Setup
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 '
 
-" NERDTree Setup
+"- NERDTree Setup
 let g:NERDTreeWinPos = "right"
 
-" Vim-Obsession Setup
+"- Vim-Obsession Setup
 set ssop-=options    " do not store global and local values in a session
 set ssop-=folds      " do not store folds
 
-" Modes
+"- Modes
 " Word Processor Mode
 func! WordProcessorMode() 
     setlocal formatoptions=1 
