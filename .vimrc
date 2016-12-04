@@ -33,6 +33,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 "- Vim Hackery
@@ -43,6 +44,7 @@ set clipboard=unnamedplus
 set diffopt+=vertical| " Make Fugitive's :Gsdiff behave
 set updatetime=250| " Make gitgutter update regularly
 set ttimeoutlen=0| " Fix esc key delay 
+set hidden
 
 "- Vim Option Setup
 " Line number
@@ -50,6 +52,7 @@ set number
 set relativenumber
 " On-screen cues
 set showcmd
+set noshowmode| " Use Airline instead
 " Indentation
 set autoindent
 set copyindent
@@ -107,9 +110,10 @@ nmap ,fd :bdelete<cr>
 
 "- Vim Command Shortcuts
 " Config shortcuts
-nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open vimrc in vsplit
-nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load vimrc
+nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open .vimrc in vsplit
+nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load .vimrc
 nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
+nmap <silent> ,ct :vs ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
 " Save
 nmap <silent> ,s :w<cr>| " Normal save
 nmap  ,S :w !sudo tee %<cr>| " Force save with sudo
@@ -202,19 +206,19 @@ endif
 " let g:airline_left_sep = '▶'
 " let g:airline_right_sep = '«'
 " let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
+" let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.maxlinenr = ''
+" let g:airline_symbols.maxlinenr = '☰'
+" let g:airline_symbols.maxlinenr = ''
 " let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_symbols.notexists = '∄'
+" let g:airline_symbols.whitespace = 'Ξ'
 
 "- Syntastic Airline Setup
 " set statusline+=%#warningmsg#
