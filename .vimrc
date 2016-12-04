@@ -39,7 +39,6 @@ call plug#end()
 "- Vim Hackery
 set nocompatible
 set laststatus=2
-set t_CO=256
 set clipboard=unnamedplus
 set diffopt+=vertical| " Make Fugitive's :Gsdiff behave
 set updatetime=250| " Make gitgutter update regularly
