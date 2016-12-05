@@ -43,6 +43,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'sickill/vim-monokai'
 Plug 'dikiaap/minimalist'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'w0ng/vim-hybrid'
 call plug#end()
 
 "- Vim Hackery
@@ -203,8 +204,8 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "- Vim Color Setup
 syntax on
 let g:neodark#use_256color = 1
+set background=dark
 colorscheme neodark
-" set background=dark
 " hi Normal ctermbg=none
 " hi Linenr ctermbg=none
 " hi VertSplit cterm=none ctermfg=014 ctermbg=003
