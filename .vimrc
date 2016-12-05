@@ -13,27 +13,32 @@ endif
 
 "- Vim-plug Plugin Setup
 call plug#begin('~/.vim/plugged')
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'godlygeek/tabular'
 Plug 'hlissner/vim-multiedit'
 Plug 'kien/ctrlp.vim'
 Plug 'klen/python-mode'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
+Plug 'metakirby5/codi.vim'
 Plug 'reedes/vim-wordy'
 Plug 'rosenfeld/conque-term'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 "- Vim Hackery
