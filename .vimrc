@@ -39,6 +39,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'sickill/vim-monokai'
+Plug 'dikiaap/minimalist'
+Plug 'KeitaNakamura/neodark.vim'
 call plug#end()
 
 "- Vim Hackery
@@ -197,11 +201,13 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 "- Vim Color Setup
-let g:solarized_termcolors=256
-syntax enable
-set background=dark
-hi Normal ctermbg=none
-hi Linenr ctermbg=none
+syntax on
+let g:neodark#use_256color = 1
+colorscheme neodark
+" set background=dark
+" hi Normal ctermbg=none
+" hi Linenr ctermbg=none
+" hi VertSplit cterm=none ctermfg=014 ctermbg=003
 
 "- Airline Symbol Setup
 if !exists('g:airline_symbols')
@@ -210,11 +216,8 @@ endif
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
 
  " Tmuxline Setup
 let g:tmuxline_separators = {
