@@ -118,6 +118,7 @@ nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open .vimrc in vsplit
 nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load .vimrc
 nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
 nmap <silent> ,ct :vs ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
+nmap <silent> ,cb :vs ~/.bashrc<cr>| " Open .bashrc in vsplit
 " Save
 nmap <silent> ,s :w<cr>| " Normal save
 nmap  ,S :w !sudo tee %<cr>| " Force save with sudo

@@ -1,7 +1,4 @@
 . /etc/apache2/envvars
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
 
  #If not running interactively, don't do anything else
 [ -z "$PS1" ] && return
@@ -68,3 +65,5 @@ codi() {
     hi NonText ctermfg=0 |\
     Codi $syntax" "$@"
 }
+
+unset TMUX
