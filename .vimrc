@@ -13,9 +13,12 @@ endif
 
 "- Vim-plug Plugin Setup
 call plug#begin('~/.vim/plugged')
+Plug 'KeitaNakamura/neodark.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dikiaap/minimalist'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'hlissner/vim-multiedit'
@@ -28,6 +31,7 @@ Plug 'reedes/vim-wordy'
 Plug 'rosenfeld/conque-term'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'sickill/vim-monokai'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
@@ -39,10 +43,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'sickill/vim-monokai'
-Plug 'dikiaap/minimalist'
-Plug 'KeitaNakamura/neodark.vim'
 Plug 'w0ng/vim-hybrid'
 call plug#end()
 
