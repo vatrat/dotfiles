@@ -204,11 +204,16 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "- Vim Color Setup
 syntax on
 let g:neodark#use_256color = 1
-set background=dark
+" set background=dark
 colorscheme neodark
 highlight Normal ctermbg=234
-"For some reason, if next to 'colorscheme...', line has no effect
+" For some reason, if next to 'colorscheme...', this line has no effect.
+" Command is added twice; the first does nothing, and serves as a
+" separator from 'colorscheme...', the second does its job.
+" And, no, putting the 'CursorlineNr' between 'Colorscheme...' and
+" this line doesn't work.
 highlight Normal ctermbg=234
+highlight CursorLineNr ctermbg=none
 
 "- Airline Symbol Setup
 if !exists('g:airline_symbols')
@@ -220,7 +225,15 @@ let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 
- " Tmuxline Setup
+"- Airline Setup
+let g:airline#extensions#tmuxline#enabled = 1
+" The colors of this airline theme are slightly different
+" than those of the default neodark theme. They have higher
+" contrast, so I like them more.
+let g:airline_theme='neodark'
+
+
+"- Tmuxline Setup
 let g:tmuxline_separators = {
       \ 'left' : '',
       \ 'left_alt': '>',
