@@ -206,9 +206,9 @@ syntax on
 let g:neodark#use_256color = 1
 set background=dark
 colorscheme neodark
-" hi Normal ctermbg=none
-" hi Linenr ctermbg=none
-" hi VertSplit cterm=none ctermfg=014 ctermbg=003
+highlight Normal ctermbg=234
+"For some reason, if next to 'colorscheme...', line has no effect
+highlight Normal ctermbg=234
 
 "- Airline Symbol Setup
 if !exists('g:airline_symbols')
