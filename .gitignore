@@ -1,4 +1,5 @@
 *
+*.swp
 !/.vimrc
 !/.xmonad
 !/.xmonad/xmonad.hs

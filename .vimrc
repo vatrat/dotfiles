@@ -267,7 +267,7 @@ set ssop-=folds      " do not store folds
 func! WordProcessorMode() 
     setlocal formatoptions=1 
     setlocal noexpandtab 
-        setlocal spell spelllang=en_us 
+    setlocal spell spelllang=en_us 
     " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
     setlocal complete+=s
     setlocal formatprg=par
