@@ -4,6 +4,7 @@
 !/.xmonad
 !/.xmonad/xmonad.hs
 !/.gitignore
+!/.gitconfig
 !/.Xresources
 !/.tmux.conf
 !/.bashrc

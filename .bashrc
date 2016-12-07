@@ -34,11 +34,15 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 if [ -z ${C9_USER+'a'} ];
+
 then
 source /usr/share/git-core/contrib/completion/git-prompt.sh
 PS1='\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ ';
+
 else 
-PS1='\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ '; fi
+PS1='\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ '
+cd ~
+unset TMUX; fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -53,7 +57,6 @@ export rvm_silence_path_mismatch_check_flag=1
 
 export EDITOR='vim'
 
-cd ~
 
 export TERM=screen-256color
 
@@ -71,4 +74,3 @@ codi() {
     Codi $syntax" "$@"
 }
 
-unset TMUX
