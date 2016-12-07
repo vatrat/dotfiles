@@ -204,7 +204,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 "- Vim Color Setup
 syntax on
 let g:neodark#use_256color = 1
-" set background=dark
+set background=dark
 colorscheme neodark
 highlight Normal ctermbg=234
 " For some reason, if next to 'colorscheme...', this line has no effect.
@@ -231,6 +231,14 @@ let g:airline#extensions#tmuxline#enabled = 1
 " than those of the default neodark theme. They have higher
 " contrast, so I like them more.
 let g:airline_theme='neodark'
+" For some reason, when I reload my .vimrc, the neodark
+" bundled airline theme takes over, even though the
+" airline theme pack one is loaded on startup.
+" Running ':AirlineRefresh' switches to the airline
+" theme pack theme.
+if !has('vim_starting')
+    AirlineRefresh
+endif
 
 
 "- Tmuxline Setup
