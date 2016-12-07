@@ -1,4 +1,4 @@
-. /etc/apache2/envvars
+# . /etc/apache2/envvars
 
  #If not running interactively, don't do anything else
 [ -z "$PS1" ] && return
@@ -33,7 +33,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PS1='\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ '
+if [ -z ${C9_USER+'a'} ];
+then
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+PS1='\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ ';
+else 
+PS1='\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ '; fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
