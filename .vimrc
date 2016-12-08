@@ -14,6 +14,9 @@ elseif has('nvim')
     if empty(glob("~/.config/nvim/autoload/plug.vim"))
         execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     endif
+    if !has('python3')
+        execute '!sudo pip3 install neovim'
+    endif
 endif
 
 "- Vim-plug Plugin Setup
