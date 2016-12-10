@@ -36,7 +36,9 @@ fi
 if [ -z ${C9_USER+'a'} ];
 
 then
-source /usr/share/git-core/contrib/completion/git-prompt.sh
+    if ! [ $USER == "cabox"];
+        then source /usr/share/git-core/contrib/completion/git-prompt.sh;
+    fi
 PS1='\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ ';
 
 else 

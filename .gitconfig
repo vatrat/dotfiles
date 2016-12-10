@@ -8,3 +8,5 @@
 [user]
 	name = vatrat
 	email = vatrat.dev@gmail.com
+[push]
+	default = matching
