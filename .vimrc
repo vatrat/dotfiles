@@ -28,6 +28,7 @@ Plug 'dikiaap/minimalist'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'hlissner/vim-multiedit'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'kien/ctrlp.vim'
 Plug 'klen/python-mode'
 Plug 'majutsushi/tagbar'
