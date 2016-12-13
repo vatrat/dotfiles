@@ -53,6 +53,10 @@ else
 cd ~
 unset TMUX; fi
 
+if [ $USER == "vatrat"]; then
+    export PATH="/home/vatrat/.gem/ruby/2.3.0/bin:$PATH"
+fi
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
