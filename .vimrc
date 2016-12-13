@@ -5,6 +5,12 @@ if has('nvim')
     if empty(glob("~/.config/nvim/autoload/plug.vim"))
         execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     endif
+    if empty(glob("~/.config/nvim"))
+        execute 'ln -s ~/.vim ~/.config/nvim'
+    endif
+    if empty(glob("~/.config/nvim/init.vim"))
+        execute 'ln -s ~/.vimrc ~/.config/nvim/init.vim'
+    endif
     if !has('python3')
         execute '!sudo pip3 install neovim'
     endif
@@ -21,7 +27,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dikiaap/minimalist'
@@ -191,6 +197,9 @@ nnoremap ,go :Git checkout<Space>
 nnoremap ,gp :Gpush<CR>
 nnoremap ,gl :Gpull<CR>
 
+" Neovim Terminal Mappings
+:tnoremap <Esc> <C-\><C-n>
+
 "- Wordy Command Mappings
 " (Nothing here for now)
 
@@ -219,6 +228,7 @@ highlight Normal ctermbg=234
 " And, no, putting the 'CursorlineNr' between 'Colorscheme...' and
 " this line doesn't work.
 highlight CursorLineNr ctermbg=none
+highlight SignColumn ctermbg=234
 
 "- Airline Symbol Setup
 if !exists('g:airline_symbols')
