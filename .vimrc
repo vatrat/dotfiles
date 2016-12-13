@@ -1,22 +1,19 @@
 "- Vatrat's .vimrc
 
 "- Install vim-plug if not installed
-if !has('nvim')
-    if empty(glob("~/.vim/autoload/plug.vim"))
-    "    if empty(glob("~/.vim"))
-    "        execute '!mkdir ~/.vim'
-    "        execute '!mkdir ~/.vim/autoload'
-    "    elseif empty(glob("~/.vim/autoload"))
-    "        execute '!mkdir ~/.vim/autoload'
-    "
-        execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    endif
-elseif has('nvim')
+if has('nvim')
     if empty(glob("~/.config/nvim/autoload/plug.vim"))
         execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     endif
     if !has('python3')
         execute '!sudo pip3 install neovim'
+    endif
+    if !has('python')
+        execute '!sudo pip2 install neovim'
+    endif
+else
+    if empty(glob("~/.vim/autoload/plug.vim"))
+        execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     endif
 endif
 
@@ -52,6 +49,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
+if has('nvim')
+    Plug 'neomake/neomake'
+endif
 call plug#end()
 
 "- Vim Hackery
