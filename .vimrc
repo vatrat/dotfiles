@@ -51,6 +51,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
 if has('nvim')
     Plug 'neomake/neomake'
+    Plug 'shougo/deoplete.nvim'
 endif
 call plug#end()
 
@@ -93,87 +94,80 @@ set history=1000
 
 
 "- Movement Between Vim Windows
-nmap ,h <C-W>h| " Move focus left
-nmap ,l <C-W>l| " Move focus right
-nmap ,j <C-W>j| " Move focus down
-nmap ,k <C-W>k| " Move focus up
-nmap ,H <C-W>H| " Move window left
-nmap ,L <C-W>L| " Move window right
-nmap ,J <C-W>J| " Move window down
-nmap ,K <C-W>K| " Move window up
+nnoremap ,h <C-W>h| " Move focus left
+nnoremap ,l <C-W>l| " Move focus right
+nnoremap ,j <C-W>j| " Move focus down
+nnoremap ,k <C-W>k| " Move focus up
+nnoremap ,H <C-W>H| " Move window left
+nnoremap ,L <C-W>L| " Move window right
+nnoremap ,J <C-W>J| " Move window down
+nnoremap ,K <C-W>K| " Move window up
 
 "- Vim Window Size Changes
 " All Windows
-nmap ,= <C-W>=| " Make all windows equal-ish/symmetrical in size
+nnoremap ,= <C-W>=| " Make all windows equal-ish/symmetrical in size
 " Current Window
-nmap ,- <C-W>-| " Shrink vertically; horizontally; takes optional count
-nmap ,+ <C-W>+| " Expand vertically; takes optional count
-nmap ,_ <C-W>_| " Expand vertically as much as possible
-nmap ,> <C-W><| " Shrink horizontally; takes optional count
-nmap ,< <C-W>>| " Expand horizontally; takes optional count
-nmap ,\| <C-W>\|| " Expand horizontally as much as possible
+nnoremap ,- <C-W>-| " Shrink vertically; horizontally; takes optional count
+nnoremap ,+ <C-W>+| " Expand vertically; takes optional count
+nnoremap ,_ <C-W>_| " Expand vertically as much as possible
+nnoremap ,> <C-W><| " Shrink horizontally; takes optional count
+nnoremap ,< <C-W>>| " Expand horizontally; takes optional count
+nnoremap ,\| <C-W>\|| " Expand horizontally as much as possible
 " Note: In the above command, "\|" is equivalent to '|', so type ",|" to use.
 
 "- Other Vim Window Movements
-nmap ,r <C-W>r
-nmap ,R <C-W>R
-nmap ,x <C-W>x| " Exchange current window with next; takes optional count
-nmap ,o <C-W>o
+nnoremap ,r <C-W>r
+nnoremap ,R <C-W>R
+nnoremap ,x <C-W>x| " Exchange current window with next; takes optional count
+nnoremap ,o <C-W>o
 
 "- Movement Between Vim Buffers
-nmap ,fn :bnext<cr>
-nmap ,fp :bprev<cr>
-nmap ,fd :bdelete<cr>
+nnoremap ,fn :bnext<cr>
+nnoremap ,fp :bprev<cr>
+nnoremap ,fd :bdelete<cr>
 
 "- Vim Command Shortcuts
 " Config shortcuts
-nmap <silent> ,cv :vs ~/.vimrc<cr>| " Open .vimrc in vsplit
-nmap <silent> ,q :source ~/.vimrc<cr>| " Re-load .vimrc
-nmap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
-nmap <silent> ,ct :vs ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
-nmap <silent> ,cb :vs ~/.bashrc<cr>| " Open .bashrc in vsplit
+nnoremap <silent> ,cv :vs ~/.vimrc<cr>| " Open .vimrc in vsplit
+nnoremap <silent> ,q :source ~/.vimrc<cr>| " Re-load .vimrc
+nnoremap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
+nnoremap <silent> ,ct :vs ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
+nnoremap <silent> ,cb :vs ~/.bashrc<cr>| " Open .bashrc in vsplit
 " Save
-nmap <silent> ,s :w<cr>| " Normal save
-nmap  ,S :w !sudo tee %<cr>| " Force save with sudo
+nnoremap <silent> ,s :w<cr>| " Normal save
+nnoremap  ,S :w !sudo tee %<cr>| " Force save with sudo
 " Quit
-nmap <silent> ,x :q<cr>| " Normal quit
-nmap <silent> ,X :q!<cr>| " Force quit
-nmap <silent> ,z :x<cr>| " Save and quit
+nnoremap <silent> ,x :q<cr>| " Normal quit
+nnoremap <silent> ,X :q!<cr>| " Force quit
+nnoremap <silent> ,z :x<cr>| " Save and quit
 " Toggle Paste Mode
 set pastetoggle=,:| " Toggle paste mode
 " Open File
-nmap ,e :e | " Edit specific file
-nmap <silent> ,nh :new<cr>| " New file in split
-nmap <silent> ,nv :vne<cr>| " New file in vsplit
-
+nnoremap ,e :e | " Edit specific file
+nnoremap <silent> ,nh :new<cr>| " New file in split
+nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
 
 "- Vim-plug Command Mappings
-nmap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
+nnoremap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
 " Re-load vimrc, then run vim-plug installer
-nmap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
+nnoremap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
 
 "- Sidebar Toggle Mappings
-nmap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
-nmap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
-
-" Conque Term Mappings
-" nmap <silent> .h. :ConqueTermSplit bash<cr><cr>| " New file in split
-" nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
-" nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
-" nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
+nnoremap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
+nnoremap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
 "- Emmet-vim Mappings
-nmap <silent> -- <C-y>,
-nmap <silent> -d <C-y>d
-nmap <silent> -D <C-y>D
-nmap <silent> -n <C-y>n
-nmap <silent> -N <C-y>N
-nmap <silent> -m <C-y>m
-nmap <silent> -k <C-y>k
-nmap <silent> -j <C-y>j
+nnoremap <silent> -- <C-y>,
+nnoremap <silent> -d <C-y>d
+nnoremap <silent> -D <C-y>D
+nnoremap <silent> -n <C-y>n
+nnoremap <silent> -N <C-y>N
+nnoremap <silent> -m <C-y>m
+nnoremap <silent> -k <C-y>k
+nnoremap <silent> -j <C-y>j
 
 "- NERDTree Mappings
-nmap <silent> ,' :NERDTree<cr> 
+nnoremap <silent> ,' :NERDTree<cr> 
 
 "- Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>
@@ -217,12 +211,12 @@ let g:neodark#use_256color = 1
 set background=dark
 colorscheme neodark
 highlight Normal ctermbg=234
+highlight Normal ctermbg=234
 " For some reason, if next to 'colorscheme...', this line has no effect.
 " Command is added twice; the first does nothing, and serves as a
 " separator from 'colorscheme...', the second does its job.
 " And, no, putting the 'CursorlineNr' between 'Colorscheme...' and
 " this line doesn't work.
-highlight Normal ctermbg=234
 highlight CursorLineNr ctermbg=none
 
 "- Airline Symbol Setup
@@ -238,8 +232,8 @@ let g:airline_symbols.paste = 'Þ'
 "- Airline Setup
 let g:airline#extensions#tmuxline#enabled = 1
 " The colors of this airline theme are slightly different
-" than those of the default neodark theme. They have higher
-" contrast, so I like them more.
+" than those of the default neodark ariline theme. They have
+" higher contrast, so I like them more.
 let g:airline_theme='neodark'
 " For some reason, when I reload my .vimrc, the neodark
 " bundled airline theme takes over, even though the
@@ -250,7 +244,6 @@ if !has('vim_starting')
     AirlineRefresh
 endif
 
-
 "- Tmuxline Setup
 let g:tmuxline_separators = {
       \ 'left' : '',
@@ -258,20 +251,6 @@ let g:tmuxline_separators = {
       \ 'right' : '',
       \ 'right_alt' : '<',
       \ 'space' : ' '}
-
-"- Syntastic Airline Setup
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-"- Syntastic Setup
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_cpp_compiler = 'g++'
-" let g:syntastic_cpp_compiler_options = ' -std=c++11 '
 
 "- NERDTree Setup
 let g:NERDTreeWinPos = "right"
