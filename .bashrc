@@ -53,7 +53,7 @@ else
 cd ~
 unset TMUX; fi
 
-if [ $USER == "vatrat"]; then
+if [ $USER == "vatrat" ]; then
     export PATH="/home/vatrat/.gem/ruby/2.3.0/bin:$PATH"
 fi
 
