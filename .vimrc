@@ -37,7 +37,6 @@ Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'metakirby5/codi.vim'
 Plug 'reedes/vim-wordy'
-Plug 'rosenfeld/conque-term'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'sickill/vim-monokai'
@@ -139,6 +138,8 @@ nmap  ,S :w !sudo tee %<cr>| " Force save with sudo
 " Quit
 nmap <silent> ,x :q<cr>| " Normal quit
 nmap <silent> ,X :q!<cr>| " Force quit
+nmap <silent> ,z :x<cr>| " Save and quit
+" Toggle Paste Mode
 set pastetoggle=,:| " Toggle paste mode
 " Open File
 nmap ,e :e | " Edit specific file
@@ -156,10 +157,10 @@ nmap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nmap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
 " Conque Term Mappings
-nmap <silent> .h. :ConqueTermSplit bash<cr><cr>| " New file in split
-nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
-nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
-nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
+" nmap <silent> .h. :ConqueTermSplit bash<cr><cr>| " New file in split
+" nmap <silent> .v. :ConqueTermVSplit bash<cr><cr>| " New file in vsplit
+" nmap <silent> .. :ConqueTerm bash<cr><cr>| " Open bash in current window
+" nmap <silent> .r :ConqueTerm bash<cr>| " Open bash in current window
 
 "- Emmet-vim Mappings
 nmap <silent> -- <C-y>,
@@ -264,13 +265,13 @@ let g:tmuxline_separators = {
 " set statusline+=%*
 
 "- Syntastic Setup
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 '
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_cpp_compiler = 'g++'
+" let g:syntastic_cpp_compiler_options = ' -std=c++11 '
 
 "- NERDTree Setup
 let g:NERDTreeWinPos = "right"
