@@ -44,12 +44,12 @@ then
         source /etc/bash_completion.d/git-prompt
     elif [ $(lsb_release -is) == "Arch" ]
     then
-        echo "Make an Arch clause for the __git_ps1 bash problem"
+        source /usr/share/git/completion/git-prompt.sh
     fi
-    PS1='\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ ';
+    PS1='[\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
 
 else 
-PS1='\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ '
+    PS1='[\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
 cd ~
 unset TMUX; fi
 

@@ -43,7 +43,7 @@ main = do
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
         , layoutHook=avoidStruts $ layoutHook def
-        , terminal = "urxvt"
+        , terminal = "gnome-terminal"
         --, modMask = mod4Mask     -- Rebind Mod to the Windows key
         , startupHook = spawn "xmodmap -e 'add mod4 = Menu'"
         } `additionalKeys`

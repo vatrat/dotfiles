@@ -198,7 +198,9 @@ nnoremap ,gp :Gpush<CR>
 nnoremap ,gl :Gpull<CR>
 
 " Neovim Terminal Mappings
-:tnoremap <Esc> <C-\><C-n>
+if has('nvim')
+    :tnoremap <Esc> <C-\><C-n>
+endif
 
 "- Wordy Command Mappings
 " (Nothing here for now)
