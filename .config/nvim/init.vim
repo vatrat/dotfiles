@@ -15,11 +15,10 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'mhinz/vim-signify'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dikiaap/minimalist'
 Plug 'edkolev/tmuxline.vim'
+Plug 'floobits/floobits-neovim'
 Plug 'godlygeek/tabular'
 Plug 'hlissner/vim-multiedit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -28,8 +27,11 @@ Plug 'klen/python-mode'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'metakirby5/codi.vim'
+Plug 'mhinz/vim-signify'
+Plug 'neomake/neomake'
 Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdtree'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
@@ -41,10 +43,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0ng/vim-hybrid'
-Plug 'neomake/neomake'
-Plug 'floobits/floobits-neovim'
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 "- Vim Hackery
