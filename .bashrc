@@ -92,3 +92,5 @@ codi() {
     Codi $syntax" "$@"
 }
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

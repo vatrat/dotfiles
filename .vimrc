@@ -132,9 +132,13 @@ nnoremap ,x <C-W>x| " Exchange current window with next; takes optional count
 nnoremap ,o <C-W>o
 
 "- Movement Between Vim Buffers
-nnoremap ,fn :bnext<cr>
-nnoremap ,fp :bprev<cr>
-nnoremap ,fd :bdelete<cr>
+nnoremap ;n :bnext<cr>
+nnoremap ;p :bprev<cr>
+nnoremap ;d :bdelete<cr>
+
+" Remap comma and semicolon
+nnoremap + ;| " Find next instance of f or t match
+nnoremap _ ,| " Find previous instance of f or t match
 
 "- Vim Command Shortcuts
 " Config shortcuts
@@ -158,9 +162,9 @@ nnoremap <silent> ,nh :new<cr>| " New file in split
 nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
 
 "- Vim-plug Command Mappings
-nnoremap <silent> ,i :PlugInstall<cr>| " Run vim-plug installer
+nnoremap <silent> ,i :PlugUpdate<cr>| " Run vim-plug installer
 " Re-load vimrc, then run vim-plug installer
-nnoremap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugInstall<cr>
+nnoremap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugUpdate<cr>
 
 "- Sidebar Toggle Mappings
 nnoremap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
