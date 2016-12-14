@@ -116,9 +116,9 @@ nnoremap ,x <C-W>x| " Exchange current window with next; takes optional count
 nnoremap ,o <C-W>o
 
 "- Movement Between Vim Buffers
-nnoremap ;n :bnext<cr>
-nnoremap ;p :bprev<cr>
-nnoremap ;d :bdelete<cr>
+nnoremap <silent> ;n :bnext<cr>
+nnoremap <silent> ;p :bprev<cr>
+nnoremap <silent> ;d :bdelete<cr>
 
 " Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
@@ -131,6 +131,7 @@ nnoremap <silent> ,q :source ~/.config/nvim/init.vim<cr>| " Re-load init.vim
 nnoremap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
 nnoremap <silent> ,ct :vs ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
 nnoremap <silent> ,cb :vs ~/.bashrc<cr>| " Open .bashrc in vsplit
+nnoremap <silent> ,cp :vs ~/.ps1rc<cr>| " Open .ps1rc in vsplit
 " Save
 nnoremap <silent> ,s :w<cr>| " Normal save
 nnoremap  ,S :w !sudo tee %<cr>| " Force save with sudo

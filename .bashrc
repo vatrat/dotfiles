@@ -33,25 +33,26 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -z ${C9_USER+'a'} ];
+# if [ -z ${C9_USER+'a'} ];
 
+# then
+if [ $(lsb_release -is) == "Fedora" ]
 then
-    if [ $(lsb_release -is) == "Fedora" ]
-    then
-        source /usr/share/git-core/contrib/completion/git-prompt.sh;
-    elif [ $(lsb_release -is) == "Ubuntu" ]
-    then
-        source /etc/bash_completion.d/git-prompt
-    elif [ $(lsb_release -is) == "Arch" ]
-    then
-        source /usr/share/git/completion/git-prompt.sh
-    fi
-    PS1='[\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
+    source /usr/share/git-core/contrib/completion/git-prompt.sh;
+elif [ $(lsb_release -is) == "Ubuntu" ]
+then
+    source /etc/bash_completion.d/git-prompt
+elif [ $(lsb_release -is) == "Arch" ]
+then
+    source /usr/share/git/completion/git-prompt.sh
+fi
+# PS1='[\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
+source .ps1rc
 
-else 
-    PS1='[\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
+# else 
+#     PS1='[\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
 cd ~
-unset TMUX; fi
+unset TMUX
 
 if [ $USER == "vatrat" ]; then
     export PATH="/home/vatrat/.gem/ruby/2.3.0/bin:$PATH"
