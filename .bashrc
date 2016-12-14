@@ -36,10 +36,17 @@ fi
 if [ -z ${C9_USER+'a'} ];
 
 then
-    if ! [ $USER == "cabox"];
-        then source /usr/share/git-core/contrib/completion/git-prompt.sh;
+    if [ $(lsb_release -is) == "Fedora" ]
+    then
+        source /usr/share/git-core/contrib/completion/git-prompt.sh;
+    elif [ $(lsb_release -is) == "Ubuntu" ]
+    then
+        source /etc/bash_completion.d/git-prompt
+    elif [ $(lsb_release -is) == "Arch" ]
+    then
+        echo "Make an Arch clause for the __git_ps1 bash problem"
     fi
-PS1='\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ ';
+    PS1='\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ ';
 
 else 
 PS1='\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)") $ '
