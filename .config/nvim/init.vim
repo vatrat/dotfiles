@@ -83,6 +83,8 @@ set undolevels=1000
 set undodir=~/.vim/undodir
 set undofile
 set history=1000
+" Setup for Live Subsitution
+set inccommand=nosplit
 
 
 "- Movement Between Vim Windows
