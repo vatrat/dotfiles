@@ -1,6 +1,8 @@
 *
 **/.swp
-!/.vimrc
+!/.config
+!/.config/nvim
+!/.config/nvim/init.vim
 !/.xmonad
 !/.xmonad/xmonad.hs
 !/.gitignore

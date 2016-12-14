@@ -1,30 +1,18 @@
-"- Vatrat's .vimrc
+"- Vatrat's init.vim
 
 "- Install vim-plug if not installed
-if has('nvim')
-    if empty(glob("~/.config/nvim/autoload/plug.vim"))
-        execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    endif
-    if empty(glob("~/.config/nvim"))
-        execute 'ln -s ~/.vim ~/.config/nvim'
-    endif
-    if empty(glob("~/.config/nvim/init.vim"))
-        execute 'ln -s ~/.vimrc ~/.config/nvim/init.vim'
-    endif
-    if !has('python3')
-        execute '!sudo pip3 install neovim'
-    endif
-    if !has('python')
-        execute '!sudo pip2 install neovim'
-    endif
-else
-    if empty(glob("~/.vim/autoload/plug.vim"))
-        execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    endif
+if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+if !has('python3')
+    execute '!sudo pip3 install neovim'
+endif
+if !has('python')
+    execute '!sudo pip2 install neovim'
 endif
 
 "- Vim-plug Plugin Setup
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mhinz/vim-signify'
@@ -42,8 +30,6 @@ Plug 'mattn/emmet-vim'
 Plug 'metakirby5/codi.vim'
 Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdtree'
-" Plug 'scrooloose/syntastic'
-" Plug 'sickill/vim-monokai'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
@@ -56,11 +42,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
-if has('nvim')
-    Plug 'neomake/neomake'
-    Plug 'floobits/floobits-neovim'
-    Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
+Plug 'neomake/neomake'
+Plug 'floobits/floobits-neovim'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 "- Vim Hackery
@@ -142,8 +126,8 @@ nnoremap _ ,| " Find previous instance of f or t match
 
 "- Vim Command Shortcuts
 " Config shortcuts
-nnoremap <silent> ,cv :vs ~/.vimrc<cr>| " Open .vimrc in vsplit
-nnoremap <silent> ,q :source ~/.vimrc<cr>| " Re-load .vimrc
+nnoremap <silent> ,cv :vs ~/.config/nvim/init.vim<cr>| " Open init.vim in vsplit
+nnoremap <silent> ,q :source ~/.config/nvim/init.vim<cr>| " Re-load init.vim
 nnoremap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
 nnoremap <silent> ,ct :vs ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
 nnoremap <silent> ,cb :vs ~/.bashrc<cr>| " Open .bashrc in vsplit
@@ -163,8 +147,8 @@ nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
 
 "- Vim-plug Command Mappings
 nnoremap <silent> ,i :PlugUpdate<cr>| " Run vim-plug installer
-" Re-load vimrc, then run vim-plug installer
-nnoremap <silent> ,I :source ~/.vimrc<cr> <bar> :PlugUpdate<cr>
+" Re-load init.vim then run vim-plug installer
+nnoremap <silent> ,I :source ~/.config/nvim/init.vim<cr> <bar> :PlugUpdate<cr>
 
 "- Sidebar Toggle Mappings
 nnoremap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
@@ -255,7 +239,7 @@ let g:airline#extensions#tmuxline#enabled = 1
 " than those of the default neodark ariline theme. They have
 " higher contrast, so I like them more.
 let g:airline_theme='neodark'
-" For some reason, when I reload my .vimrc, the neodark
+" For some reason, when I reload my init.vim the neodark
 " bundled airline theme takes over, even though the
 " airline theme pack one is loaded on startup.
 " Running ':AirlineRefresh' switches to the airline
