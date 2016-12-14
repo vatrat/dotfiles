@@ -43,7 +43,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdtree'
 " Plug 'scrooloose/syntastic'
-Plug 'sickill/vim-monokai'
+" Plug 'sickill/vim-monokai'
 Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
@@ -58,6 +58,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
 if has('nvim')
     Plug 'neomake/neomake'
+    Plug 'floobits/floobits-neovim'
     Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 call plug#end()
@@ -97,6 +98,8 @@ set visualbell
 set t_vb=
 " History and Undo Setup
 set undolevels=1000
+set undodir=~/.vim/undodir
+set undofile
 set history=1000
 
 
@@ -272,8 +275,17 @@ let g:NERDTreeWinPos = "right"
 set ssop-=options    " do not store global and local values in a session
 set ssop-=folds      " do not store folds
 
-" Deoplete Setup
-let g:deoplete#enable_at_startup = 1
+if has('nvim')
+    "- Deoplete Setup
+    call deoplete#enable()
+
+    "- Neomake Setup
+    let g:neomake_open_list = 2
+    let g:neomake_python_enabled_makers = ['flake8']
+    autocmd BufWritePost,BufEnter * Neomake
+    autocmd InsertLeave * update | Neomake
+    autocmd InsertChange,TextChanged * update | Neomake
+endif
 
 "- Modes
 " Word Processor Mode

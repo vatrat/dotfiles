@@ -57,6 +57,13 @@ if [ $USER == "vatrat" ]; then
     export PATH="/home/vatrat/.gem/ruby/2.3.0/bin:$PATH"
 fi
 
+if type nvim > /dev/null 2>&1; then
+    alias vim='nvim'
+    alias vi='nvim'
+    alias vimdiff='nvim -d'
+    export EDITOR='nvim'
+fi
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -67,8 +74,6 @@ xterm*|rxvt*)
 esac
 
 export rvm_silence_path_mismatch_check_flag=1
-
-export EDITOR='vim'
 
 
 export TERM=screen-256color
