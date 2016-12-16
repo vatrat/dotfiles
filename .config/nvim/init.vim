@@ -14,7 +14,7 @@ endif
 "- Vim-plug Plugin Setup
 call plug#begin('~/.config/nvim/plugged')
 Plug 'KeitaNakamura/neodark.vim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
@@ -22,17 +22,19 @@ Plug 'floobits/floobits-neovim'
 Plug 'godlygeek/tabular'
 Plug 'hlissner/vim-multiedit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'klen/python-mode'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
 Plug 'reedes/vim-wordy'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -116,11 +118,17 @@ nnoremap ,x <C-W>x| " Exchange current window with next; takes optional count
 nnoremap ,o <C-W>o
 
 "- Movement Between Vim Buffers
-nnoremap <silent> ;n :bnext<cr>
-nnoremap <silent> ;p :bprev<cr>
+nnoremap <silent> ;. :bnext<cr>
+nnoremap <silent> ;, :bprev<cr>
 nnoremap <silent> ;d :bdelete<cr>
 
-" Remap comma and semicolon
+" Movement Between Vim Tabs
+nnoremap <silent> ;l :tabnew<cr>
+nnoremap <silent> ;' :tabclose<cr>
+nnoremap <silent> ;] :tabnext<cr>
+nnoremap <silent> ;[ :tabprev<cr>
+
+"- Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
 nnoremap _ ,| " Find previous instance of f or t match
 
@@ -155,18 +163,22 @@ nnoremap <silent> ,I :source ~/.config/nvim/init.vim<cr> <bar> :PlugUpdate<cr>
 nnoremap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nnoremap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
-"- Emmet-vim Mappings
-nnoremap <silent> -- <C-y>,
-nnoremap <silent> -d <C-y>d
-nnoremap <silent> -D <C-y>D
-nnoremap <silent> -n <C-y>n
-nnoremap <silent> -N <C-y>N
-nnoremap <silent> -m <C-y>m
-nnoremap <silent> -k <C-y>k
-nnoremap <silent> -j <C-y>j
+"- Neosnippet Mappings
+inoremap <tab><tab> <tab>
+inoremap <tab> <Plug>(neosnippet_expand_or_jump)
+snoremap <tab> <Plug>(neosnippet_expand_or_jump)
+xnoremap <tab> <Plug>(neosnippet_expand_target)
+" nnoremap <silent> -- <C-y>,
+" nnoremap <silent> -d <C-y>d
+" nnoremap <silent> -D <C-y>D
+" nnoremap <silent> -n <C-y>n
+" nnoremap <silent> -N <C-y>N
+" nnoremap <silent> -m <C-y>m
+" nnoremap <silent> -k <C-y>k
+" nnoremap <silent> -j <C-y>j
 
 "- NERDTree Mappings
-nnoremap <silent> ,' :NERDTree<cr> 
+nnoremap <silent> ,' :NERDTreeToggle<cr> 
 
 "- Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>
