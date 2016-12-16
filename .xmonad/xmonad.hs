@@ -19,9 +19,9 @@ myLayout = emptyBSP
 
 myManagementHooks :: [ManageHook]
 myManagementHooks = [
-  resource =? "stalonetray" --> doIgnore
-  , resource =? "xmobar" --> doIgnore
-  , resource =? "trayer" --> doIgnore
+  resource =? "xmobar" --> doIgnore
+  , resource =? "stalonetray" --> doIgnore
+  -- , resource =? "trayer" --> doIgnore
   , manageDocks
   ]
 
