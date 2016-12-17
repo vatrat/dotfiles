@@ -12,6 +12,9 @@
 !/.xmonad/xmonad.hs
 !/.xmonad.sh
 
+!/.stalonetrayrc
+!/.xmobarrc
+
 !/.Xresources
 
 !/.tmux.conf
