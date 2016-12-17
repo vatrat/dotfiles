@@ -4,7 +4,8 @@ import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Layout.BinarySpacePartition
+-- import XMonad.Layout.BinarySpacePartition
+import XMonad.Actions.Navigation2D
 import XMonad.Layout.Spacing
 import XMonad.Util.Dzen
 import XMonad.Util.EZConfig(additionalKeys)
@@ -13,7 +14,7 @@ import XMonad.Util.Run(spawnPipe)
 
 -----
 
-myLayout = emptyBSP
+-- myLayout = emptyBSP
 
 -----
 
@@ -43,6 +44,7 @@ main = do
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
         , layoutHook=avoidStruts $ layoutHook def
+        -- , layoutHook = myLayout
         , terminal = "gnome-terminal"
         --, modMask = mod4Mask     -- Rebind Mod to the Windows key
         , startupHook = spawn "xmodmap -e 'add mod4 = Menu'"
@@ -56,9 +58,15 @@ main = do
               ,((mod1Mask, xK_p), spawn "rofi -show run")
               ,((mod1Mask, xK_d), dzenConfig return "testing")
 
-              ,((mod1Mask .|. shiftMask, xK_l), sendMessage $ ExpandTowards R)
-              ,((mod1Mask .|. shiftMask, xK_h), sendMessage $ ExpandTowards L)
-              ,((mod1Mask .|. shiftMask, xK_j), sendMessage $ ExpandTowards D)
-              ,((mod1Mask .|. shiftMask, xK_k), sendMessage $ ExpandTowards U)
+              ,((mod1Mask, xK_l), windowGo R False)
+              ,((mod1Mask, xK_h), windowGo L False)
+              ,((mod1Mask, xK_j), windowGo D False)
+              ,((mod1Mask, xK_k), windowGo U False)
+
+              ,((mod1Mask .|. shiftMask, xK_l), windowSwap R False)
+              ,((mod1Mask .|. shiftMask, xK_h), windowSwap L False)
+              ,((mod1Mask .|. shiftMask, xK_j), windowSwap D False)
+              ,((mod1Mask .|. shiftMask, xK_k), windowSwap U False)
+                
               --,
             ]
