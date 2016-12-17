@@ -29,7 +29,7 @@ myManagementHooks = [
 -----
 
 main = do
-    spawn "./.xinitrc"
+    spawn "./.xmonad.sh"
     xmproc <- spawnPipe "xmobar"
     spawn "stalonetray &"
     spawn "setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
