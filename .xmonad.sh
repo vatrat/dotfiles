@@ -6,11 +6,7 @@ xsetroot -cursor_name left_ptr&
 
 feh --bg-scale /home/vatrat/wallpaper.png
 
-/usr/bin/setxkbmap -option "caps:escape"
-
 # trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --height 17 --transparent true --alpha 0 --tint 0x242424 &
-
-rofi &
 
 # xscreensaver -no-splash &
 
@@ -24,5 +20,8 @@ rofi &
 #     Option  "XkbVariant" "altgr-intl"
 # EndSection
 
-# xmodmap -e "keycode 133 = ISO_Level3_Shift"
-# xmodmap -e "keycode 108 = Alt_L"
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+setxkbmap -option "caps:escape"
+xmodmap -e "keycode 133 = ISO_Level3_Shift"
+xmodmap -e "keycode 135 = ISO_Level3_Shift"
+xmodmap -e "keycode 108 = Alt_L"

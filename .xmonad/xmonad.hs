@@ -32,10 +32,10 @@ main = do
     spawn "./.xmonad.sh"
     xmproc <- spawnPipe "xmobar"
     spawn "stalonetray &"
-    spawn "setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
-    spawn "xmodmap -e \"keycode 133 = ISO_Level3_Shift\""
-    spawn "xmodmap -e \"keycode 135 = ISO_Level3_Shift\""
-    spawn "xmodmap -e \"keycode 108 = Alt_L\""
+    -- spawn "setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
+    -- spawn "xmodmap -e \"keycode 133 = ISO_Level3_Shift\""
+    -- spawn "xmodmap -e \"keycode 135 = ISO_Level3_Shift\""
+    -- spawn "xmodmap -e \"keycode 108 = Alt_L\""
 
     xmonad $ def
         { manageHook=manageHook def <+> manageDocks 
