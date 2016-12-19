@@ -298,9 +298,9 @@ if has('nvim')
     "- Neomake Setup
     let g:neomake_open_list = 2
     let g:neomake_python_enabled_makers = ['flake8']
-    autocmd BufWritePost,BufEnter * Neomake
-    autocmd InsertLeave * update | Neomake
-    autocmd InsertChange,TextChanged * update | Neomake
+    autocmd BufWritePost,BufEnter *.* Neomake
+    autocmd InsertLeave *.* update | Neomake
+    autocmd InsertChange,TextChanged *.* update | Neomake
 endif
 
 "- Modes
