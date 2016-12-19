@@ -19,6 +19,7 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'morhetz/gruvbox'
 " Tmux Integration
 Plug 'christoomey/vim-tmux-navigator'
 " Git Integration
@@ -240,16 +241,17 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 syntax on
 let g:neodark#use_256color = 1
 set background=dark
-colorscheme neodark
-highlight Normal ctermbg=234
-highlight Normal ctermbg=234
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = "hard"
+" highlight Normal ctermbg=234
+" highlight Normal ctermbg=234
 " For some reason, if next to 'colorscheme...', this line has no effect.
 " Command is added twice; the first does nothing, and serves as a
 " separator from 'colorscheme...', the second does its job.
 " And, no, putting the 'CursorlineNr' between 'Colorscheme...' and
 " this line doesn't work.
 highlight CursorLineNr ctermbg=none
-highlight SignColumn ctermbg=234
+highlight SignColumn ctermbg=none
 
 "- Airline Symbol Setup
 if !exists('g:airline_symbols')
@@ -266,7 +268,7 @@ let g:airline#extensions#tmuxline#enabled = 1
 " The colors of this airline theme are slightly different
 " than those of the default neodark ariline theme. They have
 " higher contrast, so I like them more.
-let g:airline_theme='neodark'
+let g:airline_theme='gruvbox'
 " For some reason, when I reload my init.vim the neodark
 " bundled airline theme takes over, even though the
 " airline theme pack one is loaded on startup.

@@ -56,7 +56,7 @@ main = do
               ((mod1Mask, xK_z), spawn "slock")
               ,((mod1Mask, xK_Print), spawn "scrot -s")
               ,((mod1Mask, xK_p), spawn "rofi -show run")
-              ,((mod1Mask, xK_d), dzenConfig return "testing")
+              -- ,((mod1Mask, xK_d), dzenConfig return "testing")
 
               ,((mod1Mask, xK_l), windowGo R False)
               ,((mod1Mask, xK_h), windowGo L False)
