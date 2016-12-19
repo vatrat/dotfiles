@@ -12,7 +12,7 @@ feh --bg-scale /home/vatrat/wallpaper.png
 
 rofi &
 
-xscreensaver -no-splash &
+# xscreensaver -no-splash &
 
 #compton -b
 
