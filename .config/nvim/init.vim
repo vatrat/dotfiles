@@ -63,21 +63,25 @@ Plug 'floobits/floobits-neovim'
 call plug#end()
 
 "- Vim Hackery
-set nocompatible
-set laststatus=2
-set clipboard=unnamedplus
+" set nocompatible| " no longer needed in Neovim
+set laststatus=2| " Have statusline always on
+set clipboard=unnamedplus| " Use system clipboard
 set diffopt+=vertical| " Make Fugitive's :Gsdiff behave
-set updatetime=250| " Make gitgutter update regularly
+set updatetime=250| " Make gitgutter update more often
 set ttimeoutlen=0| " Fix esc key delay 
-set hidden
-let g:pymode_rope = 0
+set hidden| " Make buffers persist in the background
+let g:pymode_rope = 0| " Fix massive delay from deoplete_jedi
+" This delay is caused when using deoplete_jedi's suggestions
+" when python-mode is also installed. This issue is still
+" open on github:
+" https://github.com/davidhalter/jedi-vim/issues/163
 
 "- Vim Option Setup
 " Line number
-set number
-set relativenumber
+set number| " Turn on line numbers
+set relativenumber| " Make line numbers relative to cursor
 " On-screen cues
-set showcmd
+set showcmd| " Show letters as they're typed
 set noshowmode| " Use Airline instead
 " Indentation
 set autoindent
