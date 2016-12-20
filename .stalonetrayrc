@@ -1,5 +1,5 @@
 decorations none
-transparent false
+transparent true
 dockapp_mode none
 geometry 10x1-400+0
 max_geometry 10x1-325-10
