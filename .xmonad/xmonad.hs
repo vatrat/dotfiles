@@ -49,15 +49,12 @@ main = do
     \ echo \"check\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
-    -- spawn "if ! ( ps -fA | grep -i \" [s]talonetray\" ); then \"stalonetray\" & fi"
-    -- The ';' is omitted in the line above because I'm using the '&' to disown the process,
-    -- and because it throws an error if I don't remove the ';'.
 
     xmonad $ def
         { manageHook=manageHook def <+> manageDocks 
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        , ppTitle = xmobarColor "green" "" . shorten 40
                         }
         , layoutHook=avoidStruts $ layoutHook def
         -- , layoutHook = myLayout
@@ -65,10 +62,7 @@ main = do
         --, modMask = mod4Mask     -- Rebind Mod to the Windows key
         -- , startupHook = spawn "xmodmap -e 'add mod4 = Menu'"
         } `additionalKeys`
-            [ --((0                     , 0x1008FF11), spawn "amixer set Master 7%-" >>= alert)
-              --,((0                     , 0x1008FF13), spawn "amixer set Master 7%+" >>= alert)
-              --,((0                     , 0x1008FF12), spawn "amixer -D pulse set Master toggle")
-
+            [ 
               ((mod1Mask, xK_z), spawn "slock")
               ,((mod1Mask, xK_Print), spawn "scrot -s")
               ,((mod1Mask, xK_p), spawn "rofi -show run")
@@ -84,5 +78,8 @@ main = do
               ,((mod1Mask .|. shiftMask, xK_j), windowSwap D False)
               ,((mod1Mask .|. shiftMask, xK_k), windowSwap U False)
                 
-              --,
+              ,((0, 0x1008FF11), spawn "amixer set Master 7%-")
+              ,((0, 0x1008FF13), spawn "amixer set Master 7%+")
+              ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
+
             ]

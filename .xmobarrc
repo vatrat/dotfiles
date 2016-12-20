@@ -2,16 +2,15 @@ Config { font = "7x13" --"-Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-
         , bgColor = "#000000"
         , fgColor= "gray"
         , position = TopW L 100
-        , commands = [  Run Network "wlx18a6f7185a05" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                        , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                        , Run Memory ["-t","Mem: <usedratio>%"] 10
-                        , Run Com "uname" ["-s","-r"] "" 36000
+        , commands = [  Run Cpu ["-L","3","-H","75","--normal","green","--high","red"] 10
+                        , Run Memory ["-t","Mem: <usedratio>%", "-L","3","-H","70","--normal","green","--high","red"] 10
                         , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                        , Run Com "/home/vatrat/.xmonad/.xmobar_volume.sh" [] "volume" 2
                         , Run StdinReader
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = " %StdinReader% | %cpu% | %memory% }{<fc=#ee9a00>%date%</fc> | %uname% "
+        , template = " %StdinReader% }{ %cpu% | %memory% | <fc=#0099ff>%volume%</fc> | %date% "
 	, lowerOnStart = False
 	, allDesktops = True
 	, overrideRedirect = True

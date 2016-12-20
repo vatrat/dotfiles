@@ -10,7 +10,7 @@
 
 !/.xmonad
 !/.xmonad/xmonad.hs
-!/.xmonad.sh
+!/.xmonad/.xmobar_volume.sh
 
 !/.stalonetrayrc
 !/.xmobarrc
