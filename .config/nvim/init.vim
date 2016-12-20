@@ -90,6 +90,7 @@ set shiftround
 " Search Setup
 set smartcase
 set incsearch
+set inccommand=nosplit| " Setup for Live Subsitution
 " Tab setup (tab=4spaces)
 set tabstop=4
 set softtabstop=0
@@ -105,8 +106,6 @@ set undolevels=1000
 set undodir=~/.vim/undodir
 set undofile
 set history=1000
-" Setup for Live Subsitution
-set inccommand=nosplit
 
 
 "- Movement Between Vim Windows
@@ -132,21 +131,21 @@ nnoremap ,\| <C-W>\|| " Expand horizontally as much as possible
 " Note: In the above command, "\|" is equivalent to '|', so type ",|" to use.
 
 "- Other Vim Window Movements
-nnoremap ,r <C-W>r
-nnoremap ,R <C-W>R
+nnoremap ,r <C-W>r| " 
+nnoremap ,R <C-W>R| " 
 nnoremap ,x <C-W>x| " Exchange current window with next; takes optional count
-nnoremap ,o <C-W>o
+nnoremap ,o <C-W>o| " 
 
 "- Movement Between Vim Buffers
-nnoremap <silent> ;. :bnext<cr>
-nnoremap <silent> ;, :bprev<cr>
-nnoremap <silent> ;d :bdelete<cr>
+nnoremap <silent> ;. :bnext<cr>| " 
+nnoremap <silent> ;, :bprev<cr>| " 
+nnoremap <silent> ;d :bdelete<cr>| " 
 
 " Movement Between Vim Tabs
-nnoremap <silent> ;l :tabnew<cr>
-nnoremap <silent> ;' :tabclose<cr>
-nnoremap <silent> ;] :tabnext<cr>
-nnoremap <silent> ;[ :tabprev<cr>
+nnoremap <silent> ;l :tabnew<cr>| " 
+nnoremap <silent> ;' :tabclose<cr>| " 
+nnoremap <silent> ;] :tabnext<cr>| " 
+nnoremap <silent> ;[ :tabprev<cr>| " 
 
 "- Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
@@ -198,38 +197,38 @@ endfunction
 imap <expr><TAB> <SID>neosnippet_complete()
 
 "- NERDTree Mappings
-nnoremap <silent> ,' :NERDTreeToggle<cr> 
+nnoremap <silent> ,' :NERDTreeToggle<cr> | " 
 
 "- Fugitive Git Command Mappings
-nnoremap ,ga :Git add %:p<CR><CR>
-nnoremap ,gs :Gstatus<CR>
-nnoremap ,gc :Gcommit -v -q<CR>
-nnoremap ,gC :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR>
-nnoremap ,gt :Gcommit -v -q %:p<CR>
-nnoremap ,gd :Gdiff<CR>
-nnoremap ,gvd :Gsdiff<CR>
-nnoremap ,ge :Gedit<CR>
-nnoremap ,gr :Gread<CR>
-nnoremap ,gw :Gwrite<CR><CR>
-nnoremap ,gL :silent! Glog<CR>:bot copen<CR>
-nnoremap ,gg :Ggrep<Space>
-nnoremap ,gm :Gmove<Space>
-nnoremap ,gB :Git branch<Space>
-nnoremap ,gb :Gblame<cr>
-nnoremap ,gi :Gbrowse<cr>
-nnoremap ,go :Git checkout<Space>
-nnoremap ,gp :Gpush<CR>
-nnoremap ,gl :Gpull<CR>
+nnoremap ,ga :Git add %:p<CR><CR>| " 
+nnoremap ,gs :Gstatus<CR>| " 
+nnoremap ,gc :Gcommit -v -q<CR>| " 
+nnoremap ,gC :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR>| " 
+nnoremap ,gt :Gcommit -v -q %:p<CR>| " 
+nnoremap ,gd :Gdiff<CR>| " 
+nnoremap ,gvd :Gsdiff<CR>| " 
+nnoremap ,ge :Gedit<CR>| " 
+nnoremap ,gr :Gread<CR>| " 
+nnoremap ,gw :Gwrite<CR><CR>| " 
+nnoremap ,gL :silent! Glog<CR>:bot copen<CR>| " 
+nnoremap ,gg :Ggrep<Space>| " 
+nnoremap ,gm :Gmove<Space>| " 
+nnoremap ,gB :Git branch<Space>| " 
+nnoremap ,gb :Gblame<cr>| " 
+nnoremap ,gi :Gbrowse<cr>| " 
+nnoremap ,go :Git checkout<Space>| " 
+nnoremap ,gp :Gpush<CR>| " 
+nnoremap ,gl :Gpull<CR>| " 
 
-" Neovim Terminal Mappings
+"- Neovim Terminal Mappings
 if has('nvim')
-    :tnoremap <Esc> <C-\><C-n>
+    :tnoremap <Esc> <C-\><C-n>| " 
 endif
 
 "- Wordy Command Mappings
 " (Nothing here for now)
 
-"- Disable Arrows
+"- Disable Arrow keys
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
@@ -269,18 +268,7 @@ let g:airline_symbols.paste = 'Þ'
 
 "- Airline Setup
 let g:airline#extensions#tmuxline#enabled = 1
-" The colors of this airline theme are slightly different
-" than those of the default neodark ariline theme. They have
-" higher contrast, so I like them more.
 let g:airline_theme='gruvbox'
-" For some reason, when I reload my init.vim the neodark
-" bundled airline theme takes over, even though the
-" airline theme pack one is loaded on startup.
-" Running ':AirlineRefresh' switches to the airline
-" theme pack theme.
-if !has('vim_starting')
-    AirlineRefresh
-endif
 
 "- Tmuxline Setup
 let g:tmuxline_separators = {
@@ -294,8 +282,8 @@ let g:tmuxline_separators = {
 let g:NERDTreeWinPos = "right"
 
 "- Vim-Obsession Setup
-set ssop-=options    " do not store global and local values in a session
-set ssop-=folds      " do not store folds
+set ssop-=options| " do not store global and local values in a session
+set ssop-=folds| " do not store folds
 
 if has('nvim')
     "- Deoplete Setup
