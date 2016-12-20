@@ -29,13 +29,29 @@ myManagementHooks = [
 -----
 
 main = do
-    spawn "./.xmonad.sh"
+    spawn "bash -c 'if ! ( ps -fA | grep -i \" [s]talonetray\" ); then echo \"check\" &&\
+    \ \"stalonetray\" & \
+    \ export LANG=en_US.UTF-8 &&\
+    \ echo \"check\" &&\
+    \ xsetroot -cursor_name \"left_ptr&\" &&\
+    \ echo \"check\" &&\
+    \ feh --bg-scale /home/vatrat/wallpaper.png &&\
+    \ echo \"check\" &&\
+    \ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &&\
+    \ echo \"check\" &&\
+    \ setxkbmap -option \"caps:escape\" &&\
+    \ echo \"check\" &&\
+    \ xmodmap -e \"keycode 133 = ISO_Level3_Shift\" &&\
+    \ echo \"check\" &&\
+    \ xmodmap -e \"keycode 135 = ISO_Level3_Shift\" &&\
+    \ echo \"check\" &&\
+    \ xmodmap -e \"keycode 108 = Alt_L\" &&\
+    \ echo \"check\" &&\
+    \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
-    spawn "stalonetray &"
-    -- spawn "setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
-    -- spawn "xmodmap -e \"keycode 133 = ISO_Level3_Shift\""
-    -- spawn "xmodmap -e \"keycode 135 = ISO_Level3_Shift\""
-    -- spawn "xmodmap -e \"keycode 108 = Alt_L\""
+    -- spawn "if ! ( ps -fA | grep -i \" [s]talonetray\" ); then \"stalonetray\" & fi"
+    -- The ';' is omitted in the line above because I'm using the '&' to disown the process,
+    -- and because it throws an error if I don't remove the ';'.
 
     xmonad $ def
         { manageHook=manageHook def <+> manageDocks 
@@ -47,7 +63,7 @@ main = do
         -- , layoutHook = myLayout
         , terminal = "gnome-terminal"
         --, modMask = mod4Mask     -- Rebind Mod to the Windows key
-        , startupHook = spawn "xmodmap -e 'add mod4 = Menu'"
+        -- , startupHook = spawn "xmodmap -e 'add mod4 = Menu'"
         } `additionalKeys`
             [ --((0                     , 0x1008FF11), spawn "amixer set Master 7%-" >>= alert)
               --,((0                     , 0x1008FF13), spawn "amixer set Master 7%+" >>= alert)
