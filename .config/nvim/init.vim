@@ -1,4 +1,13 @@
 "- Vatrat's init.vim
+" To open this file when using this config,
+" type ',cv' without the quotes. To see a list
+" of key mappings, type ',;' without the quotes.
+" (You must install ctags to use the map list)
+" Type ',l' until the rightmost pane is selected,
+" then type 'o' on the 'maps' line. As your
+" cursor goes over each line in 'maps', the line
+" that binds that map will be shown at the bottom
+" left of the window.
 
 "- Install vim-plug if not installed
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
@@ -57,6 +66,7 @@ Plug 'neovim/python-client'
 Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
 " Session Management
 Plug 'tpope/vim-obsession'
 Plug 'floobits/floobits-neovim'
@@ -133,32 +143,35 @@ nnoremap ,\| <C-W>\|| " Expand horizontally as much as possible
 "- Other Vim Window Movements
 nnoremap ,r <C-W>r| " 
 nnoremap ,R <C-W>R| " 
-nnoremap ,x <C-W>x| " Exchange current window with next; takes optional count
-nnoremap ,o <C-W>o| " 
+" nnoremap ,x <C-W>x| " Exchange current window with next; takes optional count
+nnoremap ,o <C-W>o| " View only current pane
 
 "- Movement Between Vim Buffers
-nnoremap <silent> ;. :bnext<cr>| " 
-nnoremap <silent> ;, :bprev<cr>| " 
-nnoremap <silent> ;d :bdelete<cr>| " 
+nnoremap <silent> ;. :bnext<cr>| " Move next buffer to current pane
+nnoremap <silent> ;, :bprev<cr>| " Move previous buffer to current pane
+nnoremap <silent> ;/ :bdelete<cr>| " Close current buffer completely
 
 " Movement Between Vim Tabs
-nnoremap <silent> ;l :tabnew<cr>| " 
-nnoremap <silent> ;' :tabclose<cr>| " 
-nnoremap <silent> ;] :tabnext<cr>| " 
-nnoremap <silent> ;[ :tabprev<cr>| " 
+nnoremap <silent> ;l :tabnew<cr>| " Open and switch to a new tab
+nnoremap <silent> ;' :tabclose<cr>| " Close current tab
+nnoremap <silent> ;] :tabnext<cr>| " Move to next tab
+nnoremap <silent> ;[ :tabprev<cr>| " Move to previous tab
 
 "- Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
 nnoremap _ ,| " Find previous instance of f or t match
 
-"- Vim Command Shortcuts
-" Config shortcuts
-nnoremap <silent> ,cv :vs ~/.config/nvim/init.vim<cr>| " Open init.vim in vsplit
+"- Search Mappings
+nnoremap <silent> ,/ :let @/ = ''<cr>| " Clear current search
+
+"- Vim Command Mappings
+" Config Mappings
+nnoremap <silent> ,cv :e ~/.config/nvim/init.vim<cr>| " Open init.vim in vsplit
 nnoremap <silent> ,q :source ~/.config/nvim/init.vim<cr>| " Re-load init.vim
-nnoremap <silent> ,cx :vs ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
-nnoremap <silent> ,ct :vs ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
-nnoremap <silent> ,cb :vs ~/.bashrc<cr>| " Open .bashrc in vsplit
-nnoremap <silent> ,cp :vs ~/.ps1rc<cr>| " Open .ps1rc in vsplit
+nnoremap <silent> ,cx :e ~/.xmonad/xmonad.hs<cr>| " Open xmonad.hs in vsplit
+nnoremap <silent> ,ct :e ~/.tmux.conf<cr>| " Open .tmux.conf in vsplit
+nnoremap <silent> ,cb :e ~/.bashrc<cr>| " Open .bashrc in vsplit
+nnoremap <silent> ,cp :e ~/.ps1rc<cr>| " Open .ps1rc in vsplit
 " Save
 nnoremap <silent> ,s :w<cr>| " Normal save
 nnoremap  ,S :w !sudo tee %<cr>| " Force save with sudo
@@ -174,8 +187,8 @@ nnoremap <silent> ,nh :new<cr>| " New file in split
 nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
 
 "- Vim-plug Command Mappings
-nnoremap <silent> ,i :PlugUpdate<cr>| " Run vim-plug installer
-" Re-load init.vim then run vim-plug installer
+nnoremap <silent> ,i :PlugUpdate<cr>| " Run vim-plug updater
+" Re-load init.vim then run vim-plug updater
 nnoremap <silent> ,I :source ~/.config/nvim/init.vim<cr> <bar> :PlugUpdate<cr>
 
 "- Sidebar Toggle Mappings
@@ -198,9 +211,11 @@ imap <expr><TAB> <SID>neosnippet_complete()
 
 "- NERDTree Mappings
 nnoremap <silent> ,' :NERDTreeToggle<cr> | " 
+nnoremap <silent> ," :NERDTreeTabsToggle<cr> | " 
 
 "- Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>| " 
+nnoremap ,gA :Git add .<CR><CR>| " 
 nnoremap ,gs :Gstatus<CR>| " 
 nnoremap ,gc :Gcommit -v -q<CR>| " 
 nnoremap ,gC :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR>| " 
@@ -256,6 +271,30 @@ let g:gruvbox_contrast_dark = "hard"
 highlight CursorLineNr ctermbg=none
 highlight SignColumn ctermbg=none
 
+" Rainbow Parentheses Setup
+" Rainbow Parentheses Color Setup
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+" Rainbow Parentheses autocmd setup
+au VimEnter * RainbowParentheses
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+
 "- Airline Symbol Setup
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -292,9 +331,18 @@ if has('nvim')
     "- Neomake Setup
     let g:neomake_open_list = 2
     let g:neomake_python_enabled_makers = ['flake8']
-    autocmd BufWritePost,BufEnter *.* Neomake
-    autocmd InsertLeave *.* update | Neomake
-    autocmd InsertChange,TextChanged *.* update | Neomake
+    augroup neomake_cmd| " Autocommand group for Neomake
+        " Since autocmds are added each time init.vim
+        " is sourced, clear on load to prevent duplicate
+        " autocmds.
+        autocmd!
+        " Run Neomake on buffer save and enter
+        " autocmd BufWritePost,BufEnter *.* Neomake
+        " Run Neomake when leaving insert mode
+        " autocmd InsertLeave *.* update | Neomake
+        " Run Neomake when text changes
+        " autocmd InsertChange,TextChanged *.* update | Neomake
+    augroup END
 endif
 
 "- Modes
