@@ -50,6 +50,8 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " Code Linting
 Plug 'neomake/neomake'
+" Programming Extensions
+Plug 'bitc/vim-hdevtools'
 " Programming Setups
 Plug 'klen/python-mode'
 Plug 'metakirby5/codi.vim'
@@ -152,10 +154,15 @@ nnoremap <silent> ;, :bprev<cr>| " Move previous buffer to current pane
 nnoremap <silent> ;/ :bdelete<cr>| " Close current buffer completely
 
 " Movement Between Vim Tabs
-nnoremap <silent> ;l :tabnew<cr>| " Open and switch to a new tab
+nnoremap <silent> ;l :tabnew<cr>| " Open and switch to a new tab to the right
+nnoremap <silent> ;L :-tabnew<cr>| " Open and switch to a new tab to the left
 nnoremap <silent> ;' :tabclose<cr>| " Close current tab
 nnoremap <silent> ;] :tabnext<cr>| " Move to next tab
 nnoremap <silent> ;[ :tabprev<cr>| " Move to previous tab
+nnoremap <silent> ;} :tabmove +<cr>| " Swap current tab right
+nnoremap <silent> ;{ :tabmove -<cr>| " Swap current tab left
+nnoremap <silent> ;+ :tabmove $<cr>| " Swap current tab all the way right
+nnoremap <silent> ;- :tabmove 0<cr>| " Swap current tab all the way left
 
 "- Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
@@ -196,18 +203,25 @@ nnoremap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nnoremap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
 "- Neosnippet Mappings
-function! s:neosnippet_complete()
-  if pumvisible()
-    return "\<c-n>"
-  else
-    if neosnippet#expandable_or_jumpable() 
-      return "\<Plug>(neosnippet_expand_or_jump)"
-    endif
-    return "\<tab>"
-  endif
-endfunction
+" function! s:neosnippet_complete()
+"   if pumvisible()
+"     return "\<c-n>"
+"   else
+"     if neosnippet#expandable_or_jumpable() 
+"       return "\<Plug>(neosnippet_expand_or_jump)"
+"     endif
+"     return "\<tab>"
+"   endif
+" endfunction
 
-imap <expr><TAB> <SID>neosnippet_complete()
+" imap <expr><TAB> <SID>neosnippet_complete()
+
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand)" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand)" : "\<TAB>"
 
 "- NERDTree Mappings
 nnoremap <silent> ,' :NERDTreeToggle<cr> | " 
@@ -331,13 +345,14 @@ if has('nvim')
     "- Neomake Setup
     let g:neomake_open_list = 2
     let g:neomake_python_enabled_makers = ['flake8']
+    let g:neomake_haskell_enabled_makers = ['ghc-mod', 'hdevtools', 'hlint']
     augroup neomake_cmd| " Autocommand group for Neomake
         " Since autocmds are added each time init.vim
         " is sourced, clear on load to prevent duplicate
         " autocmds.
         autocmd!
         " Run Neomake on buffer save and enter
-        " autocmd BufWritePost,BufEnter *.* Neomake
+        autocmd BufWritePost,BufEnter *.* Neomake
         " Run Neomake when leaving insert mode
         " autocmd InsertLeave *.* update | Neomake
         " Run Neomake when text changes
