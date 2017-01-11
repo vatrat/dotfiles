@@ -23,7 +23,7 @@ endif
 "- Vim-plug Plugin Setup
 call plug#begin('~/.config/nvim/plugged')
 " Appearance
-Plug 'KeitaNakamura/neodark.vim'
+" Plug 'KeitaNakamura/neodark.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -34,7 +34,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " Git Integration
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 " Editing
 Plug 'hlissner/vim-multiedit'
 Plug 'tpope/vim-surround'
@@ -45,7 +45,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'reedes/vim-wordy'
 " Autocompletion and Snippets
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " Code Linting
@@ -60,15 +60,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-abolish'
 " Vim Extensions
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'neovim/python-client'
 " Sidebars
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'| ", { 'on': 'TagbarToggle' }
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
+Plug 'jistr/vim-nerdtree-tabs', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 " Session Management
 Plug 'tpope/vim-obsession'
 Plug 'floobits/floobits-neovim'
@@ -274,7 +274,7 @@ syntax on
 let g:neodark#use_256color = 1
 set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_dark = "soft"
 " highlight Normal ctermbg=234
 " highlight Normal ctermbg=234
 " For some reason, if next to 'colorscheme...', this line has no effect.
@@ -321,6 +321,10 @@ let g:airline_symbols.paste = 'Þ'
 
 "- Airline Setup
 let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#bufferline#overwrite_variables = 0
+let g:airline#extensions#bufferline#enabled = 0
 let g:airline_theme='gruvbox'
 
 "- Tmuxline Setup
