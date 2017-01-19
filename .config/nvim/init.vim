@@ -43,6 +43,8 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/rainbow_parentheses.vim'
 " Word Processing
 Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
 " Autocompletion and Snippets
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python'}
@@ -95,6 +97,8 @@ set relativenumber| " Make line numbers relative to cursor
 " On-screen cues
 set showcmd| " Show letters as they're typed
 set noshowmode| " Use Airline instead
+" Pane setup
+set splitright
 " Indentation
 set autoindent
 set copyindent
@@ -226,6 +230,8 @@ nnoremap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 "- NERDTree Mappings
 nnoremap <silent> ,' :NERDTreeToggle<cr> | " 
 nnoremap <silent> ," :NERDTreeTabsToggle<cr> | " 
+let g:NERDTreeDirArrowExpandable = '-'
+let g:NERDTreeDirArrowCollapsible = '+'
 
 "- Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>| " 
