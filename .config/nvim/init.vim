@@ -53,6 +53,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'neomake/neomake'
 " Programming Extensions
 Plug 'bitc/vim-hdevtools'
+Plug 'sheerun/vim-polyglot'
 " Programming Setups
 Plug 'klen/python-mode'
 Plug 'metakirby5/codi.vim'
