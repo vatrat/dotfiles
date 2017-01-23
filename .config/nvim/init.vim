@@ -196,6 +196,8 @@ set pastetoggle=,:| " Toggle paste mode
 nnoremap ,e :e | " Edit specific file
 nnoremap <silent> ,nh :new<cr>| " New file in split
 nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
+" Autoscroll
+nnoremap <silent> ,a L<C-E>:sleep 400m<CR>j,a
 
 "- Vim-plug Command Mappings
 nnoremap <silent> ,i :PlugUpdate<cr>| " Run vim-plug updater
@@ -230,8 +232,8 @@ nnoremap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 "- NERDTree Mappings
 nnoremap <silent> ,' :NERDTreeToggle<cr> | " 
 nnoremap <silent> ," :NERDTreeTabsToggle<cr> | " 
-let g:NERDTreeDirArrowExpandable = '-'
-let g:NERDTreeDirArrowCollapsible = '+'
+" let g:NERDTreeDirArrowExpandable = '-'
+" let g:NERDTreeDirArrowCollapsible = '+'
 
 "- Fugitive Git Command Mappings
 nnoremap ,ga :Git add %:p<CR><CR>| " 
