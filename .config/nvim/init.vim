@@ -246,13 +246,12 @@ nnoremap <silent> ," :NERDTreeTabsToggle<cr> | "
 " let g:NERDTreeDirArrowCollapsible = '+'
 
 "- Fugitive Git Command Mappings
-nnoremap ,ga :Git add %:p<CR><CR>| " 
+nnoremap ,ga :Git add %:p<CR><CR>| " Git add current file
 nnoremap ,gA :Git add .<CR><CR>| " 
-nnoremap ,gs :Gstatus<CR>| " 
+nnoremap ,gs :Gstatus<CR>| " Git status in a horizontal split
 nnoremap ,gc :Gcommit -v -q<CR>| " 
-nnoremap ,gC :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR>| " 
-nnoremap ,gt :Gcommit -v -q %:p<CR>| " 
-nnoremap ,gd :Gdiff<CR>| " 
+nnoremap ,gC :Gcommit -v -q %:p<CR>| " Git add current file and commit
+nnoremap ,gd :Gdiff<CR>| " Opens git diff splits
 nnoremap ,gvd :Gsdiff<CR>| " 
 nnoremap ,ge :Gedit<CR>| " 
 nnoremap ,gr :Gread<CR>| " 
@@ -263,9 +262,9 @@ nnoremap ,gm :Gmove<Space>| "
 nnoremap ,gB :Git branch<Space>| " 
 nnoremap ,gb :Gblame<cr>| " 
 nnoremap ,gi :Gbrowse<cr>| " 
-nnoremap ,go :Git checkout<Space>| " 
-nnoremap ,gp :Gpush<CR>| " 
-nnoremap ,gl :Gpull<CR>| " 
+nnoremap ,go :Git checkout<Space>| " Prompt for Git branch to checkout
+nnoremap ,gp :Gpush<CR>| " Git push (Not working in neovim?)
+nnoremap ,gl :Gpull<CR>| " Git pull
 
 "- Neovim Terminal Mappings
 if has('nvim')
@@ -286,14 +285,7 @@ syntax on
 let g:neodark#use_256color = 1
 colorscheme gruvbox
 set background=dark
-let g:gruvbox_contrast_dark = "soft"
-" highlight Normal ctermbg=234
-" highlight Normal ctermbg=234
-" For some reason, if next to 'colorscheme...', this line has no effect.
-" Command is added twice; the first does nothing, and serves as a
-" separator from 'colorscheme...', the second does its job.
-" And, no, putting the 'CursorlineNr' between 'Colorscheme...' and
-" this line doesn't work.
+" let g:gruvbox_contrast_dark = "soft"
 highlight CursorLineNr ctermbg=none
 highlight SignColumn ctermbg=none
 
@@ -382,7 +374,6 @@ func! WordProcessorMode()
     setlocal formatoptions=1 
     setlocal noexpandtab 
     setlocal spell spelllang=en_us 
-    " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
@@ -397,7 +388,6 @@ func! NoteTakingMode()
     setlocal formatoptions=1 
     setlocal noexpandtab 
     setlocal spell spelllang=en_us 
-    " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
