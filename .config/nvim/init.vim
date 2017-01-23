@@ -197,7 +197,14 @@ nnoremap ,e :e | " Edit specific file
 nnoremap <silent> ,nh :new<cr>| " New file in split
 nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
 " Autoscroll
-nnoremap <silent> ,a L<C-E>:sleep 400m<CR>j,a
+" Press ctrl-c to stop scrolling
+nmap <silent> ,aS <C-E>M0:sleep 2400m<CR>,aS| " Very slow autoscroll
+nmap <silent> ,as <C-E>M0:sleep 1600m<CR>,as| " Slow autoscroll
+nmap <silent> ,ad <C-E>M0:sleep 800m<CR>,ad| " Medium autoscroll
+nmap <silent> ,af <C-E>M0:sleep 400m<CR>,af| " Fast autoscroll
+nmap <silent> ,aF <C-E>M0:sleep 200m<CR>,aF| " Very fast autoscroll
+nmap <silent> ,ax <C-E>M0:sleep 100m<CR>,ax| " Extremely fast autoscroll
+nmap <silent> ,aX <C-E>M0:sleep 50m<CR>,aX| " Very extremely fast autoscroll
 
 "- Vim-plug Command Mappings
 nnoremap <silent> ,i :PlugUpdate<cr>| " Run vim-plug updater
@@ -377,7 +384,5 @@ func! WordProcessorMode()
     setlocal formatprg=par
     setlocal wrap 
     setlocal linebreak
-    map j gj 
-    map k gk
 endfu 
 com! WP call WordProcessorMode()
