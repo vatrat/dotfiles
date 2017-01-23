@@ -122,6 +122,9 @@ set undolevels=1000
 set undodir=~/.vim/undodir
 set undofile
 set history=1000
+" Go between screen lines, not actual lines
+noremap j gj
+noremap k gk
 
 
 "- Movement Between Vim Windows
@@ -281,8 +284,8 @@ map <right> <nop>
 "- Vim Color Setup
 syntax on
 let g:neodark#use_256color = 1
-set background=dark
 colorscheme gruvbox
+set background=dark
 let g:gruvbox_contrast_dark = "soft"
 " highlight Normal ctermbg=234
 " highlight Normal ctermbg=234
@@ -383,6 +386,26 @@ func! WordProcessorMode()
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
+    setlocal tw=79 
     setlocal linebreak
+    :Wordy weak
+    :Goyo
 endfu 
 com! WP call WordProcessorMode()
+
+func! NoteTakingMode() 
+    setlocal formatoptions=1 
+    setlocal noexpandtab 
+    setlocal spell spelllang=en_us 
+    " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
+    setlocal complete+=s
+    setlocal formatprg=par
+    setlocal wrap 
+    setlocal tw=79 
+    setlocal linebreak
+    :Goyo
+endfu 
+com! NT call NoteTakingMode()
+" Mode Mappings
+nnoremap <silent> ,mn :call NoteTakingMode()<cr>
+nnoremap <silent> ,mw :call WordProcessorMode()<cr>
