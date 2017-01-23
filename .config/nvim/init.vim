@@ -27,7 +27,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-Plug 'terryma/vim-smooth-scroll'
 Plug 'morhetz/gruvbox'
 " Tmux Integration
 Plug 'christoomey/vim-tmux-navigator'
@@ -94,6 +93,7 @@ let g:pymode_rope = 0| " Fix massive delay from deoplete_jedi
 " Line number
 set number| " Turn on line numbers
 set relativenumber| " Make line numbers relative to cursor
+set cursorline| " Highlight the currenty selected line
 " On-screen cues
 set showcmd| " Show letters as they're typed
 set noshowmode| " Use Airline instead
@@ -271,12 +271,6 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
-
-"- Smooth Scroll Setup
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 "- Vim Color Setup
 syntax on
