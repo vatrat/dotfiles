@@ -23,18 +23,17 @@ endif
 "- Vim-plug Plugin Setup
 call plug#begin('~/.config/nvim/plugged')
 " Appearance
-Plug 'KeitaNakamura/neodark.vim'
+" Plug 'KeitaNakamura/neodark.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-Plug 'terryma/vim-smooth-scroll'
 Plug 'morhetz/gruvbox'
 " Tmux Integration
 Plug 'christoomey/vim-tmux-navigator'
 " Git Integration
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 " Editing
 Plug 'hlissner/vim-multiedit'
 Plug 'tpope/vim-surround'
@@ -43,13 +42,18 @@ Plug 'godlygeek/tabular'
 Plug 'junegunn/rainbow_parentheses.vim'
 " Word Processing
 Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
 " Autocompletion and Snippets
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " Code Linting
 Plug 'neomake/neomake'
+" Programming Extensions
+Plug 'bitc/vim-hdevtools'
+Plug 'sheerun/vim-polyglot'
 " Programming Setups
 Plug 'klen/python-mode'
 Plug 'metakirby5/codi.vim'
@@ -58,15 +62,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-abolish'
 " Vim Extensions
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'neovim/python-client'
 " Sidebars
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'| ", { 'on': 'TagbarToggle' }
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
+Plug 'jistr/vim-nerdtree-tabs', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 " Session Management
 Plug 'tpope/vim-obsession'
 Plug 'floobits/floobits-neovim'
@@ -90,9 +94,12 @@ let g:pymode_rope = 0| " Fix massive delay from deoplete_jedi
 " Line number
 set number| " Turn on line numbers
 set relativenumber| " Make line numbers relative to cursor
+set cursorline| " Highlight the currenty selected line
 " On-screen cues
 set showcmd| " Show letters as they're typed
 set noshowmode| " Use Airline instead
+" Pane setup
+set splitright
 " Indentation
 set autoindent
 set copyindent
@@ -116,6 +123,9 @@ set undolevels=1000
 set undodir=~/.vim/undodir
 set undofile
 set history=1000
+" Go between screen lines, not actual lines
+noremap j gj
+noremap k gk
 
 
 "- Movement Between Vim Windows
@@ -152,10 +162,15 @@ nnoremap <silent> ;, :bprev<cr>| " Move previous buffer to current pane
 nnoremap <silent> ;/ :bdelete<cr>| " Close current buffer completely
 
 " Movement Between Vim Tabs
-nnoremap <silent> ;l :tabnew<cr>| " Open and switch to a new tab
+nnoremap <silent> ;l :tabnew<cr>| " Open and switch to a new tab to the right
+nnoremap <silent> ;L :-tabnew<cr>| " Open and switch to a new tab to the left
 nnoremap <silent> ;' :tabclose<cr>| " Close current tab
 nnoremap <silent> ;] :tabnext<cr>| " Move to next tab
 nnoremap <silent> ;[ :tabprev<cr>| " Move to previous tab
+nnoremap <silent> ;} :tabmove +<cr>| " Swap current tab right
+nnoremap <silent> ;{ :tabmove -<cr>| " Swap current tab left
+nnoremap <silent> ;+ :tabmove $<cr>| " Swap current tab all the way right
+nnoremap <silent> ;- :tabmove 0<cr>| " Swap current tab all the way left
 
 "- Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
@@ -185,6 +200,15 @@ set pastetoggle=,:| " Toggle paste mode
 nnoremap ,e :e | " Edit specific file
 nnoremap <silent> ,nh :new<cr>| " New file in split
 nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
+" Autoscroll
+" Press ctrl-c to stop scrolling
+nmap <silent> ,aS <C-E>M0:sleep 2400m<CR>,aS| " Very slow autoscroll
+nmap <silent> ,as <C-E>M0:sleep 1600m<CR>,as| " Slow autoscroll
+nmap <silent> ,ad <C-E>M0:sleep 800m<CR>,ad| " Medium autoscroll
+nmap <silent> ,af <C-E>M0:sleep 400m<CR>,af| " Fast autoscroll
+nmap <silent> ,aF <C-E>M0:sleep 200m<CR>,aF| " Very fast autoscroll
+nmap <silent> ,ax <C-E>M0:sleep 100m<CR>,ax| " Extremely fast autoscroll
+nmap <silent> ,aX <C-E>M0:sleep 50m<CR>,aX| " Very extremely fast autoscroll
 
 "- Vim-plug Command Mappings
 nnoremap <silent> ,i :PlugUpdate<cr>| " Run vim-plug updater
@@ -196,31 +220,39 @@ nnoremap <silent> ,; :TagbarToggle<cr>| " Show/hide GUI tag list
 nnoremap <silent> ,u :GundoToggle<cr>| " Show/hide GUI undo menu
 
 "- Neosnippet Mappings
-function! s:neosnippet_complete()
-  if pumvisible()
-    return "\<c-n>"
-  else
-    if neosnippet#expandable_or_jumpable() 
-      return "\<Plug>(neosnippet_expand_or_jump)"
-    endif
-    return "\<tab>"
-  endif
-endfunction
+" function! s:neosnippet_complete()
+"   if pumvisible()
+"     return "\<c-n>"
+"   else
+"     if neosnippet#expandable_or_jumpable() 
+"       return "\<Plug>(neosnippet_expand_or_jump)"
+"     endif
+"     return "\<tab>"
+"   endif
+" endfunction
 
-imap <expr><TAB> <SID>neosnippet_complete()
+" imap <expr><TAB> <SID>neosnippet_complete()
+
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand)" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand)" : "\<TAB>"
 
 "- NERDTree Mappings
 nnoremap <silent> ,' :NERDTreeToggle<cr> | " 
 nnoremap <silent> ," :NERDTreeTabsToggle<cr> | " 
+" let g:NERDTreeDirArrowExpandable = '-'
+" let g:NERDTreeDirArrowCollapsible = '+'
 
 "- Fugitive Git Command Mappings
-nnoremap ,ga :Git add %:p<CR><CR>| " 
+nnoremap ,ga :Git add %:p<CR><CR>| " Git add current file
 nnoremap ,gA :Git add .<CR><CR>| " 
-nnoremap ,gs :Gstatus<CR>| " 
+nnoremap ,gs :Gstatus<CR>| " Git status in a horizontal split
 nnoremap ,gc :Gcommit -v -q<CR>| " 
-nnoremap ,gC :Git add %:p<CR><CR> <bar> :Gcommit -v -q<CR>| " 
-nnoremap ,gt :Gcommit -v -q %:p<CR>| " 
-nnoremap ,gd :Gdiff<CR>| " 
+nnoremap ,gC :Gcommit -v -q %:p<CR>| " Git add current file and commit
+nnoremap ,gd :Gdiff<CR>| " Opens git diff splits
 nnoremap ,gvd :Gsdiff<CR>| " 
 nnoremap ,ge :Gedit<CR>| " 
 nnoremap ,gr :Gread<CR>| " 
@@ -231,9 +263,9 @@ nnoremap ,gm :Gmove<Space>| "
 nnoremap ,gB :Git branch<Space>| " 
 nnoremap ,gb :Gblame<cr>| " 
 nnoremap ,gi :Gbrowse<cr>| " 
-nnoremap ,go :Git checkout<Space>| " 
-nnoremap ,gp :Gpush<CR>| " 
-nnoremap ,gl :Gpull<CR>| " 
+nnoremap ,go :Git checkout<Space>| " Prompt for Git branch to checkout
+nnoremap ,gp :Gpush<CR>| " Git push (Not working in neovim?)
+nnoremap ,gl :Gpull<CR>| " Git pull
 
 "- Neovim Terminal Mappings
 if has('nvim')
@@ -249,25 +281,12 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-"- Smooth Scroll Setup
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
 "- Vim Color Setup
 syntax on
 let g:neodark#use_256color = 1
-set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark = "hard"
-" highlight Normal ctermbg=234
-" highlight Normal ctermbg=234
-" For some reason, if next to 'colorscheme...', this line has no effect.
-" Command is added twice; the first does nothing, and serves as a
-" separator from 'colorscheme...', the second does its job.
-" And, no, putting the 'CursorlineNr' between 'Colorscheme...' and
-" this line doesn't work.
+set background=dark
+" let g:gruvbox_contrast_dark = "soft"
 highlight CursorLineNr ctermbg=none
 highlight SignColumn ctermbg=none
 
@@ -307,6 +326,10 @@ let g:airline_symbols.paste = 'Þ'
 
 "- Airline Setup
 let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#bufferline#overwrite_variables = 0
+let g:airline#extensions#bufferline#enabled = 0
 let g:airline_theme='gruvbox'
 
 "- Tmuxline Setup
@@ -331,13 +354,14 @@ if has('nvim')
     "- Neomake Setup
     let g:neomake_open_list = 2
     let g:neomake_python_enabled_makers = ['flake8']
+    let g:neomake_haskell_enabled_makers = ['ghc-mod', 'hdevtools', 'hlint']
     augroup neomake_cmd| " Autocommand group for Neomake
         " Since autocmds are added each time init.vim
         " is sourced, clear on load to prevent duplicate
         " autocmds.
         autocmd!
         " Run Neomake on buffer save and enter
-        " autocmd BufWritePost,BufEnter *.* Neomake
+        autocmd BufWritePost,BufEnter *.* Neomake
         " Run Neomake when leaving insert mode
         " autocmd InsertLeave *.* update | Neomake
         " Run Neomake when text changes
@@ -351,12 +375,28 @@ func! WordProcessorMode()
     setlocal formatoptions=1 
     setlocal noexpandtab 
     setlocal spell spelllang=en_us 
-    " set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
+    setlocal tw=79 
     setlocal linebreak
-    map j gj 
-    map k gk
+    :Wordy weak
+    :Goyo
 endfu 
 com! WP call WordProcessorMode()
+
+func! NoteTakingMode() 
+    setlocal formatoptions=1 
+    setlocal noexpandtab 
+    setlocal spell spelllang=en_us 
+    setlocal complete+=s
+    setlocal formatprg=par
+    setlocal wrap 
+    setlocal tw=79 
+    setlocal linebreak
+    :Goyo
+endfu 
+com! NT call NoteTakingMode()
+" Mode Mappings
+nnoremap <silent> ,mn :call NoteTakingMode()<cr>
+nnoremap <silent> ,mw :call WordProcessorMode()<cr>

@@ -10,3 +10,7 @@
 	email = vatrat.dev@gmail.com
 [push]
 	default = matching
+[mergetool]
+	path = nvim
+[merge]
+	tool = vimdiff
