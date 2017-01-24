@@ -47,6 +47,8 @@ main = do
     \ echo \"check\" &&\
     \ xmodmap -e \"keycode 108 = Alt_L\" &&\
     \ echo \"check\" &&\
+    \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
+    \ echo \"check\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
 
