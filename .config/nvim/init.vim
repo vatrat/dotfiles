@@ -99,33 +99,36 @@ set cursorline| " Highlight the currenty selected line
 set showcmd| " Show letters as they're typed
 set noshowmode| " Use Airline instead
 " Pane setup
-set splitright
+set splitright| "
 " Indentation
-set autoindent
-set copyindent
-set shiftround
+set autoindent| "
+set copyindent| "
+set shiftround| "
+set foldmethod=indent " by default, fold using indentation
+set nofoldenable " don't fold by default
+set foldlevel=0 " if fold everything if 'foldenable' is set
 " Search Setup
-set smartcase
-set incsearch
+set smartcase| "
+set incsearch| "
 set inccommand=nosplit| " Setup for Live Subsitution
 " Tab setup (tab=4spaces)
-set tabstop=4
-set softtabstop=0
-set expandtab
-set shiftwidth=4
-set smarttab
+set tabstop=4| "
+set softtabstop=0| "
+set expandtab| "
+set shiftwidth=4| "
+set smarttab| "
 " Turn off bells and screen flashing
-set noerrorbells
-set visualbell
-set t_vb=
+set noerrorbells| "
+set visualbell| "
+set t_vb=| "
 " History and Undo Setup
-set undolevels=1000
-set undodir=~/.vim/undodir
-set undofile
-set history=1000
+set undolevels=1000| "
+set undodir=~/.vim/undodir| "
+set undofile| "
+set history=1000| "
 " Go between screen lines, not actual lines
-noremap j gj
-noremap k gk
+noremap j gj| "
+noremap k gk| 
 
 
 "- Movement Between Vim Windows
