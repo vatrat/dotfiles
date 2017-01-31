@@ -179,6 +179,14 @@ nnoremap <silent> ;- :tabmove 0<cr>| " Swap current tab all the way left
 nnoremap + ;| " Find next instance of f or t match
 nnoremap _ ,| " Find previous instance of f or t match
 
+"- Editing Mappings
+" Vim-multiple-cursors mappings
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key = '<C-m>'
+let g:multi_cursor_prev_key = '<C-l>'
+let g:multi_cursor_skip_key = '<C-M>'
+let g:multi_cursor_quit_key = '<Esc>'
+
 "- Search Mappings
 nnoremap <silent> ,/ :let @/ = ''<cr>| " Clear current search
 
