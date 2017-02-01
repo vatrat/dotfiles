@@ -208,12 +208,12 @@ nnoremap <silent> ,/ :let @/ = ''<cr>| " Clear current search
 
 "- Vim Command Mappings
 " Config Mappings
-nnoremap <silent> , cv :e ~/.config/nvim/init.vim<cr>      | " Open init.vim
-nnoremap <silent> , q  :source ~/.config/nvim/init.vim<cr> | " Re-load init.vim
-nnoremap <silent> , cx :e ~/.xmonad/xmonad.hs<cr>          | " Open xmonad.hs
-nnoremap <silent> , ct :e ~/.tmux.conf<cr>                 | " Open .tmux.conf
-nnoremap <silent> , cb :e ~/.bashrc<cr>                    | " Open .bashrc
-nnoremap <silent> , cp :e ~/.ps1rc<cr>                     | " Open .ps1rc
+nnoremap <silent> ,cv :e ~/.config/nvim/init.vim<cr>      | " Open init.vim
+nnoremap <silent> ,q  :source ~/.config/nvim/init.vim<cr> | " Re-load init.vim
+nnoremap <silent> ,cx :e ~/.xmonad/xmonad.hs<cr>          | " Open xmonad.hs
+nnoremap <silent> ,ct :e ~/.tmux.conf<cr>                 | " Open .tmux.conf
+nnoremap <silent> ,cb :e ~/.bashrc<cr>                    | " Open .bashrc
+nnoremap <silent> ,cp :e ~/.ps1rc<cr>                     | " Open .ps1rc
 " Save
 nnoremap <silent> ,s :w<cr>             | " Normal save
 nnoremap          ,S :w !sudo tee %<cr> | " Force save with sudo
