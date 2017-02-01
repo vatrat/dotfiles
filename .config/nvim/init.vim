@@ -203,6 +203,8 @@ set pastetoggle=,:| " Toggle paste mode
 nnoremap ,e :e | " Edit specific file
 nnoremap <silent> ,nh :new<cr>| " New file in split
 nnoremap <silent> ,nv :vne<cr>| " New file in vsplit
+" Open Help
+nnoremap ;h :tab :h | " Open help in new tab
 " Autoscroll
 " Press ctrl-c to stop scrolling
 nmap <silent> ,aS <C-E>M0:sleep 2400m<CR>,aS| " Very slow autoscroll
