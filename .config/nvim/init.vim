@@ -426,26 +426,28 @@ endfu
 
 func! GermanWordProcessorMode() 
     setlocal formatoptions=1 
+    setlocal fo+=t
     setlocal noexpandtab 
     setlocal spell spelllang=de
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
     setlocal tw=79 
-    setlocal linebreak
-    :Wordy weak
+    " setlocal linebreak
+    " :Wordy weak
     :Goyo
 endfu 
 
 func! NoteTakingMode() 
     setlocal formatoptions=1 
+    setlocal fo+=t
     setlocal noexpandtab 
     setlocal spell spelllang=en_us,en-rare
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
     setlocal tw=79 
-    setlocal linebreak
+    " setlocal linebreak
     :Goyo
 endfu 
 " Mode Mappings
