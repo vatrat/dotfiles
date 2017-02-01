@@ -16,9 +16,10 @@
 "     tmuxline
 "     vim-tmux-navigator
 "   * vim-multiple-cursors
-"   * tabular
+"   = tabular
 "     vim-wordy
 "     vim-pencil
+"     spell (not a plugin but still important; :h spell)
 "     neosnippet.vim
 "     python-mode
 "   * fzf.vim
@@ -422,12 +423,24 @@ func! WordProcessorMode()
     :Wordy weak
     :Goyo
 endfu 
-com! WP call WordProcessorMode()
+
+func! GermanWordProcessorMode() 
+    setlocal formatoptions=1 
+    setlocal noexpandtab 
+    setlocal spell spelllang=de
+    setlocal complete+=s
+    setlocal formatprg=par
+    setlocal wrap 
+    setlocal tw=79 
+    setlocal linebreak
+    :Wordy weak
+    :Goyo
+endfu 
 
 func! NoteTakingMode() 
     setlocal formatoptions=1 
     setlocal noexpandtab 
-    setlocal spell spelllang=en_us 
+    setlocal spell spelllang=en_us,en-rare
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
@@ -435,7 +448,7 @@ func! NoteTakingMode()
     setlocal linebreak
     :Goyo
 endfu 
-com! NT call NoteTakingMode()
 " Mode Mappings
 nnoremap <silent> ,mn :call NoteTakingMode()<cr>
 nnoremap <silent> ,mw :call WordProcessorMode()<cr>
+nnoremap <silent> ,mg :call GermanWordProcessorMode()<cr>
