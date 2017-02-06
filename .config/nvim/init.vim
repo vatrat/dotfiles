@@ -230,7 +230,7 @@ nnoremap <silent> ,z :x<cr>  | " Save and quit
 " Toggle Paste Mode
 set pastetoggle=,:
 " Open File
-nnoremap          ,e :e |             | " Edit specific file
+nnoremap          ,e               :e | " Edit specific file
 nnoremap <silent> ,nh :new<cr>        | " New file in split
 nnoremap <silent> ,nv :vne<cr>        | " New file in vsplit
 " Open Help
@@ -328,8 +328,6 @@ map <up>    <nop>
 map <down>  <nop>
 map <left>  <nop>
 map <right> <nop>
-"- Disable Space moving cursor
-map <space> <nop>
 
 "- Vim Color Setup
 syntax on
