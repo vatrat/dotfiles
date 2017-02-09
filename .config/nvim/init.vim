@@ -41,19 +41,19 @@ endif
 "- Vim-plug Plugin Setup
 call plug#begin('~/.config/nvim/plugged')
 " Appearance
-" Plug 'KeitaNakamura/neodark.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
 Plug 'morhetz/gruvbox'
 " Tmux Integration
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 " Git Integration
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 " Editing
 Plug 'terryma/vim-multiple-cursors'
+Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
@@ -71,6 +71,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'neomake/neomake'
 " Programming Extensions
 Plug 'bitc/vim-hdevtools'
+Plug 'pangloss/vim-javascript'
 Plug 'sheerun/vim-polyglot'
 " Programming Setups
 Plug 'klen/python-mode'
@@ -78,14 +79,14 @@ Plug 'metakirby5/codi.vim'
 " Fuzzy Finding and Subsitution
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-abolish'
 " Vim Extensions
 " Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
 Plug 'neovim/python-client'
 " Sidebars
-Plug 'majutsushi/tagbar'| ", { 'on': 'TagbarToggle' }
+Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
