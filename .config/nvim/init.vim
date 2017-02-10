@@ -148,6 +148,10 @@ set history=1000           | "
 " noremap j gj| "
 " noremap k gk| "
 
+"- Map Leader Keys
+" map , <Leader2>| " Start at 2 to prevent plugin conflicts
+" map ; <Leader3>
+" map <Space> <Leader4>
 
 "- Movement Between Vim Windows
 nnoremap ,h <C-W>h| " Move focus left
@@ -196,6 +200,8 @@ nnoremap <silent> ;- :tabmove 0<cr> | " Swap current tab all the way left
 "- Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
 nnoremap _ ,| " Find previous instance of f or t match
+nmap <expr> + sneak#is_sneaking() ? '<Plug>Sneak_;' : ';'
+nmap <expr> _ sneak#is_sneaking() ? '<Plug>Sneak_,' : ','
 
 "- Editing Mappings
 " Vim-multiple-cursors mappings
