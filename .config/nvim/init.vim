@@ -57,6 +57,11 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
+Plug 'matze/vim-move'
+Plug 'vim-expand-region'
+Plug 'tpope/vim-speeddating'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-entire'
 Plug 'junegunn/rainbow_parentheses.vim'
 " Word Processing
 Plug 'reedes/vim-wordy'
@@ -200,8 +205,24 @@ nnoremap <silent> ;- :tabmove 0<cr> | " Swap current tab all the way left
 "- Remap comma and semicolon
 nnoremap + ;| " Find next instance of f or t match
 nnoremap _ ,| " Find previous instance of f or t match
+
+"- Vim-sneak Mappings
 nmap <expr> + sneak#is_sneaking() ? '<Plug>Sneak_;' : ';'
 nmap <expr> _ sneak#is_sneaking() ? '<Plug>Sneak_,' : ','
+" Replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+" Replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
 
 "- Editing Mappings
 " Vim-multiple-cursors mappings
@@ -210,6 +231,18 @@ let g:multi_cursor_next_key = '<C-m>'
 let g:multi_cursor_prev_key = '<C-l>'
 let g:multi_cursor_skip_key = '<C-M>'
 let g:multi_cursor_quit_key = '<Esc>'
+
+"- Vim-expand-region Mappings
+let g:expand_region_text_objects = {
+    \ 'iw'  :0,
+    \ 'iW'  :0,
+    \ 'i"'  :0,
+    \ 'i''' :0,
+    \ 'ip'  :0,
+    \ }
+
+nnoremap <silent> <space>. <Plug>(expand_region_expand)
+nnoremap <silent> <space>, <Plug>(expand_region_shrink)
 
 "- Search Mappings
 nnoremap <silent> ,/ :let @/ = ''<cr>| " Clear current search
@@ -222,18 +255,22 @@ nnoremap <silent> ,cx :tabnew<cr><bar>:e ~/.xmonad/xmonad.hs<cr>          | " Op
 nnoremap <silent> ,ct :tabnew<cr><bar>:e ~/.tmux.conf<cr>                 | " Open .tmux.conf in new tab
 nnoremap <silent> ,cb :tabnew<cr><bar>:e ~/.bashrc<cr>                    | " Open .bashrc in new tab
 nnoremap <silent> ,cp :tabnew<cr><bar>:e ~/.ps1rc<cr>                     | " Open .ps1rc in new tab
+nnoremap <silent> ,cs :tabnew<cr><bar>:e ~/.setup.sh<cr>                  | " Open .ps1rc in new tab
 nnoremap <silent> ,Cv :e ~/.config/nvim/init.vim<cr>                      | " Open init.vim
 nnoremap <silent> ,Cx :e ~/.xmonad/xmonad.hs<cr>                          | " Open xmonad.hs
 nnoremap <silent> ,Ct :e ~/.tmux.conf<cr>                                 | " Open .tmux.conf
 nnoremap <silent> ,Cb :e ~/.bashrc<cr>                                    | " Open .bashrc
 nnoremap <silent> ,Cp :e ~/.ps1rc<cr>                                     | " Open .ps1rc
+nnoremap <silent> ,Cs :e ~/.setup.sh<cr>                                  | " Open .ps1rc
 " Save
 nnoremap <silent> ,s :w<cr>             | " Normal save
 nnoremap          ,S :w !sudo tee %<cr> | " Force save with sudo
 " Quit
-nnoremap <silent> ,x :q<cr>  | " Normal quit
-nnoremap <silent> ,X :q!<cr> | " Force quit
-nnoremap <silent> ,z :x<cr>  | " Save and quit
+nnoremap <silent> ,x :q<cr>     | " Normal quit
+nnoremap <silent> ;x :qall!<cr> | " Normal quit all
+nnoremap <silent> ,X :q!<cr>    | " Force quit
+nnoremap <silent> ;X :qall<cr>  | " Force quit all
+nnoremap <silent> ,z :x<cr>     | " Save and quit
 " Toggle Paste Mode
 set pastetoggle=,:
 " Open File
