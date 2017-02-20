@@ -345,25 +345,25 @@ nnoremap <silent> ," :NERDTreeTabsToggle<cr> | "
 " let g:NERDTreeDirArrowCollapsible = '+'
 
 "- Fugitive Git Command Mappings
-nnoremap ,ga :Git add %:p<CR><CR>            | " Git add current file
-nnoremap ,gA :Git add .<CR><CR>              | "
-nnoremap ,gs :Gstatus<CR>                    | " Git status in a horizontal split
-nnoremap ,gc :Gcommit -v -q<CR>              | "
-nnoremap ,gC :Gcommit -v -q %:p<CR>          | " Git add current file and commit
-nnoremap ,gd :Gdiff<CR>                      | " Opens git diff splits
-nnoremap ,gvd :Gsdiff<CR>                    | "
-nnoremap ,ge :Gedit<CR>                      | "
-nnoremap ,gr :Gread<CR>                      | "
-nnoremap ,gw :Gwrite<CR><CR>                 | "
-nnoremap ,gL :silent! Glog<CR>:bot copen<CR> | "
-nnoremap ,gg :Ggrep<Space>                   | "
-nnoremap ,gm :Gmove<Space>                   | "
-nnoremap ,gB :Git branch<Space>              | "
-nnoremap ,gb :Gblame<cr>                     | "
-nnoremap ,gi :Gbrowse<cr>                    | "
-nnoremap ,go :Git checkout<Space>            | " Prompt for Git branch to checkout
-nnoremap ,gp :Gpush<CR>                      | " Git push (Not working in neovim?)
-nnoremap ,gl :Gpull<CR>                      | " Git pull
+nnoremap <silent> ,ga :Git add %:p<CR><CR>            | " Git add current file
+nnoremap <silent> ,gA :Git add .<CR><CR>              | "
+nnoremap <silent> ,gs :Gstatus<CR>                    | " Git status in a horizontal split
+nnoremap <silent> ,gc :Gcommit -v -q<CR>              | "
+nnoremap <silent> ,gC :Gcommit -v -q %:p<CR>          | " Git add current file and commit
+nnoremap <silent> ,gd :Gdiff<CR>                      | " Opens git diff splits
+nnoremap <silent> ,gvd :Gsdiff<CR>                    | "
+nnoremap <silent> ,ge :Gedit<CR>                      | "
+nnoremap <silent> ,gr :Gread<CR>                      | "
+nnoremap <silent> ,gw :Gwrite<CR><CR>                 | "
+nnoremap <silent> ,gL :silent! Glog<CR>:bot copen<CR> | "
+nnoremap <silent> ,gg :Ggrep<Space>                   | "
+nnoremap <silent> ,gm :Gmove<Space>                   | "
+nnoremap <silent> ,gB :Git branch<Space>              | "
+nnoremap <silent> ,gb :Gblame<cr>                     | "
+nnoremap <silent> ,gi :Gbrowse<cr>                    | "
+nnoremap <silent> ,go :Git checkout<Space>            | " Prompt for Git branch to checkout
+nnoremap <silent> ,gp :Gpush<CR>                      | " Git push (Not working in neovim?)
+nnoremap <silent> ,gl :Gpull<CR>                      | " Git pull
 
 "- Neovim Terminal Mappings
 if has('nvim')
