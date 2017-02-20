@@ -61,7 +61,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 Plug 'matze/vim-move'
-Plug 'vim-expand-region'
+" Plug 'vim-expand-region'
 Plug 'tpope/vim-speeddating'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
@@ -238,16 +238,16 @@ let g:multi_cursor_skip_key = '<C-M>'
 let g:multi_cursor_quit_key = '<Esc>'
 
 "- Vim-expand-region Mappings
-let g:expand_region_text_objects = {
-    \ 'iw'  :0,
-    \ 'iW'  :0,
-    \ 'i"'  :0,
-    \ 'i''' :0,
-    \ 'ip'  :0,
-    \ }
+" let g:expand_region_text_objects = {
+"     \ 'iw'  :0,
+"     \ 'iW'  :0,
+"     \ 'i"'  :0,
+"     \ 'i''' :0,
+"     \ 'ip'  :0,
+"     \ }
 
-nnoremap <silent> <space>. <Plug>(expand_region_expand)
-nnoremap <silent> <space>, <Plug>(expand_region_shrink)
+" nnoremap <silent> <space>. <Plug>(expand_region_expand)
+" nnoremap <silent> <space>, <Plug>(expand_region_shrink)
 
 "- Search Mappings
 nnoremap <silent> ,/ :let @/ = ''<cr>| " Clear current search
