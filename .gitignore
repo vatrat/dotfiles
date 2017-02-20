@@ -4,6 +4,8 @@
 !/.gitignore
 !/.gitconfig
 
+!/.setup.sh
+
 !/.config
 !/.config/nvim
 !/.config/nvim/init.vim

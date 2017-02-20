@@ -28,14 +28,17 @@
 "   * abolish
 
 "- Install vim-plug if not installed
+" if empty(glob("~/.config/nvim/autoload/plug.vim"))
+"     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" endif
+" if !has('python3')
+"     execute '!sudo pip3 install neovim'
+" endif
+" if !has('python')
+"     execute '!sudo pip2 install neovim'
+" endif
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
-    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-endif
-if !has('python3')
-    execute '!sudo pip3 install neovim'
-endif
-if !has('python')
-    execute '!sudo pip2 install neovim'
+    execute '!./~/setup.sh'
 endif
 
 "- Vim-plug Plugin Setup
@@ -67,6 +70,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 " Autocompletion and Snippets
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python'}
@@ -278,7 +282,7 @@ nnoremap          ,e               :e | " Edit specific file
 nnoremap <silent> ,nh :new<cr>        | " New file in split
 nnoremap <silent> ,nv :vne<cr>        | " New file in vsplit
 " Open Help
-nnoremap          ;h :tabnew <bar> :h | " Open help in new tab
+nnoremap          ;h :tab :h | " Open help in new tab
 " Autoscroll
 " Press ctrl-c to stop scrolling
 " Down
