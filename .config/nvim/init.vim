@@ -28,18 +28,18 @@
 "   * abolish
 
 "- Install vim-plug if not installed
-" if empty(glob("~/.config/nvim/autoload/plug.vim"))
-"     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-" endif
-" if !has('python3')
-"     execute '!sudo pip3 install neovim'
-" endif
-" if !has('python')
-"     execute '!sudo pip2 install neovim'
-" endif
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
-    execute '!./~/setup.sh'
+    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
+if !has('python3')
+    execute '!sudo pip3 install neovim'
+endif
+if !has('python')
+    execute '!sudo pip2 install neovim'
+endif
+" if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    " execute '!./~/setup.sh'
+" endif
 
 "- Vim-plug Plugin Setup
 call plug#begin('~/.config/nvim/plugged')
@@ -504,13 +504,16 @@ func! NoteTakingMode()
     setlocal formatoptions=1 
     setlocal fo+=t
     setlocal noexpandtab 
-    setlocal spell spelllang=en_us,en-rare
+    setlocal spell spelllang=en_us
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
     setlocal tw=79 
     " setlocal linebreak
+    inoremap <buffer> <enter> <enter>- 
     :Goyo
+    let g:limelight_conceal_ctermfg = 'gray'
+    :Limelight
 endfu 
 " Mode Mappings
 nnoremap <silent> ,mn :call NoteTakingMode()<cr>
