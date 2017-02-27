@@ -77,8 +77,9 @@ Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-" Code Linting
+" Linting
 Plug 'neomake/neomake'
+Plug 'ludovicchabant/vim-gutentags'
 " Programming Extensions
 Plug 'bitc/vim-hdevtools'
 Plug 'pangloss/vim-javascript'
@@ -95,6 +96,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'neovim/python-client'
+" Terminal Emulator Extensions
+Plug 'vimlab/split-term.vim'
+Plug 'wvffle/vimterm'
 " Sidebars
 Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
@@ -103,6 +107,8 @@ Plug 'jistr/vim-nerdtree-tabs', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle
 " Session Management
 Plug 'tpope/vim-obsession'
 Plug 'floobits/floobits-neovim'
+" Alternative Uses
+Plug 'blindFS/vim-taskwarrior'
 call plug#end()
 
 "- Vim Hackery
@@ -195,6 +201,7 @@ nnoremap ,o <C-W>o | " View only current pane
 nnoremap <silent> ;. :bnext<cr>   | " Move next buffer to current pane
 nnoremap <silent> ;, :bprev<cr>   | " Move previous buffer to current pane
 nnoremap <silent> ;/ :bdelete<cr> | " Close current buffer completely
+nnoremap <silent> ;? :bdelete!<cr> | " Force close current buffer completely
 
 " Movement Between Vim Tabs
 nnoremap <silent> ;l :tabnew<cr>    | " Open and switch to a new tab to the right
@@ -243,11 +250,13 @@ let g:expand_region_text_objects = {
     \ 'iW'  :0,
     \ 'i"'  :0,
     \ 'i''' :0,
+    \ 'il'  :0,
     \ 'ip'  :0,
+    \ 'ie'  :0,
     \ }
 
-nnoremap <silent> <space>. <Plug>(expand_region_expand)
-nnoremap <silent> <space>, <Plug>(expand_region_shrink)
+" nnoremap <space>. <Plug>(expand_region_expand)
+" nnoremap <space>, <Plug>(expand_region_shrink)
 
 "- Search Mappings
 nnoremap <silent> ,/ :let @/ = ''<cr>| " Clear current search
@@ -371,9 +380,7 @@ nnoremap <silent> ,gp :Gpush<CR>                      | " Git push (Not working 
 nnoremap <silent> ,gl :Gpull<CR>                      | " Git pull
 
 "- Neovim Terminal Mappings
-if has('nvim')
-    :tnoremap <Esc> <C-\><C-n>| " 
-endif
+tnoremap <Esc> <C-\><C-n> | " Use escape key to exit terminal input
 
 "- Wordy Command Mappings
 " (Nothing here for now)
