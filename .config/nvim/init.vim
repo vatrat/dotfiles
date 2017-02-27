@@ -28,18 +28,18 @@
 "   * abolish
 
 "- Install vim-plug if not installed
-" if empty(glob("~/.config/nvim/autoload/plug.vim"))
-"     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-" endif
-" if !has('python3')
-"     execute '!sudo pip3 install neovim'
-" endif
-" if !has('python')
-"     execute '!sudo pip2 install neovim'
-" endif
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
-    execute '!./~/setup.sh'
+    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
+if !has('python3')
+    execute '!sudo pip3 install neovim'
+endif
+if !has('python3')
+    execute '!sudo pip3 install neovim'
+endif
+" if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    " execute '!./~/setup.sh'
+" endif
 
 "- Vim-plug Plugin Setup
 call plug#begin('~/.config/nvim/plugged')
@@ -61,7 +61,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 Plug 'matze/vim-move'
-Plug 'vim-expand-region'
+" Plug 'vim-expand-region'
 Plug 'tpope/vim-speeddating'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
@@ -511,15 +511,18 @@ func! NoteTakingMode()
     setlocal formatoptions=1 
     setlocal fo+=t
     setlocal noexpandtab 
-    setlocal spell spelllang=en_us,en-rare
+    setlocal spell spelllang=en_us
     setlocal complete+=s
     setlocal formatprg=par
     setlocal wrap 
     setlocal tw=79 
     " setlocal linebreak
+    inoremap <buffer> <enter> <enter>- 
     :Goyo
+    let g:limelight_conceal_ctermfg = 'gray'
+    :Limelight
 endfu 
 " Mode Mappings
 nnoremap <silent> ,mn :call NoteTakingMode()<cr>
 nnoremap <silent> ,mw :call WordProcessorMode()<cr>
-nnoremap <silent> ,mg :call GermanWordProcessorMode()<cr>
+noremap <silent> ,mg :call GermanWordProcessorMode()<cr>
