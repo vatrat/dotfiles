@@ -510,7 +510,11 @@ func! NoteTakingMode()
     setlocal wrap 
     setlocal tw=79 
     " setlocal linebreak
+    setl fo=aw2tq
     inoremap <buffer> <enter> <enter>- 
+    inoremap <buffer> <tab> <esc>>>i
+    nnoremap <buffer> <tab> >>
+    inoremap <buffer> o o- 
     :Goyo
     let g:limelight_conceal_ctermfg = 'gray'
     :Limelight
