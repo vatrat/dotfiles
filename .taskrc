@@ -1,0 +1,37 @@
+# [Created by task 2.5.1 2/26/2017 20:17:28]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+# Color theme (uncomment one to use)
+#include /usr//usr/share/task/light-16.theme
+#include /usr//usr/share/task/light-256.theme
+#include /usr//usr/share/task/dark-16.theme
+#include /usr//usr/share/task/dark-256.theme
+#include /usr//usr/share/task/dark-red-256.theme
+#include /usr//usr/share/task/dark-green-256.theme
+#include /usr//usr/share/task/dark-blue-256.theme
+#include /usr//usr/share/task/dark-violets-256.theme
+#include /usr//usr/share/task/dark-yellow-green.theme
+#include /usr//usr/share/task/dark-gray-256.theme
+#include /usr//usr/share/task/dark-gray-blue-256.theme
+#include /usr//usr/share/task/solarized-dark-256.theme
+#include /usr//usr/share/task/solarized-light-256.theme
+#include /usr//usr/share/task/no-color.theme
+
+taskd.certificate=~/.config/taskwarrior/private.certificate.pem
+taskd.key=~/.config/taskwarrior/private.key.pem
+taskd.ca=~/.config/taskwarrior/ca.cert.pem
+taskd.server=taskwarrior.inthe.am:53589
+taskd.credentials=inthe_am/mckinnonryall/91bf14ac-ac41-4eb4-8214-8251788f4779
+taskd.trust=ignore hostname

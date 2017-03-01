@@ -9,6 +9,8 @@
 !/.config
 !/.config/nvim
 !/.config/nvim/init.vim
+!/.config/taskwarrior
+./config/taskwarrior/*
 
 !/.xmonad
 !/.xmonad/xmonad.hs
@@ -23,3 +25,6 @@
 
 !/.bashrc
 !/.ps1rc
+
+!/.taskrc
+
