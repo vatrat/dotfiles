@@ -79,7 +79,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " Linting
 Plug 'neomake/neomake'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 " Programming Extensions
 Plug 'bitc/vim-hdevtools'
 Plug 'pangloss/vim-javascript'
@@ -160,6 +160,8 @@ set undolevels=99999       | " Set max number of undo actions saved
 set undodir=~/.vim/undodir | " Set directory to store undo files
 set undofile               | " Make undo history persistent
 set history=1000           | "
+noremap <C-ScrollWheelUp>   :redo<cr>
+noremap <C-ScrollWheelDown> :undo<cr>
 " Go between screen lines, not actual lines
 " noremap j gj| "
 " noremap k gk| "
