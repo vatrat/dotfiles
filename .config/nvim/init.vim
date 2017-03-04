@@ -521,7 +521,7 @@ func! NoteTakingMode()
     inoremap <buffer> <enter> <enter>- 
     inoremap <buffer> <tab> <esc>>>i
     nnoremap <buffer> <tab> >>
-    inoremap <buffer> o o- 
+    nnoremap <buffer> o o- 
     :Goyo
     let g:limelight_conceal_ctermfg = 'gray'
     :Limelight
