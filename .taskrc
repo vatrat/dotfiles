@@ -29,9 +29,9 @@ data.location=~/.task
 #include /usr//usr/share/task/solarized-light-256.theme
 #include /usr//usr/share/task/no-color.theme
 
-taskd.certificate=~/.config/taskwarrior/private.certificate.pem
-taskd.key=~/.config/taskwarrior/private.key.pem
-taskd.ca=~/.config/taskwarrior/ca.cert.pem
-taskd.server=taskwarrior.inthe.am:53589
-taskd.credentials=inthe_am/mckinnonryall/91bf14ac-ac41-4eb4-8214-8251788f4779
+taskd.certificate=/home/cabox/.task/freecinc_af7b16bb.cert.pem
+taskd.key=/home/cabox/.task/freecinc_af7b16bb.key.pem
+taskd.ca=/home/cabox/.task/freecinc_af7b16bb.ca.pem
+taskd.server=freecinc.com:53589
+taskd.credentials=FreeCinc/freecinc_af7b16bb/3b23c389-0509-473e-b02c-b00bfb7c4c31
 taskd.trust=ignore hostname

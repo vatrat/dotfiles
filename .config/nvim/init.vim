@@ -243,6 +243,9 @@ let g:multi_cursor_next_key = '<C-m>'
 let g:multi_cursor_prev_key = '<C-l>'
 let g:multi_cursor_skip_key = '<C-M>'
 let g:multi_cursor_quit_key = '<Esc>'
+" unmap enter, which is set by this plugin?
+nunmap <enter>
+xunmap <enter>
 
 "- Vim-expand-region Mappings
 let g:expand_region_text_objects = {
