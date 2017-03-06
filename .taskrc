@@ -29,9 +29,9 @@ data.location=~/.task
 #include /usr//usr/share/task/solarized-light-256.theme
 #include /usr//usr/share/task/no-color.theme
 
-taskd.certificate=/home/cabox/.task/freecinc_af7b16bb.cert.pem
-taskd.key=/home/cabox/.task/freecinc_af7b16bb.key.pem
-taskd.ca=/home/cabox/.task/freecinc_af7b16bb.ca.pem
+taskd.certificate=~/.task/freecinc_af7b16bb.cert.pem
+taskd.key=~/.task/freecinc_af7b16bb.key.pem
+taskd.ca=~/.task/freecinc_af7b16bb.ca.pem
 taskd.server=freecinc.com:53589
 taskd.credentials=FreeCinc/freecinc_af7b16bb/3b23c389-0509-473e-b02c-b00bfb7c4c31
 taskd.trust=ignore hostname
