@@ -11,12 +11,7 @@
 
 " Todo:
 "    Learn and/or set up plugins
-"       ('*' = important, '=' = completed):
-"
-"     tmuxline
-"     vim-tmux-navigator
-"   * vim-multiple-cursors
-"   = tabular
+"       ('*' = important):
 "     vim-wordy
 "     vim-pencil
 "     spell (not a plugin but still important; :h spell)
@@ -26,6 +21,13 @@
 "   * vim-obsession
 "     floobits
 "   * abolish
+"     denite
+"     vim-taskwarrior
+"     split-term
+"     vimterm
+"     ctrlspace
+"     vim-move
+"     
 
 "- Install vim-plug if not installed
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
@@ -53,6 +55,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 " Git Integration
 Plug 'tpope/vim-fugitive'
+Plug 'chemzqm/vim-easygit'
+Plug 'chemzqm/denite-git'
 Plug 'mhinz/vim-signify'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 " Editing
@@ -174,20 +178,20 @@ noremap <C-ScrollWheelDown> :undo<cr>
 " map ; <Leader3>
 " map <Space> <Leader4>
 
-"- Movement Between Vim Windows
+"- Movement Between Vim Panes
 nnoremap ,h <C-W>h| " Move focus left
 nnoremap ,l <C-W>l| " Move focus right
 nnoremap ,j <C-W>j| " Move focus down
 nnoremap ,k <C-W>k| " Move focus up
-nnoremap ,H <C-W>H| " Move window left
-nnoremap ,L <C-W>L| " Move window right
-nnoremap ,J <C-W>J| " Move window down
-nnoremap ,K <C-W>K| " Move window up
+nnoremap ,H <C-W>H| " Move pane left
+nnoremap ,L <C-W>L| " Move pane right
+nnoremap ,J <C-W>J| " Move pane down
+nnoremap ,K <C-W>K| " Move pane up
 
-"- Vim Window Size Changes
-" All Windows
-nnoremap ,=  <C-W>=  | " Make all windows equal-ish/symmetrical in size
-" Current Window
+"- Vim Pane Size Changes
+" All Panes
+nnoremap ,=  <C-W>=  | " Make all panes equal-ish/symmetrical in size
+" Current Pane
 nnoremap ,-  <C-W>-  | " Shrink vertically; horizontally; takes optional count
 nnoremap ,+  <C-W>+  | " Expand vertically; takes optional count
 nnoremap ,_  <C-W>_  | " Expand vertically as much as possible
@@ -196,10 +200,10 @@ nnoremap ,<  <C-W>>  | " Expand horizontally; takes optional count
 nnoremap ,\| <C-W>\| | " Expand horizontally as much as possible
 " Note: In the above command, "\|" is equivalent to '|', so type ",|" to use.
 
-"- Other Vim Window Movements
+"- Other Vim Pane Movements
 nnoremap ,r <C-W>r | "
 nnoremap ,R <C-W>R | "
-nnoremap ,w <C-W>x | " Exchange current window with next; takes optional count
+nnoremap ,w <C-W>x | " Exchange current pane with next; takes optional count
 nnoremap ,o <C-W>o | " View only current pane
 
 "- Movement Between Vim Buffers
@@ -467,7 +471,7 @@ set ssop-=options| " do not store global and local values in a session
 set ssop-=folds| " do not store folds
 
 "- Deoplete Setup
-let g:deoplete#sources = ['buffer', 'tag']
+" let g:deoplete#sources = ['buffer', 'tag']
 let g:deoplete#enable_at_startup = 1
 
 
