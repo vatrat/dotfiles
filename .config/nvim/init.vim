@@ -141,6 +141,7 @@ set showcmd                | " Show letters as they're typed
 set noshowmode             | " Use Airline instead
 " Pane setup
 set splitright             | " Make vertical splits open to the right
+set splitbelow             | " Make horiontal splits open to the bottom
 " Indentation
 set autoindent             | " Autoindent when creating a new line
 set copyindent             | "
@@ -206,10 +207,27 @@ nnoremap ,R <C-W>R | "
 nnoremap ,w <C-W>x | " Exchange current pane with next; takes optional count
 nnoremap ,o <C-W>o | " View only current pane
 
+" Open panes
+nnoremap          ,e :e        | " Edit specific file
+nnoremap <silent> ,hn :new<cr> | " New file in split
+nnoremap <silent> ,vn :vne<cr> | " New file in vsplit
+
+" Open Help
+nnoremap          ;h :tab help  | " Open help in new tab
+nnoremap          ;H :-tab help | " Open help in new tab
+
+"- Neovim Terminal Mappings
+tnoremap <Esc> <C-\><C-n> | " Use escape key to exit terminal input
+nnoremap <silent> ,t :call vimterm#toggle()<cr><C-\><C-n>
+nnoremap <silent> ,vt :VTerm<cr>
+nnoremap <silent> ,ht :Term<cr>
+nnoremap <silent> ;t :tab :term<cr>
+nnoremap <silent> ;T :-tab :term<cr>
+
 "- Movement Between Vim Buffers
-nnoremap <silent> ;. :bnext<cr>   | " Move next buffer to current pane
-nnoremap <silent> ;, :bprev<cr>   | " Move previous buffer to current pane
-nnoremap <silent> ;/ :bdelete<cr> | " Close current buffer completely
+nnoremap <silent> ;. :bnext<cr>    | " Move next buffer to current pane
+nnoremap <silent> ;, :bprev<cr>    | " Move previous buffer to current pane
+nnoremap <silent> ;/ :bdelete<cr>  | " Close current buffer completely
 nnoremap <silent> ;? :bdelete!<cr> | " Force close current buffer completely
 
 " Movement Between Vim Tabs
@@ -301,12 +319,6 @@ nnoremap <silent> ;X :qall<cr>  | " Force quit all
 nnoremap <silent> ,z :x<cr>     | " Save and quit
 " Toggle Paste Mode
 set pastetoggle=,:
-" Open File
-nnoremap          ,e               :e | " Edit specific file
-nnoremap <silent> ,nh :new<cr>        | " New file in split
-nnoremap <silent> ,nv :vne<cr>        | " New file in vsplit
-" Open Help
-nnoremap          ;h :tab :h | " Open help in new tab
 " Autoscroll
 " Press ctrl-c to stop scrolling
 " Down
@@ -393,9 +405,6 @@ nnoremap <silent> ,go :Git checkout<Space>            | " Prompt for Git branch 
 nnoremap <silent> ,gp :Gpush<CR>                      | " Git push (Not working in neovim?)
 nnoremap <silent> ,gl :Gpull<CR>                      | " Git pull
 
-"- Neovim Terminal Mappings
-tnoremap <Esc> <C-\><C-n> | " Use escape key to exit terminal input
-
 "- Wordy Command Mappings
 " (Nothing here for now)
 
@@ -407,8 +416,10 @@ map <right> <nop>
 
 "- Vim Color Setup
 syntax on
-let g:neodark#use_256color = 1
-colorscheme gruvbox
+
+" let g:neodark#use_256color = 1
+" let g:seoul256_background = 235
+colorscheme gruvbox "seoul256
 set background=dark
 highlight CursorLineNr ctermbg=none
 highlight SignColumn   ctermbg=none
