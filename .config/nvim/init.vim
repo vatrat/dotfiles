@@ -47,6 +47,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
 " Tmux Integration
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
@@ -96,6 +97,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 Plug 'neovim/python-client'
+Plug 'Shougo/denite.nvim'
 " Terminal Emulator Extensions
 Plug 'vimlab/split-term.vim'
 Plug 'wvffle/vimterm'
@@ -106,6 +108,7 @@ Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': [ 'NERDTreeToggle',  'NERDTreeTabsToggle'] }
 " Session Management
 Plug 'tpope/vim-obsession'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'floobits/floobits-neovim'
 " Alternative Uses
 Plug 'blindFS/vim-taskwarrior'
@@ -246,8 +249,10 @@ let g:multi_cursor_prev_key = '<C-l>'
 let g:multi_cursor_skip_key = '<C-M>'
 let g:multi_cursor_quit_key = '<Esc>'
 " unmap enter, which is set by this plugin?
-nunmap <enter>
-xunmap <enter>
+" nunmap <CR>
+" xunmap <CR>
+" nunmap <CR> <CR>
+" xunmap <CR> <CR>
 
 "- Vim-expand-region Mappings
 let g:expand_region_text_objects = {
@@ -461,27 +466,27 @@ let g:NERDTreeWinPos = "right"
 set ssop-=options| " do not store global and local values in a session
 set ssop-=folds| " do not store folds
 
-if has('nvim')
-    "- Deoplete Setup
-    call deoplete#enable()
+"- Deoplete Setup
+let g:deoplete#sources = ['buffer', 'tag']
+let g:deoplete#enable_at_startup = 1
 
-    "- Neomake Setup
-    let g:neomake_open_list = 2
-    let g:neomake_python_enabled_makers = ['flake8']
-    let g:neomake_haskell_enabled_makers = ['ghc-mod', 'hdevtools', 'hlint']
-    augroup neomake_cmd| " Autocommand group for Neomake
-        " Since autocmds are added each time init.vim
-        " is sourced, clear on load to prevent duplicate
-        " autocmds.
-        autocmd!
-        " Run Neomake on buffer save and enter
-        autocmd BufWritePost,BufEnter *.* Neomake
-        " Run Neomake when leaving insert mode
-        " autocmd InsertLeave *.* update | Neomake
-        " Run Neomake when text changes
-        " autocmd InsertChange,TextChanged *.* update | Neomake
-    augroup END
-endif
+
+"- Neomake Setup
+let g:neomake_open_list = 2
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_haskell_enabled_makers = ['ghc-mod', 'hdevtools', 'hlint']
+augroup neomake_cmd| " Autocommand group for Neomake
+    " Since autocmds are added each time init.vim
+    " is sourced, clear on load to prevent duplicate
+    " autocmds.
+    autocmd!
+    " Run Neomake on buffer save and enter
+    autocmd BufWritePost,BufEnter *.* Neomake
+    " Run Neomake when leaving insert mode
+    " autocmd InsertLeave *.* update | Neomake
+    " Run Neomake when text changes
+    " autocmd InsertChange,TextChanged *.* update | Neomake
+augroup END
 
 "- Modes
 " Word Processor Mode
@@ -523,9 +528,9 @@ func! NoteTakingMode()
     setlocal tw=79 
     " setlocal linebreak
     setl fo=aw2tq
-    inoremap <buffer> <enter> <enter>- 
-    inoremap <buffer> <tab> <esc>>>i
-    nnoremap <buffer> <tab> >>
+    " inoremap <buffer> <enter> <enter>- 
+    inoremap <buffer> <tab> <esc>>>A
+    nnoremap <buffer> <tab> >>$
     nnoremap <buffer> o o- 
     :Goyo
     let g:limelight_conceal_ctermfg = 'gray'
@@ -534,4 +539,4 @@ endfu
 " Mode Mappings
 nnoremap <silent> ,mn :call NoteTakingMode()<cr>
 nnoremap <silent> ,mw :call WordProcessorMode()<cr>
-noremap <silent> ,mg :call GermanWordProcessorMode()<cr>
+nnoremap <silent> ,mg :call GermanWordProcessorMode()<cr>
