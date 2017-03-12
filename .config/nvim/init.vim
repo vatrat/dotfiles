@@ -89,6 +89,8 @@ Plug 'neomake/neomake'
 Plug 'bitc/vim-hdevtools'
 Plug 'pangloss/vim-javascript'
 Plug 'sheerun/vim-polyglot'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'Olical/vim-syntax-expand'
 " Programming Setups
 Plug 'klen/python-mode'
 Plug 'metakirby5/codi.vim'
