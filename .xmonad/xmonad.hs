@@ -35,7 +35,7 @@ main = do
     \ echo \"check\" &&\
     \ xsetroot -cursor_name \"left_ptr&\" &&\
     \ echo \"check\" &&\
-    \ feh --bg-scale /home/vatrat/wallpaper.png &&\
+    \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
     \ echo \"check\" &&\
     \ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &&\
     \ echo \"check\" &&\
