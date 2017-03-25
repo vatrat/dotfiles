@@ -1,34 +1,44 @@
+# Dotfile .gitignore
+
+# Mass-ignore
 *
 **/.swp
 
+# Git
 !/.gitignore
 !/.gitconfig
 
-!/.setup.sh
-
-!/.config
-!/.config/nvim
-!/.config/nvim/init.vim
-!/.config/taskwarrior
-./config/taskwarrior/*
-
-!/.xmonad
-!/.xmonad/xmonad.hs
-!/.xmonad/.xmobar_volume.sh
-
-!/.stalonetrayrc
-!/.xmobarrc
-
-!/.Xresources
-
-!/.tmux.conf
-
+# Bash
 !/.bashrc
 !/.ps1rc
 
-!/.taskrc
+# Tmux
+!/.tmux.conf
 
+# Neovim
+!/.config
+!/.config/nvim
+!/.config/nvim/init.vim
 
+# Spacemacs
+!/.spacemacs
+
+# Taskwarrior
+!/.config/taskwarrior
+./config/taskwarrior/*
+/.taskrc
+
+# XMonad
+!/.xmonad
+!/.xmonad/xmonad.hs
+!/.xmonad/.xmobar_volume.sh
+!/.stalonetrayrc
+!/.xmobarrc
+
+# Xresources
+!/.Xresources
+
+# Folder structure for photos
 !~/foto
 !~/foto/background
 !~/foto/shot
