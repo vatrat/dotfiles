@@ -31,10 +31,14 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     ;; Adding my first packages. Honestly, no idea what is going on. It Just Works™ so far.
+     ;; P.S. The unicode character insertion is cool. I typed "C-x 8 RET tradem RET" and it inserted the ™.
+     ;; ¿¡©®ê↔±№éë
      extra-langs
      emoji
      python
      javascript
+     games
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -53,7 +57,6 @@ values."
      spell-checking
      syntax-checking
      version-control
-     games
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
