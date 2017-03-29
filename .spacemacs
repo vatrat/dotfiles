@@ -33,7 +33,6 @@ values."
    '(
      sql
      restclient
-     speed-reading
      plantuml
      graphviz
      evil-snipe
@@ -78,6 +77,7 @@ values."
      xkcd
      games
      emoji
+     speed-reading
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -207,7 +207,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -331,6 +331,7 @@ you should place your code here."
   (setq browse-url-browser-function 'browse-url-generic
         engine/browser-function 'browse-url-generic
         browse-url-generic-program "google-chrome")
+  toggle-visual-line-navigation-on
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
