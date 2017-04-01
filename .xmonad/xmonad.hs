@@ -29,26 +29,27 @@ myManagementHooks = [
 -----
 
 main = do
-    spawn "bash -c 'if ! ( ps -fA | grep -i \" [s]talonetray\" ); then echo \"check\" &&\
+    spawn "bash -c 'if ! ( ps -fA | grep -i \" [s]talonetray\" ); then echo \"running startup commands\" &&\
     \ \"stalonetray\" & \
+    \ echo \"stalonetray started\" &&\
     \ export LANG=en_US.UTF-8 &&\
-    \ echo \"check\" &&\
+    \ echo \"LANG set\" &&\
     \ xsetroot -cursor_name \"left_ptr&\" &&\
-    \ echo \"check\" &&\
+    \ echo \"cursor set\" &&\
     \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
-    \ echo \"check\" &&\
+    \ echo \"background set\" &&\
     \ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &&\
-    \ echo \"check\" &&\
+    \ echo \"keyboard layout set to US Extended\" &&\
     \ setxkbmap -option \"caps:escape\" &&\
-    \ echo \"check\" &&\
+    \ echo \"caps and escape swapped\" &&\
     \ xmodmap -e \"keycode 133 = ISO_Level3_Shift\" &&\
-    \ echo \"check\" &&\
+    \ echo \"Windows key is now ISO_Level3_Shift\" &&\
     \ xmodmap -e \"keycode 135 = ISO_Level3_Shift\" &&\
-    \ echo \"check\" &&\
+    \ echo \"Menu key is now ISO_Level3_Shift\" &&\
     \ xmodmap -e \"keycode 108 = Alt_L\" &&\
-    \ echo \"check\" &&\
+    \ echo \"Alt keys are now both Alt_L\" &&\
     \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
-    \ echo \"check\" &&\
+    \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
 
