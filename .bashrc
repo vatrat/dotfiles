@@ -96,3 +96,4 @@ codi() {
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export LANG=en_US.UTF-8
