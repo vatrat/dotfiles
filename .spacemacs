@@ -331,7 +331,9 @@ you should place your code here."
   (setq browse-url-browser-function 'browse-url-generic
         engine/browser-function 'browse-url-generic
         browse-url-generic-program "google-chrome")
-  toggle-visual-line-navigation-on
+  ;; (toggle-visual-line-navigation-on)
+  (global-set-key (kbd "SPC") (kbd "|") 'redraw-display)
+  (add-hook 'isearch-update-post-hook 'redraw-display)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
