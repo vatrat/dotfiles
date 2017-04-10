@@ -334,6 +334,7 @@ you should place your code here."
   ;; (toggle-visual-line-navigation-on)
   (global-set-key (kbd "SPC") (kbd "|") 'redraw-display)
   (add-hook 'isearch-update-post-hook 'redraw-display)
+  (setq evil-move-cursor-back nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
