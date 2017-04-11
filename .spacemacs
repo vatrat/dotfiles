@@ -335,6 +335,7 @@ you should place your code here."
   (global-set-key (kbd "|") 'redraw-display)
   (spacemacs/set-leader-keys "\\" 'redraw-display)
   (add-hook 'isearch-update-post-hook 'redraw-display)
+  (setq evil-move-cursor-back nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
