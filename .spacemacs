@@ -338,6 +338,11 @@ you should place your code here."
   (setq evil-move-cursor-back nil)
   (setq tramp-default-method "ssh")
   (setq powerline-default-separator 'bar)
+  ;; mobileorg settings
+  (setq org-directory "~/Dropbox/org")
+  (setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
+  (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+  (setq org-mobile-files '("~/Dropbox/org"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
