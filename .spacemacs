@@ -343,7 +343,7 @@ you should place your code here."
         engine/browser-function 'browse-url-generic
         browse-url-generic-program "google-chrome")
   (spacemacs/toggle-visual-line-navigation-on)
-  (global-set-key (kbd "|") 'redraw-display)
+  ;; (global-set-key (kbd "|") 'redraw-display)
   (spacemacs/set-leader-keys "\\" 'redraw-display)
   (spacemacs/set-leader-keys "W" 'spacemacs/workspaces-transient-state/body)
   (spacemacs/set-leader-keys ";" 'helm-resume)
