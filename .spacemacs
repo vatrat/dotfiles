@@ -358,6 +358,8 @@ you should place your code here."
   (setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
   (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   (setq org-mobile-files '("~/Dropbox/org"))
+  (setq git-gutter:modified-sign "~")
+  (setq git-gutter+:modified-sign "~")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
