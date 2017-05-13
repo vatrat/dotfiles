@@ -39,7 +39,7 @@ values."
      evil-snipe
      themes-megapack
      theming
-     ;; floobits
+     floobits
      command-log
      colors
      auto-completion
