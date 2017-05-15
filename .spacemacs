@@ -368,7 +368,7 @@ you should place your code here."
   (setq org-mobile-files '("~/Dropbox/org/" "~/Dropbox/org/electronics/"))
   (setq git-gutter:modified-sign "~")
   (setq git-gutter+:modified-sign "~")
-  (org-mobile-sync-mode 1)
+  ;; (org-mobile-sync-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
