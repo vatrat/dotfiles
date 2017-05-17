@@ -350,7 +350,6 @@ you should place your code here."
   (setq browse-url-browser-function 'browse-url-generic
         engine/browser-function 'browse-url-generic
         browse-url-generic-program "google-chrome")
-  (spacemacs/toggle-visual-line-navigation-on)
   (spacemacs/set-leader-keys "\\" 'redraw-display)
   (spacemacs/set-leader-keys ";" 'helm-resume)
   (setq evil-move-cursor-back nil)
@@ -376,6 +375,7 @@ you should place your code here."
   (setq git-gutter:modified-sign "~")
   (setq git-gutter+:modified-sign "~")
   ;; (org-mobile-sync-mode 1)
+  (global-visual-line-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
