@@ -351,12 +351,19 @@ you should place your code here."
         engine/browser-function 'browse-url-generic
         browse-url-generic-program "google-chrome")
   (spacemacs/toggle-visual-line-navigation-on)
-  ;; (global-set-key (kbd "|") 'redraw-display)
   (spacemacs/set-leader-keys "\\" 'redraw-display)
-  (spacemacs/set-leader-keys "W" 'spacemacs/workspaces-transient-state/body)
   (spacemacs/set-leader-keys ";" 'helm-resume)
-  (add-hook 'isearch-update-post-hook 'redraw-display)
   (setq evil-move-cursor-back nil)
+  ;; Workspace Bindings
+  (spacemacs/set-leader-keys "W" 'spacemacs/workspaces-transient-state/body)
+  (spacemacs/set-leader-keys "[" 'eyebrowse-prev-window-config)
+  (spacemacs/set-leader-keys "]" 'eyebrowse-next-window-config)
+  ;; Org Bindings
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "op" 'org-mobile-push)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "of" 'org-mobile-pull)
+  (spacemacs/declare-prefix-for-mode 'org-mode "o" "org-mobile")
+
+  (add-hook 'isearch-update-post-hook 'redraw-display)
   (setq tramp-default-method "ssh")
   (setq powerline-default-separator 'bar)
   ;; org-mode settings
