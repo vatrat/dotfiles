@@ -369,6 +369,7 @@ you should place your code here."
   (setq git-gutter:modified-sign "~")
   (setq git-gutter+:modified-sign "~")
   ;; (org-mobile-sync-mode 1)
+  (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
