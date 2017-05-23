@@ -117,7 +117,7 @@ Plug 'tpope/vim-obsession'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'floobits/floobits-neovim'
 " Alternative Uses
-Plug 'blindFS/vim-taskwarrior'
+" Plug 'blindFS/vim-taskwarrior'
 call plug#end()
 
 "- Vim Hackery
