@@ -352,17 +352,35 @@ you should place your code here."
         engine/browser-function 'browse-url-generic
         browse-url-generic-program "google-chrome")
   (spacemacs/set-leader-keys "\\" 'redraw-display)
-  (spacemacs/set-leader-keys ";" 'helm-resume)
+  (spacemacs/set-leader-keys "," 'helm-resume)
   (setq evil-move-cursor-back nil)
   ;; Workspace Bindings
-  (spacemacs/set-leader-keys "W" 'spacemacs/workspaces-transient-state/body)
-  (spacemacs/set-leader-keys "[" 'eyebrowse-prev-window-config)
-  (spacemacs/set-leader-keys "]" 'eyebrowse-next-window-config)
+  (spacemacs/declare-prefix ";" "workspaces")
+  (spacemacs/set-leader-keys "W" 'spacemacs/workspaces-transient-state/body
+                             "[" 'eyebrowse-prev-window-config
+                             "]" 'eyebrowse-next-window-config
+                             ;; ";'" 'eyebrowse-close-window-config-prompt
+                             ;; ";\"" 'eyebrowse-close-window-config
+                             ;; ";=" 'eyebrowse-last-window-config
+                             ;; ;; ";-" 'eyebrowse-
+                             ;; ";1" 'eyebrowse-switch-to-window-config-1
+                             ;; ";2" 'eyebrowse-switch-to-window-config-2
+                             ;; ";3" 'eyebrowse-switch-to-window-config-3
+                             ;; ";4" 'eyebrowse-switch-to-window-config-4
+                             ;; ";5" 'eyebrowse-switch-to-window-config-5
+                             ;; ";6" 'eyebrowse-switch-to-window-config-6
+                             ;; ";7" 'eyebrowse-switch-to-window-config-7
+                             ;; ";8" 'eyebrowse-switch-to-window-config-8
+                             ;; ";9" 'eyebrowse-switch-to-window-config-9
+  )
   ;; Org Bindings
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode "op" 'org-mobile-push)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode "of" 'org-mobile-pull)
-  (spacemacs/declare-prefix-for-mode 'org-mode "o" "org-mobile")
-
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+                                             "op" 'org-mobile-push
+                                             "of" 'org-mobile-pull
+                                             "k" 'org-backward-heading-same-level
+                                             "j" 'org-forward-heading-same-level
+  )
+  (spacemacs/declare-prefix-for-mode 'org-mode "o" "mobile")
   (add-hook 'isearch-update-post-hook 'redraw-display)
   (setq tramp-default-method "ssh")
   (setq powerline-default-separator 'bar)
