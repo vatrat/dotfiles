@@ -392,6 +392,7 @@ you should place your code here."
   (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   (setq org-mobile-files '("~/Dropbox/org/" "~/Dropbox/org/electronics/"))
   (setq org-mobile-files-exclude-regexp "\\.#") ;; .# -> \.# -> \\.#
+  ;;git-gutter settings
   (setq git-gutter:modified-sign "~")
   (setq git-gutter+:modified-sign "~")
   ;; (org-mobile-sync-mode 1)
