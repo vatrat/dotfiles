@@ -391,6 +391,7 @@ you should place your code here."
   (setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
   (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   (setq org-mobile-files '("~/Dropbox/org/" "~/Dropbox/org/electronics/"))
+  (setq org-mobile-files-exclude-regexp "\\.#") ;; .# -> \.# -> \\.#
   (setq git-gutter:modified-sign "~")
   (setq git-gutter+:modified-sign "~")
   ;; (org-mobile-sync-mode 1)
