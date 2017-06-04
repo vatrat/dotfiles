@@ -362,7 +362,6 @@ expat.x86_64
 expat-devel.x86_64
 f25-backgrounds-base.noarch
 f25-backgrounds-gnome.noarch
-faad2-libs.x86_64
 fcoe-utils.x86_64
 fedora-bookmarks.noarch
 fedora-logos.x86_64
@@ -373,7 +372,6 @@ fedora-release-workstation.noarch
 fedora-repos.noarch
 fedora-user-agent-chrome.noarch
 feh.x86_64
-ffmpeg-libs.x86_64
 fftw.x86_64
 fftw-devel.x86_64
 fftw-libs.x86_64
@@ -739,15 +737,11 @@ gnome-session-xsession.x86_64
 gnome-settings-daemon.x86_64
 gnome-shell.x86_64
 gnome-shell-extension-alternate-tab.noarch
-3.22.2-1.fc25
 gnome-shell-extension-apps-menu.noarch
-3.22.2-1.fc25
 gnome-shell-extension-background-logo.noarch
 gnome-shell-extension-common.noarch
 gnome-shell-extension-launch-new-instance.noarch
-3.22.2-1.fc25
 gnome-shell-extension-places-menu.noarch
-3.22.2-1.fc25
 gnome-shell-extension-window-list.noarch
 gnome-software.x86_64
 gnome-system-monitor.x86_64
@@ -772,7 +766,6 @@ go-srpm-macros.noarch
 gobject-introspection.x86_64
 gom.x86_64
 google-android-emoji-fonts.noarch
-google-chrome-stable.x86_64
 google-crosextra-caladea-fonts.noarch
 google-crosextra-carlito-fonts.noarch
 google-droid-sans-mono-fonts.noarch
@@ -783,7 +776,6 @@ google-noto-sans-mandaic-fonts.noarch
 google-noto-sans-meetei-mayek-fonts.noarch
 google-noto-sans-tagalog-fonts.noarch
 google-noto-sans-tai-tham-fonts.noarch
-20161022-1.fc25
 google-noto-sans-tai-viet-fonts.noarch
 gource.x86_64
 gparted.x86_64
@@ -1183,7 +1175,6 @@ libdbi.x86_64
 libdbusmenu.x86_64
 libdbusmenu-gtk3.x86_64
 libdc1394.x86_64
-libdca.x86_64
 libdfu.x86_64
 libdhash.x86_64
 libdmapsharing.x86_64
@@ -1321,7 +1312,6 @@ libmpcdec.x86_64
 libmpd.x86_64
 libmpd-devel.x86_64
 libmpdclient.x86_64
-libmpeg2.x86_64
 libmspack.x86_64
 libmspub.x86_64
 libmtp.x86_64
@@ -1560,7 +1550,6 @@ lilv.x86_64
 linux-atm-libs.x86_64
 linux-firmware.noarch
 lirc-libs.x86_64
-live555.x86_64
 lklug-fonts.noarch
 lksctp-tools.x86_64
 lldpad.x86_64
@@ -2081,7 +2070,6 @@ python3-meh.noarch
 python3-meh-gui.noarch
 python3-msgpack.x86_64
 python3-neovim.noarch
-python3-neovim-gui.noarch
 python3-nose.noarch
 python3-ntplib.noarch
 python3-ordered-set.noarch
@@ -2194,8 +2182,6 @@ rpm-build-libs.x86_64
 rpm-libs.x86_64
 rpm-plugin-selinux.x86_64
 rpm-plugin-systemd-inhibit.x86_64
-rpmfusion-free-appstream-data.noarch
-rpmfusion-free-release.noarch
 rrdtool.x86_64
 rsync.x86_64
 rtkit.x86_64
@@ -2272,9 +2258,6 @@ spice-glib.x86_64
 spice-gtk3.x86_64
 spice-server.x86_64
 spice-vdagent.x86_64
-spotify-client.x86_64
-spotify-ffmpeg.x86_64
-spotify-openssl.x86_64
 sqlite.x86_64
 sqlite-libs.i686
 sqlite-libs.x86_64
@@ -2366,7 +2349,6 @@ tree.x86_64
 trousers.x86_64
 trousers-lib.x86_64
 ttmkfdir.x86_64
-twolame-libs.x86_64
 tzdata.noarch
 tzdata-java.noarch
 unibilium.x86_64
@@ -2393,8 +2375,6 @@ vim-filesystem.x86_64
 vim-minimal.x86_64
 vino.x86_64
 virglrenderer.x86_64
-vlc.x86_64
-vlc-core.x86_64
 vlgothic-fonts.noarch
 volume_key-libs.x86_64
 vpnc.x86_64
@@ -2501,7 +2481,6 @@ xscreensaver-gl-extras.x86_64
 xsel.x86_64
 xterm.x86_64
 xterm-resize.x86_64
-xvidcore.x86_64
 xz.x86_64
 xz-libs.i686
 xz-libs.x86_64
