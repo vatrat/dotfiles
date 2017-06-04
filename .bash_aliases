@@ -1,6 +1,7 @@
 alias ping.='ping 8.8.8.8'
 
-alias l='ls -A'
+alias ls='ls --color'
+alias l='ls --color -A'
 
 alias pf='ps -fA'
 alias pg='ps -fA | grep -i'
