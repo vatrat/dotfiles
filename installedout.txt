@@ -2402,8 +2402,6 @@ wpa_supplicant.x86_64
 wvdial.x86_64
 wxBase.x86_64
 wxGTK.x86_64
-x264-libs.x86_64
-x265-libs.x86_64
 xalan-c.x86_64
 xcb-proto.noarch
 xcb-util.x86_64
