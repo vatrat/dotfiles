@@ -384,15 +384,15 @@ you should place your code here."
   (add-hook 'isearch-update-post-hook 'redraw-display)
   (setq tramp-default-method "ssh")
   (setq powerline-default-separator 'bar)
-  ;; org-mode settings
+  ;; Org-mode settings
   (setq org-clock-idle-time 15)
-  ;; mobileorg settings
+  ;; Mobileorg settings
   (setq org-directory "~/Dropbox/org")
   (setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
   (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   (setq org-mobile-files '("~/Dropbox/org/" "~/Dropbox/org/electronics/"))
   (setq org-mobile-files-exclude-regexp "\\.#") ;; .# -> \.# -> \\.#
-  ;;git-gutter settings
+  ;; Git-gutter settings
   (setq git-gutter:modified-sign "~")
   (setq git-gutter+:modified-sign "~")
   ;; (org-mobile-sync-mode 1)
@@ -400,6 +400,7 @@ you should place your code here."
   (global-visual-line-mode 1)
   ;; (shell-command "python ~/dropbox.py start 2>&1 >/dev/null &")
   (start-process-shell-command "dropbox" nil "python ~/dropbox.py start 2>&1 >/dev/null &")
+  ;; PlatformIO Settings
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
