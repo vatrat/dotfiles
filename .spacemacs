@@ -387,6 +387,7 @@ you should place your code here."
   (setq powerline-default-separator 'bar)
   ;; Org-mode settings
   (setq org-clock-idle-time 15)
+  (setq org-loop-over-headlines-in-active-region 'start-level)
   ;; Mobileorg settings
   (setq org-directory "~/Dropbox/org")
   (setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
