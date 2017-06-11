@@ -36,6 +36,7 @@ values."
      plantuml
      graphviz
      evil-snipe
+     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      themes-megapack
      theming
      floobits
