@@ -353,6 +353,9 @@ you should place your code here."
   (setq browse-url-browser-function 'browse-url-generic
         engine/browser-function 'browse-url-generic
         browse-url-generic-program "google-chrome")
+  (spacemacs/set-leader-keys "=" 'evil-numbers/inc-at-pt)
+  (spacemacs/set-leader-keys "+" 'evil-numbers/inc-at-pt)
+  (spacemacs/set-leader-keys "-" 'evil-numbers/dec-at-pt)
   (spacemacs/set-leader-keys "\\" 'redraw-display)
   (spacemacs/set-leader-keys "," 'helm-resume)
   (setq evil-move-cursor-back nil)
