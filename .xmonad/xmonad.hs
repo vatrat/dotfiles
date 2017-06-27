@@ -57,7 +57,7 @@ main = do
         { manageHook=manageHook def <+> manageDocks 
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 40
+                        , ppTitle = xmobarColor "green" "" . shorten 70
                         }
         , layoutHook=avoidStruts $ layoutHook def
         -- , layoutHook = myLayout
