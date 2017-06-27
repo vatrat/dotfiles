@@ -78,6 +78,10 @@ main = do
               ,((mod1Mask .|. shiftMask, xK_h), windowSwap L False)
               ,((mod1Mask .|. shiftMask, xK_j), windowSwap D False)
               ,((mod1Mask .|. shiftMask, xK_k), windowSwap U False)
+
+              ,((mod1Mask .|. shiftMask, xK_comma), sendMessage Expand)
+              ,((mod1Mask .|. shiftMask, xK_period), sendMessage Shrink)
+
               ,((0, 0x1008FF11), spawn "amixer set Master 7%-")
               ,((0, 0x1008FF13), spawn "amixer set Master 7%+")
               ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
