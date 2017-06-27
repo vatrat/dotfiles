@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     rj-mode
      platformio
      pandoc
      vimscript
@@ -407,6 +408,8 @@ you should place your code here."
   ;; (shell-command "python ~/dropbox.py start 2>&1 >/dev/null &")
   (start-process-shell-command "dropbox" nil "python ~/dropbox.py start 2>&1 >/dev/null &")
   ;; PlatformIO Settings
+  ;; Rj-mode settings
+  (global-rj-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
