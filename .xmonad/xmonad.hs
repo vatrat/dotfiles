@@ -62,15 +62,11 @@ main = do
         , layoutHook=avoidStruts $ layoutHook def
         -- , layoutHook = myLayout
         , terminal = "gnome-terminal"
-        --, modMask = mod4Mask     -- Rebind Mod to the Windows key
-        -- , startupHook = spawn "xmodmap -e 'add mod4 = Menu'"
         } `additionalKeys`
             [ 
               ((mod1Mask, xK_z), spawn "slock")
-              -- ,((mod1Mask, xK_Print), spawn "scrot -s")
               ,((mod1Mask, xK_Print), spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
               ,((mod1Mask, xK_p), spawn "rofi -show run")
-              -- ,((mod1Mask, xK_d), dzenConfig return "testing")
 
               ,((mod1Mask, xK_l), windowGo R False)
               ,((mod1Mask, xK_h), windowGo L False)
@@ -81,7 +77,6 @@ main = do
               ,((mod1Mask .|. shiftMask, xK_h), windowSwap L False)
               ,((mod1Mask .|. shiftMask, xK_j), windowSwap D False)
               ,((mod1Mask .|. shiftMask, xK_k), windowSwap U False)
-                
               ,((0, 0x1008FF11), spawn "amixer set Master 7%-")
               ,((0, 0x1008FF13), spawn "amixer set Master 7%+")
               ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
