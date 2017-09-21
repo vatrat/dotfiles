@@ -25,3 +25,5 @@ alias nmw='nmcli d w'
 alias nmd='nmcli d'
 alias nm0='nmcli r a off'
 alias nm1='nmcli r a on'
+
+alias em='emacsclient -nw'
