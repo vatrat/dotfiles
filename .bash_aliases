@@ -26,7 +26,11 @@ alias nmd='nmcli d'
 alias nm0='nmcli r a off'
 alias nm1='nmcli r a on'
 
+alias emstart='emacs --daemon'
 alias em='emacsclient -nw'
+alias emc='emacsclient -c'
+alias emn='emacsclient'
+
 emsu() {
        emacsclient "-nw" "-e" "'(find-file \"/sudo::$1\")'"
 }
