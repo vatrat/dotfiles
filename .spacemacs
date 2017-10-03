@@ -41,7 +41,6 @@ values."
      ;; plantuml
      ;; graphviz
      evil-snipe
-     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      themes-megapack
      theming
      floobits
@@ -411,6 +410,14 @@ you should place your code here."
   ;; PlatformIO Settings
   ;; Rj-mode settings
   (global-rj-mode 1)
+  ;; Evil-snipe settings
+  ;; (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
+  (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
+  (evil-snipe-override-mode +1)
+  ;; Pin helm to melpa stable (spacemacs fixed this in develop, won't be pushed until next release)
+  (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
+  (push '(helm . "melpa-stable") package-pinned-packages)
+  (require 'helm-bookmark)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
