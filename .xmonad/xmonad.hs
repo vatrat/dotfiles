@@ -11,21 +11,21 @@ import XMonad.Util.Dzen
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Paste
 import XMonad.Util.Run(spawnPipe)
-
+import XMonad.Layout.Circle
+import XMonad.Layout.Tabbed
+import XMonad.Layout.Accordion
+import XMonad.Layout.NoBorders
+import XMonad.Layout.ResizableTile
 -----
 
--- myLayout = emptyBSP
-
------
-
-myManagementHooks :: [ManageHook]
-myManagementHooks = [
-  resource =? "xmobar" --> doIgnore
-  , resource =? "stalonetray" --> doIgnore
-  -- , resource =? "trayer" --> doIgnore
-  , manageDocks
-  ]
-
+-- mymanageHook :: [ManageHook]
+mymanageHook = composeAll
+                   [ className =? "Gimp"        --> doFloat
+                   , resource  =? "stalonetray" --> doIgnore
+                   , resource  =? "xmobar"       --> doIgnore ]
+            -- , manageDocks
+mylayoutHook = avoidStruts ( ResizableTall 1 (1.5/100) (3/5) [] ||| noBorders (Full) ||| noBorders (tabbed shrinkText def) ||| Accordion ||| Circle )
+-- myLayouts = toggleLayouts (noBorders Full) Tall ||| ResizableTall 1 (1.5/100) (3/5) [] ||| emptyBSP
 -----
 
 main = do
@@ -52,16 +52,18 @@ main = do
     \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
-
     xmonad $ def
-        { manageHook=manageHook def <+> manageDocks 
+        { manageHook = manageDocks <+> manageHook def
+        , layoutHook = mylayoutHook
+--avoidStruts $ layoutHook def
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 70
                         }
-        , layoutHook=avoidStruts $ layoutHook def
-        -- , layoutHook = myLayout
-        , terminal = "gnome-terminal"
+       , borderWidth        = 1
+       , normalBorderColor  = "#8e8d8d"
+       , focusedBorderColor = "#2e64ba"
+       , terminal = "gnome-terminal"
         } `additionalKeys`
             [ 
               ((mod1Mask, xK_z), spawn "slock")
@@ -87,3 +89,6 @@ main = do
               ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
 
             ]
+
+
+
