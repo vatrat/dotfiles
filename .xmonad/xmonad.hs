@@ -9,6 +9,7 @@ import XMonad.Actions.Navigation2D
 import XMonad.Layout.Spacing
 import XMonad.Util.Dzen
 import XMonad.Util.EZConfig(additionalKeys)
+import Graphics.X11.ExtraTypes.XF86
 import XMonad.Util.Paste
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Layout.Circle
@@ -65,7 +66,7 @@ main = do
        , focusedBorderColor = "#2e64ba"
        , terminal = "gnome-terminal"
         } `additionalKeys`
-            [ 
+            [
               ((mod1Mask, xK_z), spawn "slock")
               ,((mod1Mask, xK_Print), spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
               ,((mod1Mask, xK_p), spawn "rofi -show run")
@@ -88,6 +89,11 @@ main = do
               ,((0, 0x1008FF13), spawn "amixer set Master 7%+")
               ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
 
+              -- ,(("<XF86MonBrightnessUp>"), spawn "xbacklight -inc 10")
+              -- ,(("<XF86MonBrightnessDown>"), spawn "xbacklight -dec 10")
+
+              , ((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 20")
+              , ((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 20")
             ]
 
 
