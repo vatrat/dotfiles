@@ -9,7 +9,6 @@ ModemManager-glib.x86_64
 NetworkManager.x86_64
 NetworkManager-adsl.x86_64
 NetworkManager-bluetooth.x86_64
-NetworkManager-config-connectivity-fedora.x86_64
 NetworkManager-glib.x86_64
 NetworkManager-libnm.x86_64
 NetworkManager-openconnect.x86_64
@@ -73,7 +72,6 @@ adwaita-qt4.x86_64
 adwaita-qt5.x86_64
 aircrack-ng.x86_64
 alex.x86_64
-alex-common.x86_64
 alsa-lib.x86_64
 alsa-lib-devel.x86_64
 alsa-plugins-pulseaudio.x86_64
@@ -181,7 +179,6 @@ bzip2-libs.x86_64
 c-ares.x86_64
 ca-certificates.noarch
 cabal-install.x86_64
-cabal-install-common.x86_64
 cabextract.x86_64
 cacti.noarch
 cairo.x86_64
@@ -204,7 +201,6 @@ clang.x86_64
 clang-libs.x86_64
 clucene-contribs-lib.x86_64
 clucene-core.x86_64
-clucene09-core.x86_64
 clutter.x86_64
 clutter-gst2.x86_64
 clutter-gst3.x86_64
@@ -506,8 +502,6 @@ ghc-bytestring.x86_64
 ghc-bytestring-devel.x86_64
 ghc-case-insensitive.x86_64
 ghc-case-insensitive-devel.x86_64
-ghc-cgi.x86_64
-ghc-cgi-devel.x86_64
 ghc-cmark.x86_64
 ghc-cmdargs.x86_64
 ghc-cmdargs-devel.x86_64
@@ -547,7 +541,6 @@ ghc-hashable.x86_64
 ghc-hashable-devel.x86_64
 ghc-haskeline.x86_64
 ghc-haskeline-devel.x86_64
-ghc-haskell-platform-devel.x86_64
 ghc-haskell-src.x86_64
 ghc-haskell-src-devel.x86_64
 ghc-haskell-src-exts.x86_64
@@ -572,8 +565,6 @@ ghc-mmorph.x86_64
 ghc-monad-control.x86_64
 ghc-mtl.x86_64
 ghc-mtl-devel.x86_64
-ghc-multipart.x86_64
-ghc-multipart-devel.x86_64
 ghc-network.x86_64
 ghc-network-devel.x86_64
 ghc-network-uri.x86_64
@@ -802,7 +793,6 @@ gspiceui.x86_64
 gssdp.x86_64
 gssproxy.x86_64
 gstreamer1.x86_64
-gstreamer1-plugin-mpg123.x86_64
 gstreamer1-plugins-bad-free.x86_64
 gstreamer1-plugins-bad-free-gtk.x86_64
 gstreamer1-plugins-base.x86_64
@@ -838,13 +828,11 @@ gvnc.x86_64
 gvnc.x86_64
 gzip.x86_64
 happy.x86_64
-happy-common.x86_64
 hardlink.x86_64
 harfbuzz.x86_64
 harfbuzz-devel.x86_64
 harfbuzz-icu.x86_64
 haskell-platform.x86_64
-hawkey.x86_64
 hdparm.x86_64
 hfsplus-tools.x86_64
 hicolor-icon-theme.noarch
@@ -1187,7 +1175,6 @@ libdvbpsi.x86_64
 libdvdnav.x86_64
 libdvdread.x86_64
 libe-book.x86_64
-libebitdo.x86_64
 libebml.x86_64
 libedit.x86_64
 libeot.x86_64
@@ -1452,7 +1439,6 @@ libstdc++.i686
 libstdc++.x86_64
 libstdc++-devel.x86_64
 libstemmer.x86_64
-libstoraged.x86_64
 libstroke.x86_64
 libtalloc.x86_64
 libtar.x86_64
@@ -1583,7 +1569,6 @@ lua-socket.x86_64
 lvm2.x86_64
 lvm2-libs.x86_64
 lxpolkit.x86_64
-lz4.i686
 lz4.x86_64
 lzo.x86_64
 lzo-minilzo.x86_64
@@ -1749,7 +1734,6 @@ pam.i686
 pam.x86_64
 pam_krb5.x86_64
 pandoc.x86_64
-pandoc-common.x86_64
 pango.x86_64
 pango-devel.x86_64
 pangomm.x86_64
@@ -1856,7 +1840,6 @@ perl-Net-SSLeay.x86_64
 perl-Package-Generator.noarch
 perl-Params-Check.noarch
 perl-Params-Util.x86_64
-perl-Parse-CPAN-Meta.noarch
 perl-PathTools.x86_64
 perl-Perl-OSType.noarch
 perl-Pod-Checker.noarch
@@ -1934,7 +1917,6 @@ pinfo.x86_64
 pixman.x86_64
 pixman-devel.x86_64
 pkcs11-helper.x86_64
-pkgconfig.x86_64
 plymouth.x86_64
 plymouth-core-libs.x86_64
 plymouth-graphics-libs.x86_64
@@ -1972,33 +1954,24 @@ pulseaudio-libs-glib2.x86_64
 pulseaudio-module-bluetooth.x86_64
 pulseaudio-module-x11.x86_64
 pulseaudio-utils.x86_64
-pyOpenSSL.noarch
 pycairo.x86_64
 pyflakes.noarch
 pygobject2.x86_64
 pygtk2.x86_64
 pyliblzma.x86_64
 pyserial.noarch
-python.x86_64
 python-IPy.noarch
 python-IPy-python3.noarch
 python-adns.x86_64
 python-characteristic.noarch
-python-devel.x86_64
 python-enum34.noarch
 python-gobject.x86_64
 python-gobject-base.x86_64
 python-gstreamer1.x86_64
 python-ipaddress.noarch
-python-libs.x86_64
-python-mccabe.noarch
 python-parsley.noarch
 python-pep8.noarch
-python-pip.noarch
-python-pycparser.noarch
 python-rpm-macros.noarch
-python-service-identity.noarch
-python-six.noarch
 python-srpm-macros.noarch
 python-systemd-doc.x86_64
 python-txsocksx.noarch
@@ -2217,7 +2190,6 @@ sed.x86_64
 selinux-policy.noarch
 selinux-policy-targeted.noarch
 serd.x86_64
-setools-libs.x86_64
 setroubleshoot.x86_64
 setroubleshoot-plugins.noarch
 setroubleshoot-server.x86_64
@@ -2278,7 +2250,6 @@ startup-notification.x86_64
 startup-notification-devel.x86_64
 stix-fonts.noarch
 stoken-libs.x86_64
-storaged.x86_64
 strace.x86_64
 subunit.x86_64
 sudo.x86_64
@@ -2450,7 +2421,6 @@ xorg-x11-drv-libinput.x86_64
 xorg-x11-drv-nouveau.x86_64
 xorg-x11-drv-openchrome.x86_64
 xorg-x11-drv-qxl.x86_64
-xorg-x11-drv-synaptics.x86_64
 xorg-x11-drv-vesa.x86_64
 xorg-x11-drv-vmware.x86_64
 xorg-x11-drv-wacom.x86_64
