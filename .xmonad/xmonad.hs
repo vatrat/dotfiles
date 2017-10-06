@@ -69,16 +69,28 @@ main = do
             [
               ((mod1Mask, xK_z), spawn "slock")
               ,((mod1Mask, xK_Print), spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
+
+              -- Application launching keybindings
               ,((mod1Mask, xK_p), spawn "rofi -show run")
               ,((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run")
+
+              -- (Spac)Emacs launch keybindings
               ,((mod1Mask , xK_e), spawn "emacsclient -c -a ''")
               ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -a ''")
 
+              -- Gnome Control Center launch keybindings
+              ,((mod1Mask , xK_c), spawn "gnome-control-center")
+              ,((mod1Mask .|. shiftMask, xK_b), spawn "gnome-control-center bluetooth")
+              ,((mod1Mask , xK_b), spawn "gnome-control-center power")
+              ,((mod1Mask .|. shiftMask, xK_w), spawn "gnome-control-center network")
+
+              -- Keybindings to switch windows directionally
               ,((mod1Mask, xK_l), windowGo R False)
               ,((mod1Mask, xK_h), windowGo L False)
               ,((mod1Mask, xK_j), windowGo D False)
               ,((mod1Mask, xK_k), windowGo U False)
 
+              -- Keybindings to move windows directionally
               ,((mod1Mask .|. shiftMask, xK_l), windowSwap R False)
               ,((mod1Mask .|. shiftMask, xK_h), windowSwap L False)
               ,((mod1Mask .|. shiftMask, xK_j), windowSwap D False)
@@ -87,13 +99,12 @@ main = do
               ,((mod1Mask .|. shiftMask, xK_comma), sendMessage Expand)
               ,((mod1Mask .|. shiftMask, xK_period), sendMessage Shrink)
 
+              -- Make audio keys function correctly
               ,((0, 0x1008FF11), spawn "amixer set Master 7%-")
               ,((0, 0x1008FF13), spawn "amixer set Master 7%+")
               ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
 
-              -- ,(("<XF86MonBrightnessUp>"), spawn "xbacklight -inc 10")
-              -- ,(("<XF86MonBrightnessDown>"), spawn "xbacklight -dec 10")
-
+              -- Make backlight brightness keys function correctly
               , ((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 20")
               , ((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 20")
             ]
