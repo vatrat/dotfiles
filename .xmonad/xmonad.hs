@@ -71,8 +71,8 @@ main = do
               ,((mod1Mask, xK_Print), spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
               ,((mod1Mask, xK_p), spawn "rofi -show run")
               ,((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run")
-              ,((mod1Mask , xK_e), spawn "emacsclient -c")
-              ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -c")
+              ,((mod1Mask , xK_e), spawn "emacsclient -c -a ''")
+              ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -a ''")
 
               ,((mod1Mask, xK_l), windowGo R False)
               ,((mod1Mask, xK_h), windowGo L False)
