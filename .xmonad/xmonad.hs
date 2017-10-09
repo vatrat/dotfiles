@@ -78,6 +78,8 @@ main = do
               ,((mod1Mask, xK_e), spawn "emacsclient -c -a ''")
               ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -a ''")
 
+              ,((mod1Mask, xK_f), spawn "nautilus -w")
+              ,((mod1Mask, xK_c), spawn "google-chrome")
 
               -- Gnome Control Center launch keybindings
               ,((mod1Mask, xK_s), spawn "gnome-control-center")
