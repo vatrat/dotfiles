@@ -75,13 +75,14 @@ main = do
               ,((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run")
 
               -- (Spac)Emacs launch keybindings
-              ,((mod1Mask , xK_e), spawn "emacsclient -c -a ''")
+              ,((mod1Mask, xK_e), spawn "emacsclient -c -a ''")
               ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -a ''")
 
+
               -- Gnome Control Center launch keybindings
-              ,((mod1Mask , xK_c), spawn "gnome-control-center")
+              ,((mod1Mask, xK_s), spawn "gnome-control-center")
               ,((mod1Mask .|. shiftMask, xK_b), spawn "gnome-control-center bluetooth")
-              ,((mod1Mask , xK_b), spawn "gnome-control-center power")
+              ,((mod1Mask, xK_b), spawn "gnome-control-center power")
               ,((mod1Mask .|. shiftMask, xK_w), spawn "gnome-control-center network")
 
               -- Keybindings to switch windows directionally
