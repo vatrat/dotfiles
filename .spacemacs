@@ -390,31 +390,41 @@ you should place your code here."
   (add-hook 'isearch-update-post-hook 'redraw-display)
   (setq tramp-default-method "ssh")
   (setq powerline-default-separator 'bar)
+
   ;; Org-mode settings
   (setq org-clock-idle-time 15)
   (setq org-loop-over-headlines-in-active-region 'start-level)
+
   ;; Mobileorg settings
   (setq org-directory "~/Dropbox/org")
   (setq org-mobile-inbox-for-pull "~/Dropbox/org/inbox.org")
   (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
   (setq org-mobile-files '("~/Dropbox/org/" "~/Dropbox/org/electronics/"))
   (setq org-mobile-files-exclude-regexp "\\.#") ;; .# -> \.# -> \\.#
+
   ;; Git-gutter settings
   (setq git-gutter:modified-sign "~")
   (setq git-gutter+:modified-sign "~")
+
   ;; (org-mobile-sync-mode 1)
+
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
+
   (global-visual-line-mode 1)
   (evil-briefcase-mode 1)
+
   ;; (shell-command "python ~/dropbox.py start 2>&1 >/dev/null &")
-  (start-process-shell-command "dropbox" nil "python ~/dropbox.py start 2>&1 >/dev/null &")
+  ;; (start-process-shell-command "dropbox" nil "python ~/dropbox.py start 2>&1 >/dev/null &")
   ;; PlatformIO Settings
+
   ;; Rj-mode settings
   (global-rj-mode 1)
+
   ;; Evil-snipe settings
   ;; (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
   (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
   (evil-snipe-override-mode +1)
+
   ;; Pin helm to melpa stable (spacemacs fixed this in develop, won't be pushed until next release)
   (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
   (push '(helm . "melpa-stable") package-pinned-packages)
