@@ -88,7 +88,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode)
+   dotspacemacs-additional-packages '((evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase")) org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -405,6 +405,7 @@ you should place your code here."
   ;; (org-mobile-sync-mode 1)
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
   (global-visual-line-mode 1)
+  (evil-briefcase-mode 1)
   ;; (shell-command "python ~/dropbox.py start 2>&1 >/dev/null &")
   (start-process-shell-command "dropbox" nil "python ~/dropbox.py start 2>&1 >/dev/null &")
   ;; PlatformIO Settings
