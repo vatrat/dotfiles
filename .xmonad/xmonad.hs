@@ -106,8 +106,18 @@ main = do
               ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
 
               -- Make backlight brightness keys function correctly
+              -- Coarse adjust
               , ((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 20")
               , ((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 20")
+              -- Medium adjust
+              , ((shiftMask, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 10")
+              , ((shiftMask, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 10")
+              -- Fine adjust
+              , ((mod1Mask , xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 5")
+              , ((mod1Mask , xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 5")
+              -- Very Fine adjust (lol)
+              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 1")
+              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 1")
             ]
 
 
