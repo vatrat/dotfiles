@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
    '(
      rj-mode
      csv
-     platformio
+     ;;platformio
      pandoc
      vimscript
      ;; sql
