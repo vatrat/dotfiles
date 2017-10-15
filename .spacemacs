@@ -454,7 +454,7 @@ you should place your code here."
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
 
   (global-visual-line-mode 1)
-  (evil-briefcase-mode 1)
+  ;; (evil-briefcase-mode 1)
 
   ;; (shell-command "python ~/dropbox.py start 2>&1 >/dev/null &")
   ;; (start-process-shell-command "dropbox" nil "python ~/dropbox.py start 2>&1 >/dev/null &")
