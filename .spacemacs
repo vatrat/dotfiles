@@ -53,10 +53,12 @@ This function should only modify configuration layer settings."
             shell-default-position 'bottom)
      spell-checking
      syntax-checking
+
      ;; Core Layers
      org
      spacemacs-org
      helm
+
      ;; Language-Specific
      python
      c-c++
@@ -67,6 +69,7 @@ This function should only modify configuration layer settings."
      react
      extra-langs
      emacs-lisp
+
      ;; Emacs as an OS
      ;; mu4e
      ;; rcirc
@@ -74,6 +77,7 @@ This function should only modify configuration layer settings."
      ;; search-engine
      ;; chrome
      ;; spotify
+
      ;; Git
      git
      github
@@ -88,7 +92,7 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '( org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode)
+   dotspacemacs-additional-packages '(org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
