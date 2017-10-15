@@ -48,8 +48,9 @@ URxvt.*scrollBar:            false
 
 URxvt.*depth:                32
 
-*background: #002b36
-*foreground: #839496
+!*background: #002b36
+*background: #2d2d2d
+*foreground: #cbd8ed
 !!*fading: 40
 *fadeColor: #002b36
 *cursorColor: #93a1a1
