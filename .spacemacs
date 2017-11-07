@@ -473,7 +473,8 @@ you should place your code here."
 
   (use-package magithub
     :after magit
-    :ensure t:config (magithub-feature-autoinject t))
+    :ensure t
+    :config (magithub-feature-autoinject t))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
