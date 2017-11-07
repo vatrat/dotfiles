@@ -92,7 +92,7 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode)
+   dotspacemacs-additional-packages '(org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode magithub)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -471,6 +471,10 @@ you should place your code here."
   ;; Pin helm to melpa stable (spacemacs fixed this in develop, won't be pushed until next release)
   ;; (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
   ;; (push '(helm . "melpa-stable") package-pinned-packages)
+
+  (use-package magithub
+    :after magit
+    :ensure t:config (magithub-feature-autoinject t))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
