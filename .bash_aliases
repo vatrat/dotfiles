@@ -1,3 +1,9 @@
+# This is used to allow aliases to be used with sudo.
+# Only the first word of a command is checked for an alias, so
+# making sudo into an alias of itself forces checking for more aliases.
+# https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
+alias sudo='sudo '
+
 alias ping.='ping 8.8.8.8'
 
 alias ls='ls --color'
