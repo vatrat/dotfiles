@@ -68,7 +68,8 @@ main = do
         } `additionalKeys`
             [
               ((mod1Mask, xK_z), spawn "slock")
-              ,((mod1Mask, xK_Print), spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
+              ,((mod1Mask, xK_Print),
+      spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
 
               -- Application launching keybindings
               ,((mod1Mask, xK_p), spawn "rofi -show run")
@@ -83,9 +84,12 @@ main = do
 
               -- Gnome Control Center launch keybindings
               ,((mod1Mask, xK_s), spawn "gnome-control-center")
-              ,((mod1Mask .|. shiftMask, xK_b), spawn "gnome-control-center bluetooth")
-              ,((mod1Mask, xK_b), spawn "gnome-control-center power")
-              ,((mod1Mask .|. shiftMask, xK_w), spawn "gnome-control-center network")
+              ,((mod1Mask .|. shiftMask, xK_b),
+                                        spawn "gnome-control-center bluetooth")
+              ,((mod1Mask, xK_b),
+                                            spawn "gnome-control-center power")
+              ,((mod1Mask .|. shiftMask, xK_w),
+                                          spawn "gnome-control-center network")
 
               -- Keybindings to switch windows directionally
               ,((mod1Mask, xK_l), windowGo R False)
@@ -112,15 +116,18 @@ main = do
               , ((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 20")
               , ((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 20")
               -- Medium adjust
-              , ((shiftMask, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 10")
-              , ((shiftMask, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 10")
+              , ((shiftMask, xF86XK_MonBrightnessUp ),
+                                                    spawn "xbacklight -inc 10")
+              , ((shiftMask, xF86XK_MonBrightnessDown ),
+                                                    spawn "xbacklight -dec 10")
               -- Fine adjust
-              , ((mod1Mask , xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 5")
-              , ((mod1Mask , xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 5")
+              , ((mod1Mask , xF86XK_MonBrightnessUp ),
+                                                      spawn "xbacklight -inc 5")
+              , ((mod1Mask , xF86XK_MonBrightnessDown ),
+                                                      spawn "xbacklight -dec 5")
               -- Very Fine adjust (lol)
-              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 1")
-              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 1")
+              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessUp ),
+                                                      spawn "xbacklight -inc 1")
+              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ),
+                                                      spawn "xbacklight -dec 1")
             ]
-
-
-
