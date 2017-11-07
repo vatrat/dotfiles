@@ -92,7 +92,7 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode)
+   dotspacemacs-additional-packages '(org-mobile-sync olivetti darkroom writeroom-mode writegood-mode spice-mode ob-spice wc-mode evil-goggles)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -467,6 +467,10 @@ you should place your code here."
   ;; (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
   (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
   (evil-snipe-override-mode +1)
+
+  ;; Evil-goggles setup
+  (evil-goggles-mode)
+  (evil-goggles-use-diff-faces)
 
   ;; Pin helm to melpa stable (spacemacs fixed this in develop, won't be pushed until next release)
   ;; (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
