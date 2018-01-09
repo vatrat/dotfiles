@@ -74,6 +74,7 @@ main = do
               -- Application launching keybindings
               ,((mod1Mask, xK_p), spawn "rofi -show run")
               ,((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run")
+              ,((mod1Mask, xK_d), spawn "dmenu_run")
 
               -- (Spac)Emacs launch keybindings
               ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -c -a ''")
