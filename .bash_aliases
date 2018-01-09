@@ -37,6 +37,9 @@ alias em='emacsclient -nw -a ""'
 alias emc='emacsclient -c -a ""'
 alias emn='emacsclient -a ""'
 
+alias mcom='picocom -b 115200 --imap lfcrlf -s msend'
+alias mcom0='picocom -b 115200 --imap lfcrlf -s msend /dev/ttyUSB0'
+
 emsu() {
        emacsclient "-nw" "-e" "'(find-file \"/sudo::$1\")'"
 }
