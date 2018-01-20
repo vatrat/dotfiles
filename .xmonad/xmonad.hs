@@ -22,8 +22,8 @@ import XMonad.Layout.ResizableTile
 -- mymanageHook :: [ManageHook]
 mymanageHook = composeAll
                    [ className =? "Gimp"        --> doFloat
-                   , resource  =? "stalonetray" --> doIgnore
-                   , resource  =? "xmobar"       --> doIgnore ]
+                   , resource  =? "stalonetray" --> doIgnore ]
+                   -- , resource  =? "xmobar"       --> doIgnore ]
             -- , manageDocks
 mylayoutHook = avoidStruts ( ResizableTall 1 (1.5/100) (3/5) [] ||| noBorders (Full) ||| noBorders (tabbed shrinkText def) ||| Accordion ||| Circle )
 -- myLayouts = toggleLayouts (noBorders Full) Tall ||| ResizableTall 1 (1.5/100) (3/5) [] ||| emptyBSP
@@ -53,8 +53,8 @@ main = do
     \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
-    xmonad $ def
-        { manageHook = manageDocks <+> manageHook def
+    xmonad $ docks def
+        { manageHook = manageDocks <+> mymanageHook --manageHook def
         , layoutHook = mylayoutHook
 --avoidStruts $ layoutHook def
         , logHook = dynamicLogWithPP xmobarPP
