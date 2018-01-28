@@ -8,10 +8,25 @@ Config { font = "7x13" --"-Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-
                         , Run Com "/home/vatrat/.xmonad/.xmobar_volume.sh" [] "volume" 2
                         , Run Com "uname" ["-n"] "" 36000
                         , Run StdinReader
-                        ]
+                        , Run Battery        [ "--template" , "Bat: <acstatus>"
+                             , "--Low"      , "20"        -- units: %
+                             , "--High"     , "70"        -- units: %
+                             , "--low"      , "red"
+                             , "--normal"   , "green"
+                             , "--high"     , "white"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% <fc=#0099ff><timeleft></fc>"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                             ] 50
+                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = " %StdinReader% | <fc=#0099ff>%uname%</fc> }{ %cpu% | %memory% | <fc=#0099ff>%volume%</fc> | %date% "
+        , template = " %StdinReader% | <fc=#0099ff>%uname%</fc> }{ %battery% | %cpu% | %memory% | <fc=#0099ff>%volume%</fc> | %date% "
   , hideOnStart = False
 	, lowerOnStart = True
 	, allDesktops = True
