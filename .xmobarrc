@@ -4,7 +4,7 @@ Config { font = "7x13" --"-Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-
         , position = Top
         , commands = [  Run Cpu ["-t","Cpu: <total>%","-L","3","-H","75","--normal","green","--high","red"] 10
                         , Run Memory ["-t","Mem: <usedratio>%", "-L","3","-H","70","--normal","green","--high","red"] 10
-                        , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                        , Run Date "%a %F %H:%M:%S" "date" 10
                         , Run Com "/home/vatrat/.xmonad/.xmobar_volume.sh" [] "volume" 2
                         , Run Com "uname" ["-n"] "" 36000
                         , Run StdinReader
