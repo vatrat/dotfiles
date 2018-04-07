@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
      ;; restclient
      ;; plantuml
      ;; graphviz
+     major-modes
      evil-snipe
      themes-megapack
      theming
