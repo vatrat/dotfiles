@@ -470,6 +470,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq org-want-todo-bindings 't)
   )
 
 (defun dotspacemacs/user-config ()
@@ -522,6 +523,7 @@ before packages are loaded."
   ;; Org-mode settings
   (setq org-clock-idle-time 15)
   (setq org-loop-over-headlines-in-active-region 'start-level)
+  ;; (setq evil-org-key-theme '(textobjects navigation additional insert todo))
 
   ;; Mobileorg settings
   (setq org-directory "~/Dropbox/org")
