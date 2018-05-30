@@ -46,7 +46,9 @@ then
 elif [ $(lsb_release -is) == "Arch" ]
 then
     source /usr/share/git/completion/git-prompt.sh
+    source /usr/share/git/git-prompt.sh
 fi
+source /usr/share/git/git-prompt.sh
 # PS1='[\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
 source ~/.ps1rc
 
