@@ -10,3 +10,5 @@
 	path = nvim
 [merge]
 	tool = vimdiff
+[github]
+	user = vatrat
