@@ -36,10 +36,10 @@ fi
 # if [ -z ${C9_USER+'a'} ];
 
 # then
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 if [ $(lsb_release -is) == "Fedora" ]
 then
     source /usr/share/git-core/contrib/completion/git-prompt.sh;
-    export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 elif [ $(lsb_release -is) == "Ubuntu" ]
 then
     source /etc/bash_completion.d/git-prompt
