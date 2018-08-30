@@ -17,6 +17,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.Accordion
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
+import XMonad.Hooks.EwmhDesktops(fullscreenEventHook,ewmh)
 -----
 
 -- mymanageHook :: [ManageHook]
@@ -53,7 +54,7 @@ main = do
     \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
-    xmonad $ docks def
+    xmonad $ ewmh $ docks def
         { manageHook = manageDocks <+> mymanageHook --manageHook def
         , layoutHook = mylayoutHook
 --avoidStruts $ layoutHook def
