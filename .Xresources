@@ -15,28 +15,56 @@
 #define nord14 #A3BE8C
 #define nord15 #B48EAD
 
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
-*fading: 35
-*fadeColor: nord3
+# *.foreground:   nord4
+# *.background:   nord0
+# *.cursorColor:  nord4
+# *fading: 35
+# *fadeColor: nord3
+# 
+# *.color0: nord1
+# *.color1: nord11
+# *.color2: nord14
+# *.color3: nord13
+# *.color4: nord9
+# *.color5: nord15
+# *.color6: nord8
+# *.color7: nord5
+# *.color8: nord3
+# *.color9: nord11
+# *.color10: nord14
+# *.color11: nord13
+# *.color12: nord9
+# *.color13: nord15
+# *.color14: nord7
+# *.color15: nord6
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+# For some reason, these define aliases weren't working on Gnome 3
+# with Wayland trying to open emacs. It woudln't start, and kept
+# saying "color nord4 not found" or something. So, I put them directly
+# where they go.
+
+*.foreground:  #D8DEE9
+*.background:   #2E3440
+*.cursorColor:  #D8DEE9
+*fading: 35
+*fadeColor: #4C566A
+
+*.color0: #3B4252
+*.color1: #BF616A
+*.color2: #A3BE8C
+*.color3: #EBCB8B
+*.color4: #81A1C1
+*.color5: #B48EAD
+*.color6: #88C0D0
+*.color7: #E5E9F0
+*.color8: #4C566A
+*.color9: #BF616A
+*.color10: #A3BE8C
+*.color11: #EBCB8B
+*.color12: #81A1C1
+*.color13: #B48EAD
+*.color14: #8FBCBB
+*.color15: #ECEFF4
 
 !!!!!!!!!!!!!!!!!!
 !! rxvt-unicode !!
