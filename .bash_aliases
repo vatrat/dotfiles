@@ -39,6 +39,8 @@ alias zyps='sudo zypper se'
 alias zypi='sudo zypper in'
 alias zypu='sudo zypper up'
 alias zypd='sudo zypper dup'
+alias zypr='sudo zypper ref'
+alias zypp='sudo zypper in -t pattern '
 
 #Network Manager
 alias nmw='nmcli d w'
