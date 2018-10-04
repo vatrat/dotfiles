@@ -80,7 +80,7 @@ void display_int_offset(int value, int offset){
       i++;
     }
     if (i < 8){
-      for (int j = 8; j > i; j--){
+      for (int j = 8; j > (i-1); j--){
         display_send_cmd(j, 0x0F); // clear all digits not written to,
                                    // needed to clear previous data
       }
@@ -111,7 +111,7 @@ void display_decimal(int value, int decimal_position){
       i++;
     }
     if (i < 8){
-      for (int j = 8; j > i; j--){
+      for (int j = 8; j > (i-1); j--){
         display_send_cmd(j, 0x0F);  // clear all digits not written to,
       }                             // needed to clear previous data
     }
