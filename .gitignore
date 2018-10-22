@@ -33,6 +33,7 @@
 !/.xmonad
 !/.xmonad/xmonad.hs
 !/.xmonad/.xmobar_volume.sh
+!/.xmonad/.xmonad_lock.sh
 !/.stalonetrayrc
 !/.xmobarrc
 

@@ -68,7 +68,7 @@ main = do
        , terminal = "gnome-terminal"
         } `additionalKeys`
             [
-              ((mod1Mask, xK_z), spawn "slock")
+              ((mod1Mask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh")
               ,((mod1Mask, xK_Print),
       spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
 
