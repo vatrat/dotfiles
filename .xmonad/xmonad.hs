@@ -36,10 +36,10 @@ main = do
     \ echo \"stalonetray started\" &&\
     \ export LANG=en_US.UTF-8 &&\
     \ echo \"LANG set\" &&\
+    \ xset b off &&\
+    \ echo \"turned off bell\" &&\
     \ xsetroot -cursor_name \"left_ptr&\" &&\
     \ echo \"cursor set\" &&\
-    \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
-    \ echo \"background set\" &&\
     \ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &&\
     \ echo \"keyboard layout set to US Extended\" &&\
     \ setxkbmap -option \"caps:escape\" &&\
@@ -52,6 +52,8 @@ main = do
     \ echo \"Alt keys are now both Alt_L\" &&\
     \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
     \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
+    \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
+    \ echo \"background set\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
     xmproc <- spawnPipe "xmobar"
     xmonad $ ewmh $ docks def
