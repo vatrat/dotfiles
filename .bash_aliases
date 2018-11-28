@@ -56,6 +56,9 @@ alias emn='emacsclient -a ""'
 alias mcom='picocom -b 115200 --imap lfcrlf -s msend'
 alias mcom0='picocom -b 115200 --imap lfcrlf -s msend /dev/ttyUSB0'
 
+#General
+alias open='xdg-open'
+
 emsu() {
        emacsclient "-nw" "-e" "'(find-file \"/sudo::$1\")'"
 }
