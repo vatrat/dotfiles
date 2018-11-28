@@ -99,3 +99,6 @@ codi() {
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export LANG=en_US.UTF-8
+
+
+. /home/vatrat/torch/install/bin/torch-activate
