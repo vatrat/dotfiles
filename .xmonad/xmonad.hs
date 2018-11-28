@@ -77,12 +77,13 @@ main = do
               -- Application launching keybindings
               ,((mod1Mask, xK_p), spawn "rofi -show run")
               ,((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run")
-              ,((mod1Mask, xK_d), spawn "dmenu_run")
+              ,((mod1Mask, xK_d), spawn "rofi -show run")
+              ,((mod1Mask, xK_f), spawn "rofi -show window")
 
               -- (Spac)Emacs launch keybindings
               ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -c -a ''")
 
-              ,((mod1Mask, xK_f), spawn "nautilus -w")
+              ,((mod1Mask .|. shiftMask, xK_f), spawn "nautilus -w")
               ,((mod1Mask, xK_c), spawn "google-chrome")
 
               -- Gnome Control Center launch keybindings
