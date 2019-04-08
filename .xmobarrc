@@ -25,10 +25,14 @@ Config { font = "7x13" --"-Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-
                                        , "-i"	, "<left>%"
                              ] 30
                         , Run DiskIO [("/", "<read> <write>")] [] 10
+                        , Run Wireless "wlan0" [ "-t", "<essid> <qualitybar>"
+                                                , "--low"      , "red"
+                                                , "--normal"   , "blue"
+                                                , "--high"     , "green" ] 10
                          ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = " %StdinReader% | %date% <fc=#0099ff>%uname%</fc> }{ %battery% | %cpu% %memory% io <fc=blue>%diskio%</fc> <fc=#0099ff>%volume%</fc> %time% "
+        , template = " %StdinReader% | %date% <fc=#0099ff>%uname%</fc> }{ %wlan0wi% | %battery% | %cpu% %memory% io <fc=blue>%diskio%</fc> <fc=#0099ff>%volume%</fc> %time% "
   , hideOnStart = False
 	, lowerOnStart = True
 	, allDesktops = True
