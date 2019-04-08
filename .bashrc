@@ -101,4 +101,7 @@ codi() {
 export LANG=en_US.UTF-8
 
 
-. /home/vatrat/torch/install/bin/torch-activate
+gdmauth=$XAUTHORITY
+unset XAUTHORITY
+export XAUTHORITY
+xauth merge "$gdmauth"
