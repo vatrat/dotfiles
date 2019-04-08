@@ -52,6 +52,10 @@ main = do
     \ echo \"Alt keys are now both Alt_L\" &&\
     \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
     \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
+    \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Natural Scrolling Enabled\" 0 &&\
+    \ echo \"Turned off natural scrolling\" &&\
+    \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Disable While Typing Enabled\" 0 &&\
+    \ echo \"Turned off disable trackpad while typing\" &&\
     \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
     \ echo \"background set\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
@@ -71,6 +75,8 @@ main = do
         } `additionalKeys`
             [
               ((mod1Mask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh")
+              ,((mod1Mask .|. shiftMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh && systemctl suspend")
+              ,((mod1Mask .|. controlMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh && systemctl hibernate")
               ,((mod1Mask, xK_Print),
       spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
 
@@ -81,19 +87,19 @@ main = do
               ,((mod1Mask, xK_f), spawn "rofi -show window")
 
               -- (Spac)Emacs launch keybindings
-              ,((mod1Mask .|. shiftMask, xK_e), spawn "emacsclient -c -a ''")
+              ,((mod1Mask, xK_s), spawn "emacsclient -c -a ''")
 
               ,((mod1Mask .|. shiftMask, xK_f), spawn "nautilus -w")
               ,((mod1Mask, xK_c), spawn "google-chrome")
 
               -- Gnome Control Center launch keybindings
-              ,((mod1Mask, xK_s), spawn "gnome-control-center")
-              ,((mod1Mask .|. shiftMask, xK_b),
-                                        spawn "gnome-control-center bluetooth")
-              ,((mod1Mask, xK_b),
-                                            spawn "gnome-control-center power")
-              ,((mod1Mask .|. shiftMask, xK_w),
-                                          spawn "gnome-control-center network")
+              -- ,((mod1Mask, xK_s), spawn "gnome-control-center")
+              -- ,((mod1Mask .|. shiftMask, xK_b),
+              --                           spawn "gnome-control-center bluetooth")
+              -- ,((mod1Mask, xK_b),
+              --                               spawn "gnome-control-center power")
+              -- ,((mod1Mask .|. shiftMask, xK_w),
+              --                             spawn "gnome-control-center network")
 
               -- Keybindings to switch windows directionally
               ,((mod1Mask, xK_l), windowGo R False)
@@ -117,21 +123,23 @@ main = do
 
               -- Make backlight brightness keys function correctly
               -- Coarse adjust
-              , ((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 20")
-              , ((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 20")
+              -- (Time is shorter because I use this when I want it brighter/dimmer NOW)
+              ,((mod1Mask , xF86XK_MonBrightnessUp ),
+                                                      spawn "xbacklight -inc 20 -time 50")
+              ,((mod1Mask , xF86XK_MonBrightnessDown ),
+                                                      spawn "xbacklight -dec 20 -time 50")
               -- Medium adjust
-              , ((shiftMask, xF86XK_MonBrightnessUp ),
-                                                    spawn "xbacklight -inc 10")
-              , ((shiftMask, xF86XK_MonBrightnessDown ),
-                                                    spawn "xbacklight -dec 10")
+              ,((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 10 -time 150")
+              ,((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 10 -time 150")
               -- Fine adjust
-              , ((mod1Mask , xF86XK_MonBrightnessUp ),
-                                                      spawn "xbacklight -inc 5")
-              , ((mod1Mask , xF86XK_MonBrightnessDown ),
-                                                      spawn "xbacklight -dec 5")
+              ,((shiftMask, xF86XK_MonBrightnessUp ),
+                                                    spawn "xbacklight -inc 5 -time 150")
+              ,((shiftMask, xF86XK_MonBrightnessDown ),
+                                                    spawn "xbacklight -dec 5 -time 150")
               -- Very Fine adjust (lol)
-              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessUp ),
-                                                      spawn "xbacklight -inc 1")
-              , ((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ),
-                                                      spawn "xbacklight -dec 1")
+              -- (Time is 0 because it's 1%, it should be immediate)
+              ,((mod1Mask .|. shiftMask, xF86XK_MonBrightnessUp ),
+                                                      spawn "xbacklight -inc 1 -time 0")
+              ,((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ),
+                                                      spawn "xbacklight -dec 1 -time 0")
             ]
