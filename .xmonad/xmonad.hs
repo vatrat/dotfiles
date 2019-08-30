@@ -50,15 +50,16 @@ main = do
     \ echo \"Menu key is now ISO_Level3_Shift\" &&\
     \ xmodmap -e \"keycode 108 = Alt_L\" &&\
     \ echo \"Alt keys are now both Alt_L\" &&\
-    \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
-    \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
-    \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Natural Scrolling Enabled\" 0 &&\
-    \ echo \"Turned off natural scrolling\" &&\
-    \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Disable While Typing Enabled\" 0 &&\
-    \ echo \"Turned off disable trackpad while typing\" &&\
     \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
     \ echo \"background set\" &&\
     \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
+    -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
+    -- \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
+    -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Natural Scrolling Enabled\" 0 &&\
+    -- \ echo \"Turned off natural scrolling\" &&\
+    -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Disable While Typing Enabled\" 0 &&\
+    -- \ echo \"Turned off disable trackpad while typing\" &&\
+
     xmproc <- spawnPipe "xmobar"
     xmonad $ ewmh $ docks def
         { manageHook = manageDocks <+> mymanageHook --manageHook def
