@@ -625,6 +625,9 @@ lines downward first."
 
   (spacemacs/set-leader-keys "ESC" 'keyboard-quit)
 
+  ;; remap super to meta
+  (setq x-super-keysym 'meta)
+
   (global-visual-line-mode 1)
   ;; (evil-briefcase-mode 1)
 
