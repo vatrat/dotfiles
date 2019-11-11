@@ -11,7 +11,7 @@ GLITCHICON=/home/vatrat/Pictures/absolutpropr.jpg
 
 
 scrot /tmp/lock.png
-convert /tmp/lock.png -filter point -resize 45% -resize 222% /tmp/lock.png
+convert /tmp/lock.png -filter point -resize 40% -resize 250% /tmp/lock.png
 convert /tmp/lock.png /tmp/lock.jpg
 file=/tmp/lock.jpg
 
@@ -28,10 +28,10 @@ steps=$(shuf -i 40-70 -n 1)
 for i in $(seq 1 $steps);do datamosh "$file"; done
 
 GLITCHICON=${GLITCHICON:=""}
-PARAM=(--bar-indicator --bar-position h --bar-direction 1 --redraw-thread -t "" \
-	--bar-step 50 --bar-width 250 --bar-base-width 50 --bar-max-height 100 --bar-periodic-step 50 \
-	--bar-color 00000077 --keyhlcolor 00666666 --ringvercolor cc87875f --wrongcolor ffff0000 \
-	--veriftext="" --wrongtext="" --noinputtext="" )
+PARAM=(--bar-indicator --bar-position h --bar-direction 2 --redraw-thread -t "" \
+	--bar-step 100 --bar-width 50 --bar-base-width 200 --bar-max-height 600 --bar-periodic-step 50 \
+	--bar-color 0F0F0F57 --keyhlcolor 00666656 --ringvercolor cc87875f --wrongcolor ffff0050 \
+	--veriftext="" --wrongtext="" --noinputtext="" --pass-screen-keys )
 
 LOCK=()
 while read LINE
