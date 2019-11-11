@@ -7,10 +7,11 @@
 # requires: i3lock-color, imagemagick, scrot
 
 
-GLITCHICON=/home/vatrat/Pictures/whatsize.jpg
+GLITCHICON=/home/vatrat/Pictures/absolutpropr.jpg
 
 
 scrot /tmp/lock.png
+convert /tmp/lock.png -filter point -resize 45% -resize 222% /tmp/lock.png
 convert /tmp/lock.png /tmp/lock.jpg
 file=/tmp/lock.jpg
 
@@ -52,7 +53,6 @@ done <<<"$(xrandr)"
 
 convert /tmp/lock.jpg /tmp/lock.png >/dev/null 2>&1
 rm /tmp/lock.jpg
-convert /tmp/lock.png -filter point -resize 20% -resize 500% /tmp/lock.png
 file=/tmp/lock.png
 
 convert "$file" "${LOCK[@]}" "$file"
