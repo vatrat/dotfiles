@@ -122,25 +122,49 @@ main = do
               ,((0, 0x1008FF13), spawn "amixer set Master 7%+")
               ,((0, 0x1008FF12), spawn "amixer -D pulse set Master toggle")
 
-              -- Make backlight brightness keys function correctly
+
+
+              -- xbacklight no longer works for some fucking reason, so let's use
+              -- brightnessctl
+
+              -- -- Make backlight brightness keys function correctly
+              -- -- Coarse adjust
+              -- -- (Time is shorter because I use this when I want it brighter/dimmer NOW)
+              -- ,((mod1Mask , xF86XK_MonBrightnessUp ),
+              --                                         spawn "xbacklight -inc 20 -time 50")
+              -- ,((mod1Mask , xF86XK_MonBrightnessDown ),
+              --                                         spawn "xbacklight -dec 20 -time 50")
+              -- -- Medium adjust
+              -- ,((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 10 -time 150")
+              -- ,((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 10 -time 150")
+              -- -- Fine adjust
+              -- ,((shiftMask, xF86XK_MonBrightnessUp ),
+              --                                       spawn "xbacklight -inc 5 -time 150")
+              -- ,((shiftMask, xF86XK_MonBrightnessDown ),
+              --                                       spawn "xbacklight -dec 5 -time 150")
+              -- -- Very Fine adjust (lol)
+              -- -- (Time is 0 because it's 1%, it should be immediate)
+              -- ,((mod1Mask .|. shiftMask, xF86XK_MonBrightnessUp ),
+              --                                         spawn "xbacklight -inc 1 -time 0")
+              -- ,((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ),
+              --                                         spawn "xbacklight -dec 1 -time 0")
               -- Coarse adjust
-              -- (Time is shorter because I use this when I want it brighter/dimmer NOW)
+
               ,((mod1Mask , xF86XK_MonBrightnessUp ),
-                                                      spawn "xbacklight -inc 20 -time 50")
+                                                      spawn "brightnessctl set +20%")
               ,((mod1Mask , xF86XK_MonBrightnessDown ),
-                                                      spawn "xbacklight -dec 20 -time 50")
+                                                      spawn "brightnessctl set 20%-")
               -- Medium adjust
-              ,((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 10 -time 150")
-              ,((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 10 -time 150")
+              ,((0, xF86XK_MonBrightnessUp ), spawn "brightnessctl set +10%")
+              ,((0, xF86XK_MonBrightnessDown ), spawn "brightnessctl set 10%-")
               -- Fine adjust
               ,((shiftMask, xF86XK_MonBrightnessUp ),
-                                                    spawn "xbacklight -inc 5 -time 150")
+                                                    spawn "brightnessctl set +5%")
               ,((shiftMask, xF86XK_MonBrightnessDown ),
-                                                    spawn "xbacklight -dec 5 -time 150")
+                                                    spawn "brightnessctl set 5%-")
               -- Very Fine adjust (lol)
-              -- (Time is 0 because it's 1%, it should be immediate)
               ,((mod1Mask .|. shiftMask, xF86XK_MonBrightnessUp ),
-                                                      spawn "xbacklight -inc 1 -time 0")
+                                                      spawn "brightnessctl set +1%")
               ,((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ),
-                                                      spawn "xbacklight -dec 1 -time 0")
+                                                      spawn "brightnessctl set 1%-")
             ]
