@@ -32,17 +32,47 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(html
-     clojure
+   '(
+     ;; ----------------------------------------------------------------
+     ;; Example of useful layers you may want to use right away.
+     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
+     ;; `M-m f e R' (Emacs style) to install them.
+     ;; ----------------------------------------------------------------
+     (auto-completion :variables
+                      auto-completion-enable-help-tooltip t)
+     better-defaults
+     emacs-lisp
+     git
+     helm
+     ;; lsp
+     markdown
+     multiple-cursors
+     org
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
+     spell-checking
+     syntax-checking
+     version-control
+     treemacs
+
+     ;; ----------------------------------------------------------------
+     ;; Custom layers
+     ;; ----------------------------------------------------------------
+
+     ;; ----------------------------------------------------------------
+     ;; unsorted
+     ;; ----------------------------------------------------------------
+     html
      rj-mode
-     ;; csv
-     ;; platformio
+     csv
+     platformio
      pandoc
-     ;; vimscript
-     ;; sql
-     ;; restclient
-     ;; plantuml
-     ;; graphviz
+     vimscript
+     sql
+     restclient
+     plantuml
+     graphviz
      major-modes
      evil-snipe
      themes-megapack
@@ -50,54 +80,75 @@ This function should only modify configuration layer settings."
      floobits
      command-log
      colors
-     auto-completion
-     better-defaults
-     markdown
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
 
+     ;; ----------------------------------------------------------------
      ;; Core Layers
-     org
+     ;; ----------------------------------------------------------------
      spacemacs-org
-     helm
+     ;; smex
+     imenu-list
+     evil-commentary
+     helpful
+     prodigy
 
+     ;; ----------------------------------------------------------------
+     ;; Programming
+     ;; ----------------------------------------------------------------
+     dash
+     debug
+     cscope
+     dap
+     dash
+     imenu-list
+
+     ;; ----------------------------------------------------------------
      ;; Language-Specific
+     ;; ----------------------------------------------------------------
      forth
      python
      c-c++
-     ;; asm
+     asm
      haskell
-     ;; html
-     ;; javascript
-     ;; react
-     emacs-lisp
+     html
+     javascript
+     react
+     clojure
+     scheme
 
+     ;; ----------------------------------------------------------------
      ;; Emacs as an OS
+     ;; ----------------------------------------------------------------
      ;; mu4e
      ;; rcirc
      erc
      latex
      pdf
+     bm
+     cmake
+     octave
+     epub
 
+     ;; ----------------------------------------------------------------
      ;; Integration
-     ;; search-engine
+     ;; ----------------------------------------------------------------
+     search-engine
      ;; chrome
      ;; spotify
 
+     ;; ----------------------------------------------------------------
      ;; Git
-     git
+     ;; ----------------------------------------------------------------
      github
-     version-control
 
+     ;; ----------------------------------------------------------------
      ;; Novelty
-     selectric
+     ;; ----------------------------------------------------------------
+     ;; selectric
      ;; xkcd
      ;; games
      emoji
      speed-reading
+     command-log
      )
 
    ;; List of additional packages that will be installed without being
