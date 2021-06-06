@@ -82,7 +82,7 @@ main = do
       spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
 
               -- Application launching keybindings
-              ,((mod1Mask, xK_p), spawn "rofi -show run")
+              ,((mod1Mask, xK_p), spawn "rofi -show drun -show-icons")
               ,((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run")
               ,((mod1Mask, xK_d), spawn "rofi -show run")
               ,((mod1Mask, xK_f), spawn "rofi -show window")
