@@ -195,9 +195,9 @@ It should only modify the values of Spacemacs settings."
    ;; portable dumper in the cache directory under dumps sub-directory.
    ;; To load it when starting Emacs add the parameter `--dump-file'
    ;; when invoking Emacs 27.1 executable on the command line, for instance:
-   ;;   ./emacs --dump-file=~/.emacs.d/.cache/dumps/spacemacs.pdmp
-   ;; (default spacemacs.pdmp)
-   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
+   ;;   ./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp
+   ;; (default (format "spacemacs-%s.pdmp" emacs-version))
+   dotspacemacs-emacs-dumper-dump-file (format "spacemacs-%s.pdmp" emacs-version)
 
    ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -217,9 +217,18 @@ It should only modify the values of Spacemacs settings."
    ;; (default '(100000000 0.1))
    dotspacemacs-gc-cons '(100000000 0.1)
 
+   ;; Set `read-process-output-max' when startup finishes.
+   ;; This defines how much data is read from a foreign process.
+   ;; Setting this >= 1 MB should increase performance for lsp servers
+   ;; in emacs 27.
+   ;; (default (* 1024 1024))
+   dotspacemacs-read-process-output-max (* 1024 1024)
+
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
-   ;; latest version of packages from MELPA. (default nil)
+   ;; latest version of packages from MELPA. Spacelpa is currently in
+   ;; experimental state please use only for testing purposes.
+   ;; (default nil)
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
@@ -245,6 +254,11 @@ It should only modify the values of Spacemacs settings."
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
 
+   ;; If non-nil show the version string in the Spacemacs buffer. It will
+   ;; appear as (spacemacs version)@(emacs version)
+   ;; (default t)
+   dotspacemacs-startup-buffer-show-version t
+
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -256,14 +270,24 @@ It should only modify the values of Spacemacs settings."
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
-   ;; `recents' `bookmarks' `projects' `agenda' `todos'.
+   ;; `recents' `recents-by-project' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
+   ;; The exceptional case is `recents-by-project', where list-type must be a
+   ;; pair of numbers, e.g. `(recents-by-project . (7 .  5))', where the first
+   ;; number is the project limit and the second the limit on the recent files
+   ;; within a project.
    dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
+
+   ;; Show numbers before the startup list lines. (default t)
+   dotspacemacs-show-startup-list-numbers t
+
+   ;; The minimum delay in seconds between number key presses. (default 0.4)
+   dotspacemacs-startup-buffer-multi-digit-delay 0.4
 
    ;; Default major mode for a new empty buffer. Possible values are mode
    ;; names such as `text-mode'; and `nil' to use Fundamental mode.
@@ -272,6 +296,14 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
+
+   ;; If non-nil, *scratch* buffer will be persistent. Things you write down in
+   ;; *scratch* buffer will be saved and restored automatically.
+   dotspacemacs-scratch-buffer-persistent t
+
+   ;; If non-nil, `kill-buffer' on *scratch* buffer
+   ;; will bury it instead of killing.
+   dotspacemacs-scratch-buffer-unkillable t
 
    ;; Initial message in the scratch buffer, such as "Welcome to Spacemacs!"
    ;; (default nil)
@@ -296,9 +328,11 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
 
-   ;; Default font or prioritized list of fonts.
+   ;; Default font or prioritized list of fonts. The `:size' can be specified as
+   ;; a non-negative integer (pixel size), or a floating-point (point size).
+   ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 10.0
                                :weight normal
                                :width normal)
 
@@ -321,8 +355,10 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-major-mode-leader-key ","
 
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m")
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   ;; (default "C-M-m" for terminal mode, "<M-return>" for GUI mode).
+   ;; Thus M-RET should work as leader key in both GUI and terminal modes.
+   ;; C-M-m also should work in terminal mode, but not in GUI mode.
+   dotspacemacs-major-mode-emacs-leader-key (if window-system "<M-return>" "C-M-m")
 
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
@@ -341,7 +377,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil then the last auto saved layouts are resumed automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
 
    ;; If non-nil, auto-generate layout name when creating new layouts. Only has
    ;; effect when using the "jump to layout by number" commands. (default nil)
@@ -447,6 +483,10 @@ It should only modify the values of Spacemacs settings."
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
 
+   ;; Show the scroll bar while scrolling. The auto hide time can be configured
+   ;; by setting this variable to a number. (default t)
+   dotspacemacs-scroll-bar-while-scrolling t
+
    ;; Control line numbers activation.
    ;; If set to `t', `relative' or `visual' then line numbers are enabled in all
    ;; `prog-mode' and `text-mode' derivatives. If set to `relative', line
@@ -467,13 +507,18 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-line-numbers 'relative
 
-   ;; Code folding method. Possible values are `evil' and `origami'.
+   ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
 
-   ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
+   ;; If non-nil and `dotspacemacs-activate-smartparens-mode' is also non-nil,
+   ;; `smartparens-strict-mode' will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
+
+   ;; If non-nil smartparens-mode will be enabled in programming modes.
+   ;; (default t)
+   dotspacemacs-activate-smartparens-mode nil
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc...
@@ -521,12 +566,18 @@ It should only modify the values of Spacemacs settings."
    ;; %n - Narrow if appropriate
    ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
    ;; %Z - like %z, but including the end-of-line format
+   ;; If nil then Spacemacs uses default `frame-title-format' to avoid
+   ;; performance issues, instead of calculating the frame title by
+   ;; `spacemacs/title-prepare' all the time.
    ;; (default "%I@%S")
    dotspacemacs-frame-title-format "%I@%S"
 
    ;; Format specification for setting the icon title format
    ;; (default nil - same as frame-title-format)
    dotspacemacs-icon-title-format nil
+
+   ;; Show trailing whitespace (default t)
+   dotspacemacs-show-trailing-whitespace t
 
    ;; Delete whitespace while saving buffer. Possible values are `all'
    ;; to aggressively delete empty line and long sequences of whitespace,
@@ -535,6 +586,23 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
 
+   ;; If non nil activate `clean-aindent-mode' which tries to correct
+   ;; virtual indentation of simple modes. This can interfer with mode specific
+   ;; indent handling like has been reported for `go-mode'.
+   ;; If it does deactivate it here.
+   ;; (default t)
+   dotspacemacs-use-clean-aindent-mode t
+
+   ;; Accept SPC as y for prompts if non nil. (default nil)
+   dotspacemacs-use-SPC-as-y nil
+
+   ;; If non-nil shift your number row to match the entered keyboard layout
+   ;; (only in insert state). Currently supported keyboard layouts are:
+   ;; `qwerty-us', `qwertz-de' and `querty-ca-fr'.
+   ;; New layouts can be added in `spacemacs-editing' layer.
+   ;; (default nil)
+   dotspacemacs-swap-number-row nil
+
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
    dotspacemacs-zone-out-when-idle nil
@@ -542,7 +610,14 @@ It should only modify the values of Spacemacs settings."
    ;; Run `spacemacs/prettify-org-buffer' when
    ;; visiting README.org files of Spacemacs.
    ;; (default nil)
-   dotspacemacs-pretty-docs nil))
+   dotspacemacs-pretty-docs nil
+
+   ;; If nil the home buffer shows the full path of agenda items
+   ;; and todos. If non nil only the file name is shown.
+   dotspacemacs-home-shorten-agenda-source nil
+
+   ;; If non-nil then byte-compile some of Spacemacs files.
+   dotspacemacs-byte-compile nil))
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
@@ -565,8 +640,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
-dump."
-  )
+dump.")
+
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -590,7 +665,7 @@ before packages are loaded."
   ;; vim's insert mode is like emacs' regular operation).
   ;; Because of this, when you try to go to the end of line `$'
   ;; the cursor is actually at a position AFTER the last character.
-  ;; Normally, this would be changed by evil-mode-beyond-eol.
+  ;; Normally, this would be changed by evil-move-beyond-eol.
   ;; Normally.
   ;; However, the way this is accomplished is by moving to the last
   ;; (by emacs' definiton) cursor position (which is actually after
@@ -656,8 +731,8 @@ lines downward first."
   (setq powerline-default-separator 'bar)
 
   ;; Org-mode settings
-  (setq org-directory "/home/vatrat/webdav/org-files/")
-  (setq org-agenda-files '("/home/vatrat/webdav/org-files/"))
+  (setq org-directory "/davs:mckinnonryall%40gmail.com@webdav.opendrive.org:/org-files/")
+  (setq org-agenda-files '("/davs:mckinnonryall%40gmail.com@webdav.opendrive.org:/org-files/"))
   (setq org-clock-idle-time 15)
   (setq org-loop-over-headlines-in-active-region 'start-level)
   ;; (setq evil-org-key-theme '(textobjects navigation additional insert todo))
@@ -717,7 +792,9 @@ lines downward first."
 
   (setq eyebrowse-new-workspace 't)
 
-  (spacemacs/toggle-smartparens-globally-off)
+;; Defeat smartparens-mode in evil mode
+(add-hook 'evil-insert-state-entry-hook 'turn-off-smartparens-mode)
+(add-hook 'evil-insert-state-exit-hook 'turn-on-smartparens-mode)  (spacemacs/toggle-smartparens-globally-off)
 
   (eval-after-load "org-present"
     '(progn
@@ -726,18 +803,143 @@ lines downward first."
                    (org-present-big)
                    (org-display-inline-images)
                    (org-present-hide-cursor)
-                   (org-present-read-only)
-                   (linum-relative-toggle)))
+                   (org-present-read-only)))
        (add-hook 'org-present-mode-quit-hook
                  (lambda ()
                    (org-present-small)
                    (org-remove-inline-images)
                    (org-present-show-cursor)
-                   (org-present-read-write)
-                   (linum-relative-toggle)))))
+                   (org-present-read-write)))))
 
 
   (setq scheme-program-name "guile")
+
+
+(defun find-files-in-buffer (&optional include-auto-save separator)
+  "Find files listed in current buffer.
+Find auto save files only if INCLUDE-AUTO-SAVE is non-nil.
+SEPARATOR is used as regexp to split file names.
+It defaults to the newline character.
+
+In interactive calls INCLUDE-AUTO-SAVE is the raw prefix-argument \\[universal-argument]."
+  (interactive "P")
+  (unless (stringp separator)
+    (setq separator "\n"))
+  (let ((file-list (split-string (buffer-string) separator t)))
+    (unless include-auto-save
+      (setq file-list (cl-remove-if
+                       (lambda (file)
+                         (auto-save-file-name-p (file-name-nondirectory file)))
+                       file-list)))
+    (cl-loop for file in file-list
+             when (file-readable-p file)
+             do (find-file file))))
+
+(defun restart-session ()
+  "Using the auto-save-list file from a previous Emacs session,
+this command will reload the files from that session and/or
+recover that file if an auto-save file exists for it.
+This command first displays a Dired buffer showing you the
+previous sessions that you can restart.
+To choose one, move point to the proper line and then type C-c C-c."
+  (interactive)
+  (let ((ls-lisp-support-shell-wildcards t))
+    (dired (concat auto-save-list-file-prefix "*")))
+  (goto-char (point-min))
+  (or (looking-at "Move to the session you want to restart,")
+      (let ((inhibit-read-only t))
+        (insert "Move to the session you want to restart,\n"
+                "then type C-c C-c to select it.\n\n"
+                "You can also delete some of these files;\n"
+                "type d on a line to mark that file for deletion.\n\n")))
+  (use-local-map (nconc (make-sparse-keymap) (current-local-map)))
+  (define-key (current-local-map) "\C-c\C-c" 'restart-session-finish))
+
+(defun restart-session-finish ()
+  "Choose one saved session to restart.
+This command is used in the special Dired buffer created by
+\\[restart-session]."
+  (interactive)
+  ;; Get the name of the session file to reload/recover from.
+  (let ((file (dired-get-filename))
+        files-to-recover
+        files-to-reload
+        (buffer (get-buffer-create " *restart-session*")))
+    (dired-do-flagged-delete t)
+    (unwind-protect
+        (save-excursion
+          ;; Read in the auto-save-list file.
+          (set-buffer buffer)
+          (erase-buffer)
+          (insert-file-contents file)
+          ;; Loop thru the text of that file
+          ;; and get out the names of the files to reload/recover.
+          (while (not (eobp))
+            (let (thisfile autofile)
+              (if (eolp)
+                  ;; This is a pair of lines for a non-file-visiting buffer.
+                  ;; Get the auto-save file name and manufacture
+                  ;; a "visited file name" from that.
+                  (progn
+                    (forward-line 1)
+                    (setq autofile
+                          (buffer-substring-no-properties
+                           (point)
+                           (save-excursion
+                             (end-of-line)
+                             (point))))
+                    (setq thisfile
+                          (expand-file-name
+                           (substring
+                            (file-name-nondirectory autofile)
+                            1 -1)
+                           (file-name-directory autofile)))
+                    (forward-line 1))
+                ;; This pair of lines is a file-visiting
+                ;; buffer. Use the visited file name.
+                (progn
+                  (setq thisfile
+                        (buffer-substring-no-properties
+                         (point) (progn (end-of-line) (point))))
+                  (forward-line 1)
+                  (setq autofile
+                        (buffer-substring-no-properties
+                         (point) (progn (end-of-line) (point))))
+                  (forward-line 1)))
+              ;; Ignore a file if its auto-save file does not exist now.
+              (if (file-exists-p autofile)
+                  (setq files-to-recover (cons thisfile files-to-recover))
+                (if (file-exists-p thisfile)
+                    (setq files-to-reload (cons thisfile files-to-reload))))))
+          (setq files-to-recover (nreverse files-to-recover))
+          (setq files-to-reload (nreverse files-to-reload))
+          ;; The file contains a pair of line for each auto-saved buffer.
+          ;; The first line of the pair contains the visited file name
+          ;; or is empty if the buffer was not visiting a file.
+          ;; The second line is the auto-save file name.
+          (if files-to-recover
+              (map-y-or-n-p  "Recover %s? "
+                             (lambda (file)
+                               (condition-case nil
+                                   (save-excursion (recover-file file))
+                                 (error
+                                  "Failed to recover `%s'" file)))
+                             files-to-recover
+                             '("file" "files" "recover")))
+          (if files-to-reload
+              (map-y-or-n-p  "Reload %s? "
+                             (lambda (file)
+                               (condition-case nil
+                                   (save-excursion (find-file-noselect file))
+                                 (error
+                                  "Failed to find `%s'" file)))
+                             files-to-reload
+                             '("file" "files" "reload")))
+          (if (not (or files-to-recover files-to-reload))
+              (message
+               "No files could be found or recovered from this session."))
+          (kill-buffer buffer)
+          (list-buffers)))))
 
 )
 
@@ -752,18 +954,40 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(battery-load-critical 7)
+ '(battery-load-low 15)
+ '(battery-upower-device "battery_BAT0 battery_BAT1")
+ '(calculator-2s-complement t)
+ '(calculator-bind-escape t)
  '(delete-selection-mode nil)
+ '(desktop-after-read-hook (quote (list-buffers)))
+ '(desktop-save-mode t)
+ '(display-battery-mode t)
+ '(display-raw-bytes-as-hex t)
+ '(evil-display-shell-error-in-message nil)
+ '(evil-move-beyond-eol nil)
+ '(evil-snipe-auto-scroll t)
+ '(evil-snipe-scope (quote whole-buffer))
+ '(evil-snipe-tab-increment t)
+ '(evil-undo-system (quote undo-tree))
  '(evil-want-Y-yank-to-eol t)
+ '(gud-tooltip-mode t)
+ '(helm-ff-lynx-style-map t)
+ '(org-agenda-files nil)
+ '(org-modules (quote (ol-bbdb ol-docview org-habit ol-info)))
  '(package-selected-packages
    (quote
-    (pdf-tools tablist company-reftex company-auctex auctex-latexmk auctex let-alist spray web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js less-css-mode impatient-mode simple-httpd helm-css-scss haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path floobits highlight packages emojify emoji-cheat-sheet-plus company-emoji erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks selectric-mode zenburn-theme zen-and-art-theme yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode wolfram-mode winum white-sand-theme which-key volatile-highlights vi-tilde-fringe vala-snippets vala-mode uuidgen use-package unfill underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme treemacs-projectile treemacs-evil toxi-theme toc-org thrift tao-theme tangotango-theme tango-plus-theme tango-2-theme symon sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme string-inflection stan-mode spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle shell-pop seti-theme scad-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme qml-mode pyvenv pytest pyenv-mode py-isort purple-haze-theme professional-theme popwin planet-theme pkgbuild-mode pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox pandoc-mode ox-pandoc overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mobile-sync org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme nameless mwim mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme matlab-mode material-theme markdown-toc majapahit-theme magithub magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum logcat live-py-mode linum-relative link-hint light-soap-theme kivy-mode kaolin-themes jbeans-theme jazz-theme ir-black-theme inkpot-theme indent-guide importmagic hungry-delete htmlize hoon-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme haskell-snippets gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate google-c-style golden-ratio gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md gandalf-theme fuzzy forth-mode forge font-lock+ flyspell-correct-helm flycheck-rtags flycheck-pos-tip flycheck-haskell flx-ido flatui-theme flatland-theme fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu espresso-theme eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme disaster diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme counsel-projectile company-statistics company-rtags company-ghci company-cabal company-c-headers company-anaconda command-log-mode column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode cmm-mode clues-theme clojure-snippets clean-aindent-mode clang-format cider-eval-sexp-fu cider cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-link ace-jump-helm-line ac-ispell)))
- '(scheme-program-name "guile" t))
+    (nlinum zeal-at-point ts helm-dash dash-docs helm-ctest company-quickhelp cmake-mode cmake-ide levenshtein bm pdf-tools tablist company-reftex company-auctex auctex-latexmk auctex let-alist spray web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js less-css-mode impatient-mode simple-httpd helm-css-scss haml-mode emmet-mode counsel-css company-web web-completion-data add-node-modules-path floobits highlight packages emojify emoji-cheat-sheet-plus company-emoji erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks selectric-mode zenburn-theme zen-and-art-theme yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode wolfram-mode winum white-sand-theme which-key volatile-highlights vi-tilde-fringe vala-snippets vala-mode uuidgen use-package unfill underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme treemacs-projectile treemacs-evil toxi-theme toc-org thrift tao-theme tangotango-theme tango-plus-theme tango-2-theme symon sunny-day-theme sublimity sublime-themes subatomic256-theme subatomic-theme string-inflection stan-mode spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle shell-pop seti-theme scad-mode reverse-theme restart-emacs rebecca-theme rainbow-mode rainbow-identifiers rainbow-delimiters railscasts-theme qml-mode pyvenv pytest pyenv-mode py-isort purple-haze-theme professional-theme popwin planet-theme pkgbuild-mode pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el password-generator paradox pandoc-mode ox-pandoc overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mobile-sync org-mime org-download org-bullets org-brain open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme nameless mwim mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme matlab-mode material-theme markdown-toc majapahit-theme magithub magit-svn magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum logcat live-py-mode linum-relative link-hint light-soap-theme kivy-mode kaolin-themes jbeans-theme jazz-theme ir-black-theme inkpot-theme indent-guide importmagic hungry-delete htmlize hoon-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme haskell-snippets gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate google-c-style golden-ratio gnuplot gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md gandalf-theme fuzzy forth-mode forge font-lock+ flyspell-correct-helm flycheck-rtags flycheck-pos-tip flycheck-haskell flx-ido flatui-theme flatland-theme fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu espresso-theme eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline django-theme disaster diminish diff-hl define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme counsel-projectile company-statistics company-rtags company-ghci company-cabal company-c-headers company-anaconda command-log-mode column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode cmm-mode clues-theme clojure-snippets clean-aindent-mode clang-format cider-eval-sexp-fu cider cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme browse-at-remote birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-link ace-jump-helm-line ac-ispell)))
+ '(ring-bell-function (quote ignore))
+ '(scheme-program-name "guile" t)
+ '(text-quoting-style (quote straight))
+ '(tooltip-delay 0.4)
+ '(tooltip-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
  '(evil-goggles-change-face ((t (:inherit diff-removed))))
  '(evil-goggles-delete-face ((t (:inherit diff-removed))))
  '(evil-goggles-paste-face ((t (:inherit diff-added))))
