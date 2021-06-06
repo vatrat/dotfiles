@@ -94,16 +94,12 @@ zypF() {
 
 
 #General
-alias open='xdg-open'
 
 emsu() {
        emacsclient "-nw" "-e" "'(find-file \"/sudo::$1\")'"
 }
 
 
-mkcd() {
-       mkdir $1 && cd $1
-}
 
 blight() {
          sudo su -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
