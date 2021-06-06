@@ -76,8 +76,8 @@ main = do
         } `additionalKeys`
             [
               ((mod1Mask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh")
-              ,((mod1Mask .|. shiftMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh && systemctl suspend")
-              ,((mod1Mask .|. controlMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh && systemctl hibernate")
+              ,((mod1Mask .|. shiftMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh & systemctl suspend")
+              ,((mod1Mask .|. controlMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh & systemctl hibernate")
               ,((mod1Mask, xK_Print),
       spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
 
