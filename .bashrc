@@ -33,10 +33,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# if [ -z ${C9_USER+'a'} ];
-
-# then
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+
 if [ $(lsb_release -is) == "Fedora" ]
 then
     source /usr/share/git-core/contrib/completion/git-prompt.sh;
@@ -47,13 +45,16 @@ elif [ $(lsb_release -is) == "Arch" ]
 then
     source /usr/share/git/completion/git-prompt.sh
     source /usr/share/git/git-prompt.sh
+elif [ $(lsb_release -is) == "openSUSE" ]
+then
+     source /etc/bash_completion.d/git-prompt.sh
 fi
-source /usr/share/git/git-prompt.sh
+# source /usr/share/git/git-prompt.sh
+
+# I don't honestly remember what this was for
 # PS1='[\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
 source ~/.ps1rc
 
-# else 
-#     PS1='[\[\033[01;32m\]${C9_USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
 cd ~
 unset TMUX
 
@@ -81,21 +82,6 @@ export rvm_silence_path_mismatch_check_flag=1
 
 
 export TERM=screen-256color
-
-# Codi
-# Usage: codi [filetype] [filename]
-codi() {
-  local syntax="${1:-python}"
-  shift
-  vim -c \
-    "let g:startify_disable_at_vimenter = 1 |\
-    set bt=nofile ls=0 noru nonu nornu |\
-    hi ColorColumn ctermbg=NONE |\
-    hi VertSplit ctermbg=NONE |\
-    hi NonText ctermfg=0 |\
-    Codi $syntax" "$@"
-}
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export LANG=en_US.UTF-8
