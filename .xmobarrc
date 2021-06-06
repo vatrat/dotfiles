@@ -1,4 +1,4 @@
-Config { font = "7x13" --"-Misc-Fixed-Medium-R-Normal--7-70-75-75-C-50-ISO10646-1"
+Config { font = "xft:Source Code Pro:size=10:medium:antialias=true"
         , bgColor = "#000000"
         , fgColor= "gray"
         , position = Top
