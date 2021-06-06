@@ -54,6 +54,12 @@ alias nmd='nmcli d'
 alias nm0='nmcli r a off'
 alias nm1='nmcli r a on'
 alias nmr='nmcli r a off && sleep 1 && nmcli r a on && sleep 1 && watch -n 0.7 nmcli d w'
+mac() {
+      sudo nmcli connection modify AU_WiFi wifi.cloned-mac-address $1 &&
+      nmcli connection down AU_WiFi &&
+      nmcli connection up AU_WiFi &&
+      echo "mac address is now " && echo $1;
+}
 
 #Emacs
 alias em='emacsclient -nw -a ""'
@@ -63,6 +69,29 @@ alias emn='emacsclient -a ""'
 #Picocom
 alias mcom='picocom -b 115200 --imap lfcrlf -s msend'
 alias mcom0='picocom -b 115200 --imap lfcrlf -s msend /dev/ttyUSB0'
+
+#fzf
+alias fl='cd "$(locate / | fzf --ansi)"'
+alias fd='cd "$(locate "$(pwd)" | fzf --ansi)"'
+# alias f='"$(locate / | fzf --ansi)"'
+# this function runs whatever comes after with an input from an indexed fzf search
+f() {
+    "$1" "$(locate / | fzf --ansi --header='$1')"
+}
+F() {
+    "$2" "$(locate '$1' | fzf --ansi)"
+}
+zypI() {
+       sudo zypi "$(echo 'Loading...'; zyps $1 | fzf --ansi -m --prompt='package> ' --header='zypper install')"
+}
+zypf() {
+       # sudo zypi "$(zyps $1 | fzf --header-lines=3 --tac --ansi --delimiter='|' -m --prompt='package> ' --header='zypper search $1' -q $1)"
+       zyps $1 | fzf --header-lines=3 --tac --ansi --delimiter='|' -m --prompt='package> ' --header='zypper search $1' -q $1
+}
+zypF() {
+       sudo zypi "$(zyps $1 | fzf --ansi -m --prompt='package> ' --header='zypper search $2' -q $2)"
+}
+
 
 #General
 alias open='xdg-open'
@@ -78,4 +107,19 @@ mkcd() {
 
 blight() {
          sudo su -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
+}
+
+function fuck () {
+    TF_PYTHONIOENCODING=$PYTHONIOENCODING;
+    export TF_SHELL=bash;
+    export TF_ALIAS=fuck;
+    export TF_SHELL_ALIASES=$(alias);
+    export TF_HISTORY=$(fc -ln -10);
+    export PYTHONIOENCODING=utf-8;
+    TF_CMD=$(
+        thefuck THEFUCK_ARGUMENT_PLACEHOLDER "$@"
+    ) && eval "$TF_CMD";
+    unset TF_HISTORY;
+    export PYTHONIOENCODING=$TF_PYTHONIOENCODING;
+    history -s $TF_CMD;
 }
