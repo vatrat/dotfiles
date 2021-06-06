@@ -4,7 +4,13 @@
 # https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
 
+
+#General
 alias ping.='ping 8.8.8.8'
+alias dmesg='dmesg --color=always'
+alias less='less -R'
+alias open='xdg-open'
+alias watch='watch -c'
 
 #ls redefine
 alias ls='ls --color'
@@ -54,6 +60,7 @@ alias em='emacsclient -nw -a ""'
 alias emc='emacsclient -c -a ""'
 alias emn='emacsclient -a ""'
 
+#Picocom
 alias mcom='picocom -b 115200 --imap lfcrlf -s msend'
 alias mcom0='picocom -b 115200 --imap lfcrlf -s msend /dev/ttyUSB0'
 
