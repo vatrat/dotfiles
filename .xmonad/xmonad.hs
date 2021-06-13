@@ -1,5 +1,5 @@
-import Data.Map    (fromList)
-import Data.Monoid (mappend)
+import Data.Map(fromList)
+import Data.Monoid(mappend)
 import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
@@ -167,4 +167,9 @@ main = do
                                                       spawn "brightnessctl set +1%")
               ,((mod1Mask .|. shiftMask, xF86XK_MonBrightnessDown ),
                                                       spawn "brightnessctl set 1%-")
+
+
+
+              -- Keybindings
+              ,((0, xK_F6), spawn "bash -c 'killall xdotool || while xdotool click --repeat 1000000 --delay 15 1; do :; done'")
             ]
