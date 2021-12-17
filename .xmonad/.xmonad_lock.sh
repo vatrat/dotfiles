@@ -28,10 +28,23 @@ steps=$(shuf -i 40-70 -n 1)
 for i in $(seq 1 $steps);do datamosh "$file"; done
 
 GLITCHICON=${GLITCHICON:=""}
-PARAM=(--bar-indicator --bar-position h --bar-direction 2 --redraw-thread -t "" \
-	--bar-step 100 --bar-width 50 --bar-base-width 200 --bar-max-height 600 --bar-periodic-step 50 \
-	--bar-color 0F0F0F57 --keyhlcolor 00666656 --ringvercolor cc87875f --wrongcolor ffff0050 \
-	--veriftext="" --wrongtext="" --noinputtext="" --pass-screen-keys )
+# PARAM=(--bar-indicator --bar-position h --bar-direction 2 --redraw-thread -t "" \
+# 	--bar-step 100 --bar-width 50 --bar-base-width 200 --bar-max-height 600 --bar-periodic-step 50 \
+# 	--bar-color 0F0F0F57 --keyhlcolor 00666656 --ringvercolor cc87875f --wrongcolor ffff0050 \
+# 	--veriftext="" --wrongtext="" --noinputtext="" --pass-screen-keys )
+
+# PARAM=(--bar-indicator --bar-direction 2 --redraw-thread -t "" \
+#     --bar-step 100 --bar-total-width 50 --bar-base-width 200 --bar-max-height 600 --bar-periodic-step 50 \
+#     --bar-color 0F0F0F57 --keyhl-color 00666656 --verif-color cc87875f --wrong-color ffff0050 \
+#     --verif-text="" --wrong-text="" --noinput-text="" --pass-screen-keys )
+
+PARAM=(--screen=1 --bar-indicator --bar-direction 2 --redraw-thread  \
+    --bar-pos 0:540 -t "" --bar-step 80 \
+    --bar-total-width 1920 --bar-base-width 200 \
+    --bar-max-height 400 --bar-periodic-step 80 --bar-count 35 \
+    --bar-color 0F0F0F57 --keyhl-color 00666656 --verif-color cc87875f \
+    --wrong-color ffff0050 --verif-text="" --wrong-text="" --noinput-text="" \
+    --pass-screen-keys --pass-volume-keys )
 
 LOCK=()
 while read LINE
@@ -57,4 +70,4 @@ file=/tmp/lock.png
 
 convert "$file" "${LOCK[@]}" "$file"
 
-i3lock -n "${PARAM[@]}" -i "$file" > /dev/null 2>&1
+i3lock -n "${PARAM[@]}" -i "$file" > /home/vatrat/lock_log.txt 2>&1

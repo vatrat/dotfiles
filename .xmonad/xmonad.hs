@@ -26,7 +26,8 @@ mymanageHook = composeAll
                    , resource  =? "stalonetray" --> doIgnore ]
                    -- , resource  =? "xmobar"       --> doIgnore ]
             -- , manageDocks
-mylayoutHook = avoidStruts ( ResizableTall 1 (1.5/100) (3/5) [] ||| noBorders (Full) ||| noBorders (tabbed shrinkText def) ||| Accordion ||| Circle )
+mylayoutHook = avoidStruts ( noBorders (tabbed shrinkText def) ||| ResizableTall 1 (1.5/100) (3/5) [] ||| noBorders (Full) )
+-- Accordion Circle
 -- myLayouts = toggleLayouts (noBorders Full) Tall ||| ResizableTall 1 (1.5/100) (3/5) [] ||| emptyBSP
 -----
 
@@ -76,16 +77,17 @@ main = do
         } `additionalKeys`
             [
               ((mod1Mask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh")
-              ,((mod1Mask .|. shiftMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh & systemctl suspend")
-              ,((mod1Mask .|. controlMask, xK_z), spawn "bash ~/.xmonad/.xmonad_lock.sh & systemctl hibernate")
+              ,((mod1Mask .|. shiftMask, xK_z), spawn "/home/vatrat/.xmonad/.suspend.sh")
+              ,((mod1Mask .|. controlMask, xK_z), spawn "/home/vatrat/.xmonad/.hibernate.sh")
               ,((mod1Mask, xK_Print),
       spawn "import -window root $HOME/foto/shot/$(date +%Y_%m_%d-%H%M%S).png")
 
               -- Application launching keybindings
-              ,((mod1Mask, xK_p), spawn "rofi -show drun -show-icons")
-              ,((mod1Mask .|. shiftMask, xK_p), spawn "dmenu_run")
-              ,((mod1Mask, xK_d), spawn "rofi -show run")
+              ,((mod1Mask, xK_d), spawn "rofi -show drun -show-icons")
+              ,((mod1Mask .|. shiftMask, xK_d), spawn "dmenu_run")
+              -- ,((mod1Mask, xK_p), spawn "rofi -show run")
               ,((mod1Mask, xK_f), spawn "rofi -show window")
+              ,((mod1Mask, xK_e), spawn "gnomesu ls")
 
               -- (Spac)Emacs launch keybindings
               ,((mod1Mask, xK_s), spawn "emacsclient -c -a ''")
