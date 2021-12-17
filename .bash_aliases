@@ -11,6 +11,7 @@ alias dmesg='dmesg --color=always'
 alias less='less -R'
 alias open='xdg-open'
 alias watch='watch -c'
+alias acl='bash -c "killall xdotool || while xdotool click --repeat 1000000 --delay 15 1; do :; done"'
 
 #ls redefine
 alias ls='ls --color'
