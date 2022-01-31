@@ -93,6 +93,10 @@ zypF() {
        sudo zypi "$(zyps $1 | fzf --ansi -m --prompt='package> ' --header='zypper search $2' -q $2)"
 }
 
+#venv
+pve() {
+      source .venv/"$1"/bin/activate
+}
 
 #General
 

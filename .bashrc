@@ -1,5 +1,3 @@
-# . /etc/apache2/envvars
-
  #If not running interactively, don't do anything else
 [ -z "$PS1" ] && return
 
@@ -26,6 +24,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -33,8 +32,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 
+# PS1RC git branch indicator needs git-prompt.sh, which is not in a standard location
 if [ $(lsb_release -is) == "Fedora" ]
 then
     source /usr/share/git-core/contrib/completion/git-prompt.sh;
@@ -55,13 +54,13 @@ fi
 # PS1='[\[\033[01;32m\]${USER}\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 ":%s")] ';
 source ~/.ps1rc
 
+# Is this needed? It seems like it might get in the way
 cd ~
+
+# idk
 unset TMUX
 
-if [ $USER == "vatrat" ]; then
-    export PATH="/home/vatrat/.gem/ruby/2.3.0/bin:$PATH"
-fi
-
+# set nvim as vim
 if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
     alias vi='nvim'
@@ -69,25 +68,27 @@ if type nvim > /dev/null 2>&1; then
     export EDITOR='nvim'
 fi
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
+# ???
 export rvm_silence_path_mismatch_check_flag=1
 
-
+# color compatibility ig
 export TERM=screen-256color
 
+# fzf 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# english
 export LANG=en_US.UTF-8
 
 
-gdmauth=$XAUTHORITY
-unset XAUTHORITY
-export XAUTHORITY
-xauth merge "$gdmauth"
+# broken, don't remember what it did
+# gdmauth=$XAUTHORITY
+# unset XAUTHORITY
+# export XAUTHORITY
+# xauth merge "$gdmauth"
+
+# make man not unreadabale when resizing terminals by making it smol
+export MANWIDTH=80
+# prefer non-POSIX manpages
+export MAN_POSIXLY_CORRECT=0
