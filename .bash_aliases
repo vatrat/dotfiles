@@ -55,6 +55,13 @@ alias nmd='nmcli d'
 alias nm0='nmcli r a off'
 alias nm1='nmcli r a on'
 alias nmr='nmcli r a off && sleep 1 && nmcli r a on && sleep 1 && watch -n 0.7 nmcli d w'
+#Networking
+
+noss() { #fast-ish os scan,pulled from internet
+	nmap -v -sSU -pT:20-25,80,443-445,U:54321-54330 -O $TARGET
+}
+
+#Needs to be greatly improved
 mac() {
       sudo nmcli connection modify AU_WiFi wifi.cloned-mac-address $1 &&
       nmcli connection down AU_WiFi &&
@@ -124,3 +131,10 @@ function fuck () {
     export PYTHONIOENCODING=$TF_PYTHONIOENCODING;
     history -s $TF_CMD;
 }
+
+prime-offload() {
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    "$1"
+}
+
