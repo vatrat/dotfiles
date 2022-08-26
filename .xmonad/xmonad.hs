@@ -32,34 +32,35 @@ mylayoutHook = avoidStruts ( noBorders (tabbed shrinkText def) ||| ResizableTall
 -----
 
 main = do
-    spawn "bash -c 'if ! ( ps -fA | grep -i \" [s]talonetray\" ); then echo \"running startup commands\" &&\
-    \ \"stalonetray\" & \
-    \ echo \"stalonetray started\" &&\
-    \ export LANG=en_US.UTF-8 &&\
-    \ echo \"LANG set\" &&\
-    \ xset b off &&\
-    \ echo \"turned off bell\" &&\
-    \ xsetroot -cursor_name \"left_ptr&\" &&\
-    \ echo \"cursor set\" &&\
-    \ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &&\
-    \ echo \"keyboard layout set to US Extended\" &&\
-    \ setxkbmap -option \"caps:escape\" &&\
-    \ echo \"caps and escape swapped\" &&\
-    \ xmodmap -e \"keycode 133 = ISO_Level3_Shift\" &&\
-    \ echo \"Windows key is now ISO_Level3_Shift\" &&\
-    \ xmodmap -e \"keycode 135 = ISO_Level3_Shift\" &&\
-    \ echo \"Menu key is now ISO_Level3_Shift\" &&\
-    \ xmodmap -e \"keycode 108 = Alt_L\" &&\
-    \ echo \"Alt keys are now both Alt_L\" &&\
-    \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
-    \ echo \"background set\" &&\
-    \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
-    -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
-    -- \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
-    -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Natural Scrolling Enabled\" 0 &&\
-    -- \ echo \"Turned off natural scrolling\" &&\
-    -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Disable While Typing Enabled\" 0 &&\
-    -- \ echo \"Turned off disable trackpad while typing\" &&\
+  -- TODO move all this stuff to .xinitrc or something so it applies across DE
+    -- spawn "bash -c 'if ! ( ps -fA | grep -i \" [s]talonetray\" ); then echo \"running startup commands\" &&\
+    -- \ \"stalonetray\" & \
+    -- \ echo \"stalonetray started\" &&\
+    -- \ export LANG=en_US.UTF-8 &&\
+    -- \ echo \"LANG set\" &&\
+    -- \ xset b off &&\
+    -- \ echo \"turned off bell\" &&\
+    -- \ xsetroot -cursor_name \"left_ptr&\" &&\
+    -- \ echo \"cursor set\" &&\
+    -- \ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &&\
+    -- \ echo \"keyboard layout set to US Extended\" &&\
+    -- \ setxkbmap -option \"caps:escape\" &&\
+    -- \ echo \"caps and escape swapped\" &&\
+    -- \ xmodmap -e \"keycode 133 = ISO_Level3_Shift\" &&\
+    -- \ echo \"Windows key is now ISO_Level3_Shift\" &&\
+    -- \ xmodmap -e \"keycode 135 = ISO_Level3_Shift\" &&\
+    -- \ echo \"Menu key is now ISO_Level3_Shift\" &&\
+    -- \ xmodmap -e \"keycode 108 = Alt_L\" &&\
+    -- \ echo \"Alt keys are now both Alt_L\" &&\
+    -- \ feh --bg-scale /home/vatrat/foto/background/wallpaper.png &&\
+    -- \ echo \"background set\" &&\
+    -- \ echo xmonad started; else echo xmonad already running, no action; fi' >~/xmlog 2>&1"
+    -- -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Tapping Enabled\" 1 &&\
+    -- -- \ echo \"fixed Acer laptop trackpad tap-to-click\" &&\
+    -- -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Natural Scrolling Enabled\" 0 &&\
+    -- -- \ echo \"Turned off natural scrolling\" &&\
+    -- -- \ xinput set-prop \"SynPS/2 Synaptics TouchPad\" \"libinput Disable While Typing Enabled\" 0 &&\
+    -- -- \ echo \"Turned off disable trackpad while typing\" &&\
 
     xmproc <- spawnPipe "xmobar"
     xmonad $ ewmh $ docks def
@@ -101,8 +102,8 @@ main = do
               --                           spawn "gnome-control-center bluetooth")
               -- ,((mod1Mask, xK_b),
               --                               spawn "gnome-control-center power")
-              -- ,((mod1Mask .|. shiftMask, xK_w),
-              --                             spawn "gnome-control-center network")
+              ,((mod1Mask .|. shiftMask, xK_w),
+                                          spawn "nmcli-dmenu")
 
               -- Keybindings to switch windows directionally
               ,((mod1Mask, xK_l), windowGo R False)
