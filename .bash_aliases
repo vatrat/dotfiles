@@ -4,7 +4,6 @@
 # https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
 
-
 #General
 alias ping.='ping 8.8.8.8'
 alias dmesg='dmesg --color=always'
@@ -79,42 +78,140 @@ alias mcom='picocom -b 115200 --imap lfcrlf -s msend'
 alias mcom0='picocom -b 115200 --imap lfcrlf -s msend /dev/ttyUSB0'
 
 #fzf
-alias fl='cd "$(locate / | fzf --ansi)"'
+#alias fl='cd "$(locate / | fzf --ansi)"'
 alias fd='cd "$(locate "$(pwd)" | fzf --ansi)"'
 # alias f='"$(locate / | fzf --ansi)"'
 # this function runs whatever comes after with an input from an indexed fzf search
-f() {
-    "$1" "$(locate / | fzf --ansi --header='$1')"
+fz() {
+    "$2"       "$(locate $1 | fzf --ansi --header='$2')" 
 }
-F() {
-    "$2" "$(locate '$1' | fzf --ansi)"
+fzstat() {
+    "stat"     "$(locate $1 | fzf --ansi --header='stat')" 
 }
-zypI() {
-       sudo zypi "$(echo 'Loading...'; zyps $1 | fzf --ansi -m --prompt='package> ' --header='zypper install')"
+fzcat() {
+    "cat"      "$(locate $1 | fzf --ansi --header='cat')" 
 }
-zypf() {
-       # sudo zypi "$(zyps $1 | fzf --header-lines=3 --tac --ansi --delimiter='|' -m --prompt='package> ' --header='zypper search $1' -q $1)"
-       zyps $1 | fzf --header-lines=3 --tac --ansi --delimiter='|' -m --prompt='package> ' --header='zypper search $1' -q $1
+fzfile() {
+    "file"     "$(locate $1 | fzf --ansi --header='file')" 
 }
-zypF() {
-       sudo zypi "$(zyps $1 | fzf --ansi -m --prompt='package> ' --header='zypper search $2' -q $2)"
+fzcd() {
+    "cd"       "$(locate $1 | fzf --ansi --header='cd')" 
 }
+fzopen() {
+    "xdg-open" "$(locate $1 | fzf --ansi --header='open')" 
+}
+fzecho() {
+    "echo"     "$(locate $1 | fzf --ansi --header='echo')" 
+}
+fzless() {
+    "less"     "$(locate $1 | fzf --ansi --header='less')" 
+}
+
+fzr() {
+    "$1"       "$(locate /  | fzf --ansi --header='$1')" 
+}
+fzrstat() {
+    "stat"     "$(locate /  | fzf --ansi --header='stat')" 
+}
+fzrcat() {
+    "cat"      "$(locate /  | fzf --ansi --header='cat')" 
+}
+fzrfile() {
+    "file"     "$(locate /  | fzf --ansi --header='file')" 
+}
+fzrcd() {
+    "cd"       "$(locate /  | fzf --ansi --header='cd')" 
+}
+fzropen() {
+    "xdg-open" "$(locate /  | fzf --ansi --header='open')" 
+}
+fzrecho() {
+    "echo"     "$(locate /  | fzf --ansi --header='echo')" 
+}
+fzrless() {
+    "less"     "$(locate /  | fzf --ansi --header='less')" 
+}
+
+# This section is commented out because, as of right now, mlocate seems to have a bug for btrfs.
+# Because /home is mounted on another subvolume, updatedb doesn't index it.
+# The option PRUNE_BIND_MOUNTS="no" does not work and has no effect.
+# fzh() {
+#     "$1"       "$(locate /home/${USER}/  | fzf --ansi --header='$1')" 
+# }
+# fzhstat() {
+#     "stat"     "$(locate /home/${USER}/  | fzf --ansi --header='stat')" 
+# }
+# fzhcat() {
+#     "cat"      "$(locate /home/${USER}/  | fzf --ansi --header='cat')" 
+# }
+# fzhfile() {
+#     "file"     "$(locate /home/${USER}/  | fzf --ansi --header='file')" 
+# }
+# fzhcd() {
+#     "cd"       "$(locate /home/${USER}/  | fzf --ansi --header='cd')" 
+# }
+# fzhopen() {
+#     "xdg-open" "$(locate /home/${USER}/  | fzf --ansi --header='open')" 
+# }
+# fzhecho() {
+#     "echo"     "$(locate /home/${USER}/  | fzf --ansi --header='echo')" 
+# }
+# fzhless() {
+#     "less"     "$(locate /home/${USER}/  | fzf --ansi --header='less')" 
+# }
+
+# Temporary workaround using find instead of locate
+fzh() {
+    "$1"       "$(find /home/${USER}/  | fzf --ansi --header='$1')" 
+}
+fzhstat() {
+    "stat"     "$(find /home/${USER}/  | fzf --ansi --header='stat')" 
+}
+fzhcat() {
+    "cat"      "$(find /home/${USER}/  | fzf --ansi --header='cat')" 
+}
+fzhfile() {
+    "file"     "$(find /home/${USER}/  | fzf --ansi --header='file')" 
+}
+fzhcd() {
+    "cd"       "$(find /home/${USER}/  | fzf --ansi --header='cd')" 
+}
+fzhopen() {
+    "xdg-open" "$(find /home/${USER}/  | fzf --ansi --header='open')" 
+}
+fzhecho() {
+    "echo"     "$(find /home/${USER}/  | fzf --ansi --header='echo')" 
+}
+fzhless() {
+    "less"     "$(find /home/${USER}/  | fzf --ansi --header='less')" 
+}
+
+# zypI() {
+#     sudo zypi "$(echo 'Loading...'; zyps $1 | fzf --ansi -m --prompt='package> ' --header='zypper install')"
+# }
+# zypf() {
+#     #sudo zypi "$(zyps $1 | fzf --header-lines=3 --tac --ansi --delimiter='|' -m --prompt='package> ' --header='zypper search $1' -q $1)"
+#     zyps $1 | fzf --header-lines=3 --tac --ansi --delimiter='|' -m --prompt='package> ' --header='zypper search $1' -q $1
+# }
+# zypF() {
+#     sudo zypi "$(zyps $1 | fzf --ansi -m --prompt='package> ' --header='zypper search $2' -q $2)"
+# }
 
 #venv
 pve() {
-      source .venv/"$1"/bin/activate
+    source .venv/"$1"/bin/activate
 }
 
 #General
 
 emsu() {
-       emacsclient "-nw" "-e" "'(find-file \"/sudo::$1\")'"
+    emacsclient "-nw" "-e" "'(find-file \"/sudo::$1\")'"
 }
 
 
 
 blight() {
-         sudo su -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
+    sudo su -c "echo $1 > /sys/class/backlight/intel_backlight/brightness"
 }
 
 function fuck () {
@@ -138,3 +235,10 @@ prime-offload() {
     "$1"
 }
 
+trspd() {
+    sudo bash -c "echo $1 | tee /sys/devices/platform/i8042/serio1/subsystem/devices/serio2/speed" 
+}
+
+trsen() {
+    sudo bash -c "echo $1 | tee /sys/devices/platform/i8042/serio1/subsystem/devices/serio2/sensitivity" 
+}
