@@ -47,14 +47,14 @@ This function should only modify configuration layer settings."
      lsp
      markdown
      csv
-     multiple-cursors
+     ;; multiple-cursors (I don't think I've ever used this)
      org
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
      syntax-checking
-     version-control
+     ;; version-control (Is this necessary for magit? I don't use Emacs VC.)
      treemacs
 
      pandoc
