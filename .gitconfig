@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [credential]
-	helper = cache --timeout=3600
+	helper = cache --timeout=86400
 [user]
 	name = vatrat
 	email = vatrat.dev@gmail.com
