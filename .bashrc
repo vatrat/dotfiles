@@ -46,7 +46,7 @@ then
     source /usr/share/git/git-prompt.sh
 elif [ $(lsb_release -is) == "openSUSE" ]
 then
-     source /etc/bash_completion.d/git-prompt.sh
+     source /etc/bash_completion.d/git-prompt
 fi
 # source /usr/share/git/git-prompt.sh
 
