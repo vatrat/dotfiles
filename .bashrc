@@ -92,3 +92,8 @@ export LANG=en_US.UTF-8
 export MANWIDTH=80
 # prefer non-POSIX manpages
 export MAN_POSIXLY_CORRECT=0
+# try to force emacs to use ONE server file
+# so that restart-emacs(-resume-layouts) doesn't result in a socketless emacs
+export EMACS_SERVER_SOCKET=/run/user/$(id -u)/emacs/server
+export EMACS_SOCKET_NAME=/run/user/$(id -u)/emacs/server
+source /home/$(id -un)/code/python/venv/jupyter/bin/activate

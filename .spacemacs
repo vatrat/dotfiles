@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(clojure
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -43,7 +43,9 @@ This function should only modify configuration layer settings."
      ;; better-defaults
      emacs-lisp
      git
-     helm
+     (helm :variables
+           helm-enable-auto-resize t
+           helm-no-header t)
      lsp
      markdown
      csv
@@ -56,14 +58,12 @@ This function should only modify configuration layer settings."
      syntax-checking
      ;; version-control (Is this necessary for magit? I don't use Emacs VC.)
      treemacs
-
      pandoc
      graphviz
      evil-snipe
      major-modes
      command-log
      erc
-
      html
      c-c++
      python
@@ -71,6 +71,9 @@ This function should only modify configuration layer settings."
      (scheme :variables
                scheme-implementations '(gambit guile racket))
      haskell
+     clojure
+     (latex :variables
+            latex-view-with-pdf-tools nil)
      dash
      docker
      systemd
@@ -85,7 +88,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(evil-goggles gruvbox-theme literate-calc-mode platformio-mode all-the-icons)
+   dotspacemacs-additional-packages '(sqlite3 evil-goggles gruvbox-theme literate-calc-mode platformio-mode all-the-icons)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -234,7 +237,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil, show file icons for entries and headings on Spacemacs home buffer.
    ;; This has no effect in terminal or if "all-the-icons" package or the font
    ;; is not installed. (default nil)
-   dotspacemacs-startup-buffer-show-icons nil
+   dotspacemacs-startup-buffer-show-icons t
 
    ;; Default major mode for a new empty buffer. Possible values are mode
    ;; names such as `text-mode'; and `nil' to use Fundamental mode.
@@ -243,6 +246,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'org-mode
+   ;; dotspacemacs-scratch-mode 'text-mode
 
    ;; If non-nil, *scratch* buffer will be persistent. Things you write down in
    ;; *scratch* buffer will be saved and restored automatically.
@@ -278,8 +282,10 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("B&H LucidaTypewriter"
-                               :size 8.0
+   dotspacemacs-default-font '("Iosevka SS09"
+                               :size 10.0
+                               :weight light
+                               :width expanded
                                )
 
    ;; The leader key (default "SPC")
@@ -315,7 +321,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-distinguish-gui-tab nil
 
    ;; Name of the default layout (default "Default")
-   dotspacemacs-default-layout-name "todo"
+   dotspacemacs-default-layout-name "Default"
 
    ;; If non-nil the default layout name is displayed in the mode-line.
    ;; (default nil)
@@ -323,7 +329,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil then the last auto saved layouts are resumed automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
 
    ;; If non-nil, auto-generate layout name when creating new layouts. Only has
    ;; effect when using the "jump to layout by number" commands. (default nil)
@@ -573,9 +579,16 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq org-want-todo-bindings 't)
+
   ;; (setq debug-ignored-errors nil)
   ;; (setq debug-on-error 't)
+  ;; Set up AucTeX to work with Zathura (make LaTeX live output work)
+  (setq TeX-source-correlate-mode t)
+  (setq TeX-source-correlate-start-server t)
+  (setq TeX-source-correlate-method 'synctex)
+  (setq TeX-view-program-selection '((output-pdf "Zathura")))
+  (add-hook 'TeX-after-compilation-finished-functions
+            #'TeX-revert-document-buffer);; what does the '#' do?
   )
 
 
@@ -593,6 +606,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (remove-hook 'python-mode-hook 'importmagic-mode)
+  ;; (setq which-key-separator " : ")
   ;; evil
   (setq evil-move-beyond-eol nil)
   (setq evil-want-Y-yank-to-eol 't)
@@ -604,21 +619,27 @@ before packages are loaded."
   ;; evil-goggles
   (evil-goggles-mode)
   (evil-goggles-use-diff-faces)
-  ;; org mode
-  (setq org-directory "/home/vatrat/org/opendrive") ; static copy of remote files, managed with Unison
-  (setq org-agenda-files "/home/vatrat/org/opendrive/agendas.org") ; list of files to include in agenda
-  ;; (setq org-loop-over-headlines-in-active-region 'start-level)
-  ;; (add-hook 'org-mode-hook (lambda () (setq-local evil-auto-indent "nil"))
-  ;;                 (evil-local-set-key 'normal evil-org-mode-map
-  ;;                       "o" (lambda () (interactive) (evil-org-eol-call 'org-insert-heading))
-  ;;                       "O" (lambda () (interactive) (evil-org-bol-call 'org-insert-heading))))
-  (add-hook 'org-mode-hook (lambda () (setq-local evil-auto-indent nil)))
-  (add-hook 'org-mode-hook (lambda () (setq-local evil-move-beyond-eol 't)))
 
-  ;; (spacemacs/set-leader-keys-for-major-mode 'org
-  ;;   "i h" (lambda () (interactive) (evil-org-org-insert-heading-respect-content-below) (evil-insert)))
-  ;; (spacemacs/set-leader-keys-for-major-mode 'org-mode
-  ;; )
+  
+  ;; org mode
+  (with-eval-after-load 'org ;; https://github.com/syl20bnr/spacemacs/issues/8106
+    (setq org-want-todo-bindings 't)
+    (setq org-directory "/home/vatrat/org-files") ; static copy of remote files, managed with Unison
+    ;; (setq org-agenda-files '("/home/vatrat/org-files/agendas.org")) ; list of files to include in agenda
+    (setq org-agenda-files (list org-directory)) ; list of files to include in agenda
+    ;; (setq org-loop-over-headlines-in-active-region 'start-level)
+    ;; (add-hook 'org-mode-hook (lambda () (setq-local evil-auto-indent "nil"))
+    ;;                 (evil-local-set-key 'normal evil-org-mode-map
+    ;;                       "o" (lambda () (interactive) (evil-org-eol-call 'org-insert-heading))
+    ;;                       "O" (lambda () (interactive) (evil-org-bol-call 'org-insert-heading))))
+    (add-hook 'org-mode-hook (lambda () (setq-local evil-auto-indent nil)))
+    (add-hook 'org-mode-hook (lambda () (setq-local evil-move-beyond-eol 't)))
+
+    ;; (spacemacs/set-leader-keys-for-major-mode 'org
+    ;;   "i h" (lambda () (interactive) (evil-org-org-insert-heading-respect-content-below) (evil-insert)))
+    ;; (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    ;; )
+  )
 
   (spacemacs/set-leader-keys ;;Set SPC-
       "\\" 'redraw-display
@@ -664,10 +685,11 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-C-i-jump nil)
  '(evil-want-C-u-scroll t)
  '(evil-want-Y-yank-to-eol t)
- '(evil-want-keybinding t)
+ '(evil-want-keybinding nil)
  '(org-M-RET-may-split-line nil)
  '(package-selected-packages
-   '(cider-eval-sexp-fu clojure-snippets helm-cider cider sesman parseedn clojure-mode parseclj auto-dictionary browse-at-remote flyspell-correct-helm flyspell-correct git-gutter-fringe fringe-helper git-gutter orgit forge ghub closql emacsql-sqlite emacsql treepy magit magit-section git-commit with-editor lsp-docker yaml load-env-vars pylookup code-cells platformio-mode geiser-racket geiser-guile geiser-gambit geiser lcr haskell-mode simple-httpd haml-mode counsel-css web-completion-data mu4e-maildirs-extension mu4e-alert helm-mu stickyfunc-enhance transient pyvenv epc ctable concurrent helm-cscope xcscope anaconda-mode pythonic literate-calc-mode json-reformat json-navigator hierarchy json-mode json-snatcher tern npm-mode nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl helm-gtags ggtags counsel-gtags counsel swiper ivy add-node-modules-path ob-elixir flycheck-credo dap-mode bui alchemist elixir-mode yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode wolfram-mode winum which-key web-mode web-beautify vterm volatile-highlights vi-tilde-fringe vala-snippets vala-mode uuidgen use-package unkillable-scratch unfill undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org thrift terminal-here tagedit symon symbol-overlay string-inflection string-edit stan-mode sphinx-doc spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode scad-mode sass-mode restart-emacs rainbow-delimiters quickrun qml-mode pytest pyenv-mode pydoc py-isort pug-mode prettier-js popwin poetry pkgbuild-mode pippel pipenv pip-requirements persistent-scratch pcre2el password-generator paradox pandoc-mode ox-pandoc overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nose nameless mwim multi-term multi-line mmm-mode matlab-mode markdown-toc macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum logcat live-py-mode link-hint keycast inspector info+ indent-guide importmagic impatient-mode hybrid-mode hungry-delete hoon-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-hoogle helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme graphviz-dot-mode google-translate google-c-style golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link gh-md gendoxy fuzzy font-lock+ flycheck-ycmd flycheck-rtags flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-terminal-cursor-changer evil-surround evil-snipe evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emr emmet-mode elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disaster dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode cpp-auto-include company-ycmd company-web company-rtags company-cabal company-c-headers company-anaconda command-log-mode column-enforce-mode cmm-mode clean-aindent-mode centered-cursor-mode ccls blacken auto-yasnippet auto-highlight-symbol auto-compile attrap arduino-mode aggressive-indent ace-link ace-jump-helm-line ac-ispell))
+   '(sqlite3 pdf-view-restore pdf-tools auctex-latexmk company-auctex company-math company-reftex evil-tex auctex lsp-latex math-symbol-lists cider-eval-sexp-fu clojure-snippets helm-cider cider sesman parseedn clojure-mode parseclj auto-dictionary browse-at-remote flyspell-correct-helm flyspell-correct git-gutter-fringe fringe-helper git-gutter orgit forge ghub closql emacsql-sqlite emacsql treepy magit magit-section git-commit with-editor lsp-docker yaml load-env-vars pylookup code-cells platformio-mode geiser-racket geiser-guile geiser-gambit geiser lcr haskell-mode simple-httpd haml-mode counsel-css web-completion-data mu4e-maildirs-extension mu4e-alert helm-mu stickyfunc-enhance transient pyvenv epc ctable concurrent helm-cscope xcscope anaconda-mode pythonic literate-calc-mode json-reformat json-navigator hierarchy json-mode json-snatcher tern npm-mode nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl helm-gtags ggtags counsel-gtags counsel swiper ivy add-node-modules-path ob-elixir flycheck-credo dap-mode bui alchemist elixir-mode yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode wolfram-mode winum which-key web-mode web-beautify vterm volatile-highlights vi-tilde-fringe vala-snippets vala-mode uuidgen use-package unkillable-scratch unfill undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org thrift terminal-here tagedit symon symbol-overlay string-inflection string-edit stan-mode sphinx-doc spaceline-all-the-icons smeargle slim-mode shell-pop scss-mode scad-mode sass-mode restart-emacs rainbow-delimiters quickrun qml-mode pytest pyenv-mode pydoc py-isort pug-mode prettier-js popwin poetry pkgbuild-mode pippel pipenv pip-requirements persistent-scratch pcre2el password-generator paradox pandoc-mode ox-pandoc overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file nose nameless mwim multi-term multi-line mmm-mode matlab-mode markdown-toc macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum logcat live-py-mode link-hint keycast inspector info+ indent-guide importmagic impatient-mode hybrid-mode hungry-delete hoon-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-hoogle helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme graphviz-dot-mode google-translate google-c-style golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link gh-md gendoxy fuzzy font-lock+ flycheck-ycmd flycheck-rtags flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-terminal-cursor-changer evil-surround evil-snipe evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emr emmet-mode elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode disaster dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode cpp-auto-include company-ycmd company-web company-rtags company-cabal company-c-headers company-anaconda command-log-mode column-enforce-mode cmm-mode clean-aindent-mode centered-cursor-mode ccls blacken auto-yasnippet auto-highlight-symbol auto-compile attrap arduino-mode aggressive-indent ace-link ace-jump-helm-line ac-ispell))
+ '(warning-minimum-level :error)
  '(warning-suppress-types '((comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
