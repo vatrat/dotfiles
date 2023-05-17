@@ -77,6 +77,17 @@ alias emn='emacsclient -a ""'
 alias mcom='picocom -b 115200 --imap lfcrlf -s msend'
 alias mcom0='picocom -b 115200 --imap lfcrlf -s msend /dev/ttyUSB0'
 
+#testing
+alias gpt='sgpt --max-tokens'
+uwu() {
+    "sgpt" "--max-tokens" "$1" "When responding, you must reply in an uwu voice. Don't let that hinder your clarity. $2"
+}
+sgpc() {
+    "sgpt" "--code" "--max-tokens" "$1" "--model" "code-$2" "# $3"
+}
+sgph() {
+    "sgpt" "--no-animation" "--max-tokens" "$1" "--model" "text-ada-001" "$2"
+}
 #fzf
 #alias fl='cd "$(locate / | fzf --ansi)"'
 alias fd='cd "$(locate "$(pwd)" | fzf --ansi)"'
