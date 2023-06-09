@@ -614,7 +614,6 @@ before packages are loaded."
   (setq evil-want-fine-undo 't)
   ;; evil-snipe
   (add-hook 'magit-mode-hook 'turn-off-evil-snipe-override-mode)
-  (add-hook 'org-mode-hook 'turn-off-evil-snipe-override-mode)
   (evil-snipe-override-mode +1)
   ;; evil-goggles
   (evil-goggles-mode)
@@ -622,9 +621,10 @@ before packages are loaded."
 
   
   ;; org mode
+  (setq org-want-todo-bindings 't)
   (with-eval-after-load 'org ;; https://github.com/syl20bnr/spacemacs/issues/8106
-    (setq org-want-todo-bindings 't)
-    (setq org-directory "/home/vatrat/org-files") ; static copy of remote files, managed with Unison
+    ;; (add-hook 'org-mode-hook 'turn-off-evil-snipe-override-mode)
+    (setq org-directory "/home/vatrat/org-files/") ; static copy of remote files, managed with Unison
     ;; (setq org-agenda-files '("/home/vatrat/org-files/agendas.org")) ; list of files to include in agenda
     (setq org-agenda-files (list org-directory)) ; list of files to include in agenda
     ;; (setq org-loop-over-headlines-in-active-region 'start-level)
@@ -634,6 +634,7 @@ before packages are loaded."
     ;;                       "O" (lambda () (interactive) (evil-org-bol-call 'org-insert-heading))))
     (add-hook 'org-mode-hook (lambda () (setq-local evil-auto-indent nil)))
     (add-hook 'org-mode-hook (lambda () (setq-local evil-move-beyond-eol 't)))
+    (add-hook 'org-mode-hook (lambda () (evil-snipe-override-local-mode -1)))
 
     ;; (spacemacs/set-leader-keys-for-major-mode 'org
     ;;   "i h" (lambda () (interactive) (evil-org-org-insert-heading-respect-content-below) (evil-insert)))
