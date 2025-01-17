@@ -1,12 +1,11 @@
- #If not running interactively, don't do anything else
-[ -z "$PS1" ] && return
+[ -z "$PS1" ] && return #If not running interactively, don't do anything else
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
+# History
+HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history.
+shopt -s histappend # append to the history file, don't overwrite it
+HISTSIZE=300000
+SAVEHIST=300000
+HISTFILE=/xfsdata/.bash_history
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -16,14 +15,10 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -96,4 +91,23 @@ export MAN_POSIXLY_CORRECT=0
 # so that restart-emacs(-resume-layouts) doesn't result in a socketless emacs
 export EMACS_SERVER_SOCKET=/run/user/$(id -u)/emacs/server
 export EMACS_SOCKET_NAME=/run/user/$(id -u)/emacs/server
-source /home/$(id -un)/code/python/venv/jupyter/bin/activate
+#source /home/$(id -un)/code/python/venv/jupyter/bin/activate
+
+
+# set up ARM toolchain
+export PATH="/opt/arm-gnu-toolchain-12.3/bin:$PATH"
+# arm-none-eabi-gdb needs python3.8 specifically for some reason
+# export PYTHONPATH=/usr/lib64/python3.8 && export PYTHONHOME=/usr/bin/python3.8
+MANPATH=/opt/arm-gnu-toolchain-12.3/share/man:$MANPATH;export MANPATH
+## TMUX auto attach
+##
+if which tmux >/dev/null 2>&1; then                 # check if tmux is installed
+    if [[ ! $TERM_PROGRAM =~ "tmux" ]] ;then                   # do not allow "tmux in tmux"
+	    ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )"    # get the id of a deattached session
+	    if [[ -z "$ID" ]] ;then                                 # if not available create a new one
+		    exec tmux new-session
+	    else
+		    exec tmux attach-session -t "$ID"                    # if available, attach to it
+	    fi
+    fi
+fi
