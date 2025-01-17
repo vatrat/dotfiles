@@ -93,108 +93,13 @@ sgph() {
 alias fd='cd "$(locate "$(pwd)" | fzf --ansi)"'
 # alias f='"$(locate / | fzf --ansi)"'
 # this function runs whatever comes after with an input from an indexed fzf search
-fz() {
-    "$2"       "$(locate $1 | fzf --ansi --header='$2')" 
+fl() {
+    $2       $(locate $1 | fzf --ansi --header='$2') 
 }
-fzstat() {
-    "stat"     "$(locate $1 | fzf --ansi --header='stat')" 
-}
-fzcat() {
-    "cat"      "$(locate $1 | fzf --ansi --header='cat')" 
-}
-fzfile() {
-    "file"     "$(locate $1 | fzf --ansi --header='file')" 
-}
-fzcd() {
-    "cd"       "$(locate $1 | fzf --ansi --header='cd')" 
-}
-fzopen() {
-    "xdg-open" "$(locate $1 | fzf --ansi --header='open')" 
-}
-fzecho() {
-    "echo"     "$(locate $1 | fzf --ansi --header='echo')" 
-}
-fzless() {
-    "less"     "$(locate $1 | fzf --ansi --header='less')" 
-}
-
-fzr() {
-    "$1"       "$(locate /  | fzf --ansi --header='$1')" 
-}
-fzrstat() {
-    "stat"     "$(locate /  | fzf --ansi --header='stat')" 
-}
-fzrcat() {
-    "cat"      "$(locate /  | fzf --ansi --header='cat')" 
-}
-fzrfile() {
-    "file"     "$(locate /  | fzf --ansi --header='file')" 
-}
-fzrcd() {
-    "cd"       "$(locate /  | fzf --ansi --header='cd')" 
-}
-fzropen() {
-    "xdg-open" "$(locate /  | fzf --ansi --header='open')" 
-}
-fzrecho() {
-    "echo"     "$(locate /  | fzf --ansi --header='echo')" 
-}
-fzrless() {
-    "less"     "$(locate /  | fzf --ansi --header='less')" 
-}
-
-# This section is commented out because, as of right now, mlocate seems to have a bug for btrfs.
-# Because /home is mounted on another subvolume, updatedb doesn't index it.
-# The option PRUNE_BIND_MOUNTS="no" does not work and has no effect.
-# fzh() {
-#     "$1"       "$(locate /home/${USER}/  | fzf --ansi --header='$1')" 
-# }
-# fzhstat() {
-#     "stat"     "$(locate /home/${USER}/  | fzf --ansi --header='stat')" 
-# }
-# fzhcat() {
-#     "cat"      "$(locate /home/${USER}/  | fzf --ansi --header='cat')" 
-# }
-# fzhfile() {
-#     "file"     "$(locate /home/${USER}/  | fzf --ansi --header='file')" 
-# }
-# fzhcd() {
-#     "cd"       "$(locate /home/${USER}/  | fzf --ansi --header='cd')" 
-# }
-# fzhopen() {
-#     "xdg-open" "$(locate /home/${USER}/  | fzf --ansi --header='open')" 
-# }
-# fzhecho() {
-#     "echo"     "$(locate /home/${USER}/  | fzf --ansi --header='echo')" 
-# }
-# fzhless() {
-#     "less"     "$(locate /home/${USER}/  | fzf --ansi --header='less')" 
-# }
 
 # Temporary workaround using find instead of locate
-fzh() {
-    "$1"       "$(find /home/${USER}/  | fzf --ansi --header='$1')" 
-}
-fzhstat() {
-    "stat"     "$(find /home/${USER}/  | fzf --ansi --header='stat')" 
-}
-fzhcat() {
-    "cat"      "$(find /home/${USER}/  | fzf --ansi --header='cat')" 
-}
-fzhfile() {
-    "file"     "$(find /home/${USER}/  | fzf --ansi --header='file')" 
-}
-fzhcd() {
-    "cd"       "$(find /home/${USER}/  | fzf --ansi --header='cd')" 
-}
-fzhopen() {
-    "xdg-open" "$(find /home/${USER}/  | fzf --ansi --header='open')" 
-}
-fzhecho() {
-    "echo"     "$(find /home/${USER}/  | fzf --ansi --header='echo')" 
-}
-fzhless() {
-    "less"     "$(find /home/${USER}/  | fzf --ansi --header='less')" 
+ff() {
+    $2       $(find $1 2>/dev/null | fzf --ansi --header='$2') 
 }
 
 # zypI() {
@@ -252,4 +157,7 @@ trspd() {
 
 trsen() {
     sudo bash -c "echo $1 | tee /sys/devices/platform/i8042/serio1/subsystem/devices/serio2/sensitivity" 
+}
+meow() {
+    echo "$1" | base64 --decode
 }
